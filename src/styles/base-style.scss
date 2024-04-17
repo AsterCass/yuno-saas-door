@@ -1,0 +1,33 @@
+//https://colors.artyclick.com/color-name-finder/
+//quasar color
+$primary: #027BE3;
+$secondary: #26A69A;
+$accent: #9C27B0;
+$dark: #1D1D1D;
+$positive: #21BA45;
+$negative: #C10015;
+$info: #31CCEC;
+$warning: #F2C037;
+//yuno color
+$yuno_black: #444444;
+$yuno_white: #dddddd;
+$yuno_white_bg: rgb(239, 242, 245);
+$yuno_secondary_light: rgb(165, 214, 167); //green-3a
+//yuno style
+$yuno_black_gradient_195: linear-gradient(195deg, #42424a, #191919);
+$yuno_black_gradient_180: linear-gradient(180deg, #42424a, #191919);
+//base
+* {
+  color: $yuno_black;
+  background-color: $yuno_white_bg;
+  font-family: Roboto Slab, sans-serif;
+
+  ::selection {
+    background-color: $yuno_secondary_light;
+  }
+
+}
+
+body {
+  margin: 0;
+}
