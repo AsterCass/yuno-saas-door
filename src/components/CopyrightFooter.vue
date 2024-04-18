@@ -31,7 +31,6 @@ function screenEventHandler() {
   const footerY = footRect.top - preMargin
   const footerHeight = footRect.height
   const pageHeight = document.documentElement.clientHeight
-  console.log(footerY, pageHeight)
   if (footerY + footerHeight < pageHeight) {
     let distinct = pageHeight - footerY - footerHeight
     marginColHelper.style.paddingTop = distinct + 'px'

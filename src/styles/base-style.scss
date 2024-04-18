@@ -12,21 +12,31 @@ $warning: #F2C037;
 $yuno_black: #444444;
 $yuno_white: #dddddd;
 $yuno_white_bg: rgb(239, 242, 245);
-$yuno_secondary_light: rgb(165, 214, 167); //green-3a
+$yuno_secondary_light: rgb(165, 214, 167); //green-3
 //yuno style
 $yuno_black_gradient_195: linear-gradient(195deg, #42424a, #191919);
 $yuno_black_gradient_180: linear-gradient(180deg, #42424a, #191919);
 //base
 * {
-  color: $yuno_black;
-  background-color: $yuno_white_bg;
   font-family: Roboto Slab, sans-serif;
+  transition: background-color 1s ease;
 
   ::selection {
     background-color: $yuno_secondary_light;
   }
 
 }
+
+.yuno-dark-model {
+  color: $yuno_white_bg;
+  background-color: $yuno_black;
+}
+
+.yuno-light-model {
+  color: $yuno_black;
+  background-color: $yuno_white_bg;
+}
+
 
 body {
   margin: 0;
