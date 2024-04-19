@@ -1,5 +1,5 @@
 <template>
-  <q-layout view="lhr lpr lfr">
+  <q-layout view="lHr LpR fff">
 
     <DashboardHeader/>
     <DashboardLeftMenu/>
@@ -18,14 +18,15 @@
       <router-view/>
     </q-page-container>
 
+    <q-footer/>
   </q-layout>
 
-<!--  <CopyrightFooter/>-->
+  <CopyrightFooter/>
 
 </template>
 
 <script setup>
-// import CopyrightFooter from "@/components/CopyrightFooter.vue";
+import CopyrightFooter from "@/components/CopyrightFooter.vue";
 import DashboardHeader from "@/components/DashboardHeader.vue";
 import DashboardLeftMenu from "@/components/DashboardLeftMenu.vue";
 import DashboardRightMenu from "@/components/DashboardRightMenu.vue";

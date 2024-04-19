@@ -1,5 +1,10 @@
 <template>
   <q-drawer v-model="showLeftMenu" :mini="leftMenuMini" side="left">
+    <q-scroll-area class="fit" style="background-color: #21BA45">
+      <div style="min-height: 100rem">
+
+      </div>
+    </q-scroll-area>
   </q-drawer>
 </template>
 
