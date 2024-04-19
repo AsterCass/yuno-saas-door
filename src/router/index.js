@@ -3,6 +3,7 @@ import SaasHome from "@/pages/SaasHome.vue";
 import NotFound from "@/pages/NotFound.vue";
 import NotAuth from "@/pages/NotAuth.vue";
 import NotLogin from "@/pages/NotLogin.vue";
+import SaasDashboard from "@/pages/SaasDashboard.vue";
 
 const router = createRouter({
     // history: createWebHashHistory(process.env.BASE_URL),
@@ -14,6 +15,14 @@ const router = createRouter({
             component: SaasHome,
             meta: {
                 title: 'Saas主页'
+            },
+        },
+        {
+            path: "/dashboard",
+            name: "dashboard",
+            component: SaasDashboard,
+            meta: {
+                title: 'YunoSaas仪表盘'
             },
         },
         {

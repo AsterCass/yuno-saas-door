@@ -1,6 +1,7 @@
-import {LocalStorage} from 'quasar'
+import {extend, LocalStorage} from 'quasar'
 
 const YUNO_USER_STYLE_MODEL = "yuno-user-style-model"
+const YUNO_USER_BEHAVIOR = "yuno-user-behavior"
 
 
 //============================== style model ==============================
@@ -18,5 +19,20 @@ export function getStyleModel() {
     return styleModel
 }
 
+//============================== user behavior ==============================
 
+export function saveUserBehavior(data) {
+    let oldData = getUserBehavior()
+    LocalStorage.set(YUNO_USER_BEHAVIOR, extend(true, oldData, data))
+}
 
+export function getUserBehavior() {
+    let data = LocalStorage.getItem(YUNO_USER_BEHAVIOR)
+    if (!data) {
+        data = {
+            leftMenuMini: false,
+            rightMenuShow: false,
+        }
+    }
+    return data;
+}
