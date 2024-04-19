@@ -1,5 +1,8 @@
 import {createRouter, createWebHistory} from "vue-router";
 import SaasHome from "@/pages/SaasHome.vue";
+import NotFound from "@/pages/NotFound.vue";
+import NotAuth from "@/pages/NotAuth.vue";
+import NotLogin from "@/pages/NotLogin.vue";
 
 const router = createRouter({
     // history: createWebHashHistory(process.env.BASE_URL),
@@ -16,14 +19,34 @@ const router = createRouter({
         {
             path: "/404",
             name: '404',
+            component: NotFound,
+            meta: {
+                title: 'PageNotFound'
+            },
         },
         {
             path: "/notLogin",
             name: 'notLogin',
+            component: NotLogin,
+            meta: {
+                title: 'UserNotLogin'
+            },
+        },
+        {
+            path: "/notAuth",
+            name: 'notAuth',
+            component: NotAuth,
+            meta: {
+                title: 'UserNotPermission'
+            },
         },
         {
             path: "/:catchAll(.*)",
             name: "notFound",
+            component: NotFound,
+            meta: {
+                title: 'PageNotFound'
+            },
         },
     ],
 });
