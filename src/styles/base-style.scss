@@ -9,35 +9,36 @@ $negative: #C10015;
 $info: #31CCEC;
 $warning: #F2C037;
 //yuno color
-$yuno_black: #444444;
-$yuno_white: #dddddd;
-$yuno_white_bg: rgb(239, 242, 245);
-$yuno_secondary_light: rgb(165, 214, 167); //green-3
+$yuno_light_text-color: #444444;
+$yuno_light_bg: #EFF2F5;
+$yuno_dark_text_color: #dddddd;
+$yuno_dark_bg: #333333;
+
+$yuno_light_text_selected: #A5D6A7; //green-3
 //yuno style
 $yuno_black_gradient_195: linear-gradient(195deg, #42424a, #191919);
 $yuno_black_gradient_180: linear-gradient(180deg, #42424a, #191919);
 //base
-* {
+html, body, aside {
+  margin: 0;
   font-family: Roboto Slab, sans-serif;
   transition: background-color 1s ease;
 
   ::selection {
-    background-color: $yuno_secondary_light;
+    background-color: $yuno_light_text_selected;
   }
-
 }
 
 .yuno-dark-model {
-  color: $yuno_white_bg;
-  background-color: $yuno_black;
+  html, body, aside {
+    color: $yuno_dark_text_color;
+    background-color: $yuno_dark_bg;
+  }
 }
 
 .yuno-light-model {
-  color: $yuno_black;
-  background-color: $yuno_white_bg;
-}
-
-
-body {
-  margin: 0;
+  html, body, aside {
+    color: $yuno_light_text-color;
+    background-color: $yuno_light_bg;
+  }
 }
