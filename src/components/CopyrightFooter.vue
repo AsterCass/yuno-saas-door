@@ -57,8 +57,6 @@ onUnmounted(() => {
 .footer {
   bottom: 0;
   width: 100%;
-  color: $yuno_dark_text_color;
-  background-image: $yuno_black_gradient_180;
   padding: 0.1rem 0 1.2em 0;
 
   .copyright {

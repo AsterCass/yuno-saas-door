@@ -1,10 +1,17 @@
 <template>
-  <q-drawer v-model="showLeftMenu" :mini="leftMenuMini" side="left">
-    <q-scroll-area class="fit" style="background-color: #21BA45">
-      <div style="min-height: 100rem">
+  <q-drawer class="row justify-center items-center"
+            v-model="showLeftMenu" :mini="leftMenuMini" side="left">
 
-      </div>
-    </q-scroll-area>
+    <div class="left-switch-drawer">
+      <q-scroll-area class="fit">
+        <p v-for="n in 20" :key="n">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit nihil praesentium molestias a adipisci,
+          dolore vitae odit, quidem consequatur optio voluptates asperiores pariatur eos numquam rerum delectus
+          commodi perferendis voluptate?
+        </p>
+      </q-scroll-area>
+    </div>
+
   </q-drawer>
 </template>
 
@@ -40,5 +47,6 @@ onUnmounted(() => {
 
 
 <style scoped lang="scss">
+@import "@/styles/main-style";
 
 </style>

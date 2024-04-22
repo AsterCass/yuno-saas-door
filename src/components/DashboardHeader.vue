@@ -27,7 +27,7 @@
 
 
       <div class="col-3 row justify-end">
-        <q-btn class="header-btn" @click="changeRightMenu(!rightMenuShow)"
+        <q-btn class="header-btn" @click="changeRightMenu(true)"
                flat dense icon="fa-solid fa-gear"/>
       </div>
 
@@ -62,9 +62,6 @@ function changeLeftMini(toStatus) {
 }
 
 function changeRightMenu(toStatus) {
-  if (toStatus === rightMenuShow.value) {
-    return
-  }
   emitter.emit('changeRightMenuEvent', toStatus)
   saveUserBehavior({rightMenuShow: toStatus})
   rightMenuShow.value = toStatus

@@ -34,11 +34,19 @@ html, body, aside {
     color: $yuno_dark_text_color;
     background-color: $yuno_dark_bg;
   }
+
+  .footer {
+    color: $yuno_dark_text_color;
+  }
 }
 
 .yuno-light-model {
   html, body, aside {
     color: $yuno_light_text-color;
     background-color: $yuno_light_bg;
+  }
+
+  .footer {
+    color: $yuno_light_text-color;
   }
 }

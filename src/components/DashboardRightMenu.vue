@@ -1,11 +1,24 @@
 <template>
-  <q-drawer v-model="showRightMenu" side="right">
+  <q-drawer v-model="showRightMenu" side="right" overlay>
 
-    <q-scroll-area class="fit" style="background-color: #26A69A">
+
+    <q-scroll-area class="fit right-overlay-drawer">
+
+      <div class="row justify-end q-ma-sm">
+        <q-btn round icon="close" flat @click="changeRightMenu(false)"/>
+      </div>
+
       <q-radio v-model="styleModel" checked-icon="task_alt" @click="changeStyleModel('light')"
                unchecked-icon="panorama_fish_eye" val="light" label="日光模式"/>
       <q-radio v-model="styleModel" checked-icon="task_alt" @click="changeStyleModel('dark')"
                unchecked-icon="panorama_fish_eye" val="dark" label="夜间模式"/>
+
+      <p v-for="n in 20" :key="n">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit nihil praesentium molestias a adipisci,
+        dolore vitae odit, quidem consequatur optio voluptates asperiores pariatur eos numquam rerum delectus
+        commodi perferendis voluptate?
+      </p>
+
     </q-scroll-area>
 
   </q-drawer>
@@ -48,6 +61,12 @@ function changeStyleModel(model) {
   saveUserBehavior({styleModel: model})
 }
 
+function changeRightMenu(toStatus) {
+  emitter.emit('changeRightMenuEvent', toStatus)
+  saveUserBehavior({rightMenuShow: toStatus})
+  showRightMenu.value = toStatus
+}
+
 
 onMounted(() => {
   rightMenuDataInit()
@@ -62,5 +81,6 @@ onUnmounted(() => {
 
 
 <style scoped lang="scss">
+@import "@/styles/main-style";
 
 </style>
