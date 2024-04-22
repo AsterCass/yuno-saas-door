@@ -70,6 +70,87 @@
   @include error-page-main($url: url("@/assets/img/601-bg.jpg"))
 }
 
+//============================== common ==============================
+
+.half-opacity {
+  opacity: .5;
+}
+
+.mix-bg-black {
+  color: $yuno_dark_text_color;
+  background-image: $yuno-mix-bg-black;
+}
+
+.mix-bg-black:after {
+  opacity: .7;
+  color: $yuno_dark_text_color;
+  background-image: $yuno-mix-bg-black;
+}
+
+.mix-bg-white {
+  color: $yuno_light_text-color;
+  background-image: $yuno-mix-bg-white;
+}
+
+.mix-bg-white:after {
+  opacity: .7;
+  color: $yuno_light_text-color;
+  background-image: $yuno-mix-bg-white;
+}
+
+.mix-bg-yellow {
+  color: $yuno_light_text-color;
+  background-image: $yuno-mix-bg-yellow;
+}
+
+.mix-bg-yellow:after {
+  opacity: .7;
+  color: $yuno_light_text-color;
+  background-image: $yuno-mix-bg-yellow;
+}
+
+.mix-bg-purple {
+  color: $yuno_dark_text_color;
+  background-image: $yuno-mix-bg-purple;
+}
+
+.mix-bg-purple:after {
+  opacity: .7;
+  color: $yuno_dark_text_color;
+  background-image: $yuno-mix-bg-purple;
+}
+
+.mix-bg-green {
+  color: $yuno_dark_text_color;
+  background-image: $yuno-mix-bg-green;
+}
+
+.mix-bg-green:after {
+  opacity: .7;
+  color: $yuno_dark_text_color;
+  background-image: $yuno-mix-bg-green;
+}
+
+.left-switch-drawer-bg-img1 {
+  background-image: url("https://vue-material-dashboard-laravel-pro-bs4.creative-tim.com/img/sidebar-1.jpg");
+  background-size: cover;
+}
+
+.left-switch-drawer-bg-img2 {
+  background-image: url("https://vue-material-dashboard-laravel-pro-bs4.creative-tim.com/img/sidebar-2.jpg");
+  background-size: cover;
+}
+
+.left-switch-drawer-bg-img3 {
+  background-image: url("https://vue-material-dashboard-laravel-pro-bs4.creative-tim.com/img/sidebar-3.jpg");
+  background-size: cover;
+}
+
+.left-switch-drawer-bg-img4 {
+  background-image: url("https://vue-material-dashboard-laravel-pro-bs4.creative-tim.com/img/sidebar-4.jpg");
+  background-size: cover;
+}
+
 //============================== main ==============================
 .top-semi-trans-header {
   left: 0;
@@ -91,6 +172,18 @@
   height: 95%;
   width: 85%;
   padding: .5rem;
+  border-radius: 1rem;
+}
+
+.left-switch-drawer:after {
+  display: block;
+  content: "";
+  position: absolute;
+  height: 95%;
+  width: 85%;
+  z-index: 2;
+  top: 2.5%;
+  left: 7.5%;
   border-radius: 1rem;
 }
 
@@ -124,10 +217,13 @@
   }
 
   .left-switch-drawer {
-    color: $yuno_dark_text_color;
   }
 
   .right-overlay-drawer {
+  }
+
+  .border-selected {
+    border: $yuno_dark_border_select;
   }
 }
 
@@ -144,11 +240,13 @@
   }
 
   .left-switch-drawer {
-    color: $yuno_dark_text_color;
-    background: linear-gradient(195deg, rgb(66, 66, 74), rgb(25, 25, 25));
   }
 
   .right-overlay-drawer {
+  }
+
+  .border-selected {
+    border: $yuno_light_border_select;
   }
 }
 

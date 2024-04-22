@@ -32,7 +32,9 @@ export function getUserBehavior() {
         data = {
             leftMenuMini: false,
             rightMenuShow: false,
-            styleModel: 'light'
+            sidebarBg: 'black',
+            styleModel: 'light',
+            sidebarImg: 'img1',
         }
     }
     return data;

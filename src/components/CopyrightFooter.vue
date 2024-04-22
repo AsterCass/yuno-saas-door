@@ -12,7 +12,7 @@
         <li>
           <q-icon name="eva-github"/>
           Project Github：
-          <a target="_blank" href="https://github.com/AsterCass?tab=repositories">YunoSaasDoorWeb</a>
+          <a target="_blank" href="https://github.com/AsterCass/yuno-saas-door">YunoSaasDoorWeb</a>
         </li>
       </ul>
     </div>
