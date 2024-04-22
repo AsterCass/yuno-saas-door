@@ -90,11 +90,13 @@
 .left-switch-drawer {
   height: 95%;
   width: 85%;
+  padding: .5rem;
   border-radius: 1rem;
 }
 
 .right-overlay-drawer {
-
+  padding: .5rem;
+  background-color: transparent;
 }
 
 .breadcrumbs-el-link {
@@ -120,6 +122,13 @@
     background-color: rgba(15, 15, 15, 0.6);
     box-shadow: inset 0 0 1px 1px rgba(1, 1, 1, 0.9), 0 20px 27px 0 rgba(255, 255, 255, 0.05);
   }
+
+  .left-switch-drawer {
+    color: $yuno_dark_text_color;
+  }
+
+  .right-overlay-drawer {
+  }
 }
 
 .yuno-light-model {
@@ -135,11 +144,11 @@
   }
 
   .left-switch-drawer {
+    color: $yuno_dark_text_color;
     background: linear-gradient(195deg, rgb(66, 66, 74), rgb(25, 25, 25));
   }
 
   .right-overlay-drawer {
-    background-color: #eee;
   }
 }
 
