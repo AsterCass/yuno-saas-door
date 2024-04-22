@@ -1,5 +1,5 @@
 <template>
-  <q-drawer v-model="showRightMenu" side="right" overlay :width="500">
+  <q-drawer v-model="showRightMenu" side="right" overlay :width="450">
     <q-scroll-area class="fit right-overlay-drawer">
 
       <div class="row justify-end q-mx-md q-mt-md">
@@ -33,30 +33,25 @@
         <h6 style="margin-top: 1rem;">
           边栏背景颜色：
         </h6>
-        <q-btn style="width: 3.5rem" class="q-mx-sm mix-bg-black" @click="changeSidebarBg('black')"
-               :class="sidebarBg==='black'?'border-selected' : ''"/>
-        <q-btn style="width: 3.5rem" class="q-mx-sm mix-bg-white" @click="changeSidebarBg('white')"
-               :class="sidebarBg==='white'?'border-selected' : ''"/>
-        <q-btn style="width: 3.5rem" class="q-mx-sm mix-bg-yellow" @click="changeSidebarBg('yellow')"
-               :class="sidebarBg==='yellow'?'border-selected' : ''"/>
-        <q-btn style="width: 3.5rem" class="q-mx-sm mix-bg-purple" @click="changeSidebarBg('purple')"
-               :class="sidebarBg==='purple'?'border-selected' : ''"/>
-        <q-btn style="width: 3.5rem" class="q-mx-sm mix-bg-green" @click="changeSidebarBg('green')"
-               :class="sidebarBg==='green'?'border-selected' : ''"/>
+        <q-btn v-for="(bgName, index) in sidebarBgList" :key="index"
+               style="width: 3.5rem" class="q-ma-sm"
+               @click="changeSidebarBg(bgName)"
+               :class="generateSidebarBgClass(bgName)"/>
         <h6 style="margin-top: 1rem;">
           边栏背景：
         </h6>
         <q-btn v-for="(imgName, index) in sidebarImgList" :key="index"
-               style="height: 6rem;width: 3.5rem" class="q-mx-sm"
+               style="height: 6rem;width: 3.5rem" class="q-ma-sm"
                @click="changeSidebarImg(imgName)"
                :class="generateSidebarImgClass(imgName)"/>
         <h6 style="margin-top: 1rem;">
           边栏选中色：
         </h6>
-
-
+        <q-btn v-for="(selectedColor, index) in sidebarSelectedColorList" :key="index"
+               style="width: 3.5rem" class="q-ma-sm"
+               @click="changeSidebarSelectedColor(selectedColor)"
+               :class="generateSidebarSelectedColorClass(selectedColor)"/>
       </div>
-
 
     </q-scroll-area>
 
@@ -70,12 +65,15 @@ import {onMounted, onUnmounted, ref} from "vue";
 import {emitter} from "@/utils/bus";
 import {getUserBehavior, saveUserBehavior} from "@/utils/store";
 
+const sidebarBgList = ['black', 'white', 'yellow', 'purple', 'green']
 const sidebarImgList = ['', 'img1', 'img2', 'img3', 'img4']
+const sidebarSelectedColorList = ['black', 'white', 'orange', 'red', 'green']
 
 let showRightMenu = ref(false);
 let styleModel = ref('light')
 let sidebarBg = ref('black')
 let sidebarImg = ref("img1")
+let sidebarSelectedColor = ref('black')
 
 
 function rightMenuDataInit() {
@@ -96,12 +94,30 @@ function updateWebsiteStyleModel(styleModel) {
   }
 }
 
+function generateSidebarBgClass(imgName) {
+  let retClass = ""
+  if (imgName === sidebarBg.value) {
+    retClass += "border-selected "
+  }
+  retClass += `mix-bg-${imgName} `
+  return retClass;
+}
+
 function generateSidebarImgClass(imgName) {
   let retClass = ""
   if (imgName === sidebarImg.value) {
     retClass += "border-selected "
   }
   retClass += `left-switch-drawer-bg-${imgName} `
+  return retClass;
+}
+
+function generateSidebarSelectedColorClass(colorName) {
+  let retClass = ""
+  if (colorName === sidebarSelectedColor.value) {
+    retClass += "border-selected "
+  }
+  retClass += `left-switch-drawer-selected-color-${colorName} `
   return retClass;
 }
 
@@ -130,6 +146,12 @@ function changeSidebarImg(toStatus) {
   emitter.emit('changeSidebarImgEvent', toStatus)
   saveUserBehavior({sidebarImg: toStatus})
   sidebarImg.value = toStatus;
+}
+
+function changeSidebarSelectedColor(toStatus) {
+  emitter.emit('changeSidebarSelectedColorEvent', toStatus)
+  saveUserBehavior({sidebarSelectedColor: toStatus})
+  sidebarSelectedColor.value = toStatus;
 }
 
 

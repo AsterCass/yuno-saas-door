@@ -151,6 +151,26 @@
   background-size: cover;
 }
 
+.left-switch-drawer-selected-color-black {
+  background-color: black;
+}
+
+.left-switch-drawer-selected-color-white {
+  background-color: white;
+}
+
+.left-switch-drawer-selected-color-orange {
+  background-color: orange;
+}
+
+.left-switch-drawer-selected-color-red {
+  background-color: red;
+}
+
+.left-switch-drawer-selected-color-green {
+  background-color: green;
+}
+
 //============================== main ==============================
 .top-semi-trans-header {
   left: 0;
@@ -173,6 +193,7 @@
   width: 85%;
   padding: .5rem;
   border-radius: 1rem;
+  transition: background-image 1s ease;
 }
 
 .left-switch-drawer:after {

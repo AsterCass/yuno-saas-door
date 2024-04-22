@@ -35,6 +35,7 @@ export function getUserBehavior() {
             sidebarBg: 'black',
             styleModel: 'light',
             sidebarImg: 'img1',
+            sidebarSelectedColor: 'black',
         }
     }
     return data;
