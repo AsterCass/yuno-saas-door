@@ -4,11 +4,64 @@
 
     <div class="left-switch-drawer" :class="`mix-bg-${sidebarBg} left-switch-drawer-bg-${sidebarBgImg}`">
       <q-scroll-area class="fit" style="z-index: 3">
-        <p v-for="n in 20" :key="n">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit nihil praesentium molestias a adipisci,
-          dolore vitae odit, quidem consequatur optio voluptates asperiores pariatur eos numquam rerum delectus
-          commodi perferendis voluptate?
-        </p>
+
+        <div class="row items-center q-mt-sm">
+          <div class="col row justify-center">
+            <q-avatar size="2.5rem">
+              <q-img :src="require('@/assets/img/logo.png')"/>
+            </q-avatar>
+          </div>
+          <h5 class="col-9 no-margin" v-show="!leftMenuMini">
+            Yuno Saas
+          </h5>
+        </div>
+
+        <q-separator inset class="q-ma-sm half-opacity"/>
+
+        <div class="row items-center q-mt-sm">
+          <q-btn class="full-width no-padding left-switch-drawer-btn-element" flat no-caps
+                 style="border-radius: 1rem">
+            <template v-slot:default>
+              <div class="col row justify-center">
+                <q-avatar size="2.5rem">
+                  <q-img :src="require('@/assets/img/test-avatar.jpg')"/>
+                </q-avatar>
+              </div>
+              <h6 class="col-9 no-margin" v-show="!leftMenuMini" style="text-align: start">
+                AsterCasc
+              </h6>
+            </template>
+          </q-btn>
+        </div>
+
+        <q-separator inset class="q-ma-sm half-opacity"/>
+
+        <div class="row items-center q-mt-sm">
+
+
+          <q-btn v-for="(item, index) in loadUserPageRight" :key="index"
+                 class=" full-width no-padding left-switch-drawer-btn-element" flat no-caps
+                 style="border-radius: 1rem" size="1.2rem" @click="toggleChildShowStatus(item)">
+            <template v-slot:default>
+              <div class="col row justify-center">
+                <q-avatar size="1.5rem">
+                  <q-icon :name="item.pageIcon"/>
+                </q-avatar>
+              </div>
+              <h6 v-show="!leftMenuMini" style="text-align: start"
+                  class="no-margin" :class="item.haveChild ? 'col-7': 'col-9'">
+                {{ item.pageTitle }}
+              </h6>
+              <q-icon v-show="!leftMenuMini && item.haveChild"
+                      class="col-2" size="15px"
+                      :name="item.webIsOpenChild ? 'fa-solid fa-caret-down' : 'fa-solid fa-caret-left'"/>
+            </template>
+          </q-btn>
+
+
+        </div>
+
+
       </q-scroll-area>
     </div>
 
@@ -24,12 +77,60 @@ import {emitter} from "@/utils/bus";
 
 let leftMenuMini = ref(false);
 let showLeftMenu = ref(true)
+let styleModel = ref('light')
 let sidebarBg = ref('black')
 let sidebarBgImg = ref('img1')
+let loadUserPageRight = ref([
+  {
+    pageCode: "chart_line",
+    pageTitle: "Chart Line",
+    pageIcon: "fa-solid fa-chart-line",
+    haveChild: true,
+    webIsOpenChild: false,
+    child: []
+  },
+  {
+    pageCode: "shopping_cart",
+    pageTitle: "Shopping Cart",
+    pageIcon: "shopping_cart",
+    haveChild: true,
+    webIsOpenChild: false,
+    child: []
+  },
+  {
+    pageCode: "navigation",
+    pageTitle: "Navigation",
+    pageIcon: "navigation",
+    haveChild: true,
+    webIsOpenChild: false,
+    child: []
+  },
+  {
+    pageCode: "my_location",
+    pageTitle: "My Location",
+    pageIcon: "my_location",
+    haveChild: false,
+    webIsOpenChild: false,
+    child: []
+  },
+  {
+    pageCode: "edit_location",
+    pageTitle: "Edit Location",
+    pageIcon: "edit_location",
+    haveChild: true,
+    webIsOpenChild: false,
+    child: []
+  },
+])
+
+function toggleChildShowStatus(item) {
+  item.webIsOpenChild = !item.webIsOpenChild
+}
 
 function leftMenuDataInit() {
   let userBehavior = getUserBehavior()
   leftMenuMini.value = userBehavior.leftMenuMini
+  styleModel.value = userBehavior.styleModel
   sidebarBg.value = userBehavior.sidebarBg
   sidebarBgImg.value = userBehavior.sidebarImg
 }

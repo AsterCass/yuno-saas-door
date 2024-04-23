@@ -83,6 +83,10 @@
 .mix-bg-black {
   color: $yuno_dark_text_color;
   background-image: $yuno-mix-bg-black;
+
+  .q-separator {
+    background-color: $yuno_dark_text_color;
+  }
 }
 
 .mix-bg-black.border-selected {
@@ -98,6 +102,10 @@
 .mix-bg-white {
   color: $yuno_light_text-color;
   background-image: $yuno-mix-bg-white;
+
+  .q-separator {
+    background-color: $yuno_light_text-color;
+  }
 }
 
 .mix-bg-white.border-selected {
@@ -113,6 +121,10 @@
 .mix-bg-yellow {
   color: $yuno_light_text-color;
   background-image: $yuno-mix-bg-yellow;
+
+  .q-separator {
+    background-color: $yuno_light_text-color;
+  }
 }
 
 .mix-bg-yellow.border-selected {
@@ -128,6 +140,10 @@
 .mix-bg-purple {
   color: $yuno_dark_text_color;
   background-image: $yuno-mix-bg-purple;
+
+  .q-separator {
+    background-color: $yuno_dark_text_color;
+  }
 }
 
 .mix-bg-purple.border-selected {
@@ -143,6 +159,10 @@
 .mix-bg-green {
   color: $yuno_dark_text_color;
   background-image: $yuno-mix-bg-green;
+
+  .q-separator {
+    background-color: $yuno_dark_text_color;
+  }
 }
 
 .mix-bg-green.border-selected {
