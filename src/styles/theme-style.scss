@@ -1,0 +1,155 @@
+@import "@/styles/base-style";
+
+//============================== light ==============================
+
+.yuno-light-model {
+
+  //============================== black ==============================
+  .astercasc-theme-black {
+    color: $yuno-theme-black;
+  }
+
+  .astercasc-theme-black-radio {
+    .q-radio__inner--truthy {
+      color: $yuno-theme-black;
+    }
+  }
+
+  .astercasc-theme-black.border-selected {
+    border: 2px solid $yuno-theme-black;
+  }
+
+  .astercasc-theme-black-doc {
+    color: $yuno_dark_text_color;
+    background-color: $yuno-theme-black;
+  }
+
+  .astercasc-theme-black-doc.border-selected {
+    border: 2px solid $yuno_dark_text_color;
+  }
+
+  //============================== green ==============================
+  .astercasc-theme-green {
+    color: $yuno-theme-green;
+  }
+
+  .astercasc-theme-green-radio {
+    .q-radio__inner--truthy {
+      color: $yuno-theme-green;
+    }
+  }
+
+  .astercasc-theme-green.border-selected {
+    border: 2px solid $yuno-theme-green;
+  }
+
+  .astercasc-theme-green-doc {
+    color: $yuno_dark_text_color;
+    background-color: $yuno-theme-green;
+  }
+
+  .astercasc-theme-green-doc.border-selected {
+    border: 2px solid $yuno_dark_text_color;
+  }
+
+  //============================== blue ==============================
+  .astercasc-theme-blue {
+    color: $yuno-theme-blue;
+  }
+
+  .astercasc-theme-blue-radio {
+    .q-radio__inner--truthy {
+      color: $yuno-theme-blue;
+    }
+  }
+
+  .astercasc-theme-blue.border-selected {
+    border: 2px solid $yuno-theme-blue;
+  }
+
+  .astercasc-theme-blue-doc {
+    color: $yuno_dark_text_color;
+    background-color: $yuno-theme-blue;
+  }
+
+  .astercasc-theme-blue-doc.border-selected {
+    border: 2px solid $yuno_dark_text_color;
+  }
+
+  //============================== orange ==============================
+
+  .astercasc-theme-orange {
+    color: $yuno-theme-orange;
+  }
+
+  .astercasc-theme-orange-radio {
+    .q-radio__inner--truthy {
+      color: $yuno-theme-orange;
+    }
+  }
+
+  .astercasc-theme-orange.border-selected {
+    border: 2px solid $yuno-theme-orange;
+  }
+
+
+  .astercasc-theme-orange-doc {
+    color: $yuno_dark_text_color;
+    background-color: $yuno-theme-orange;
+  }
+
+  .astercasc-theme-orange-doc.border-selected {
+    border: 2px solid $yuno_dark_text_color;
+  }
+
+}
+
+
+//============================== dark ==============================
+
+.yuno-dark-model {
+  .q-radio__inner--truthy {
+    color: $yuno_dark_text_color !important;
+  }
+
+  //============================== black ==============================
+  .astercasc-theme-black-doc {
+    color: $yuno_dark_text_color;
+    background-color: $yuno-theme-black;
+  }
+
+  .astercasc-theme-black-doc.border-selected {
+    border: 2px solid $yuno_dark_text_color;
+  }
+
+  //============================== green ==============================
+  .astercasc-theme-green-doc {
+    color: $yuno_dark_text_color;
+    background-color: $yuno-theme-green;
+  }
+
+  .astercasc-theme-green-doc.border-selected {
+    border: 2px solid $yuno_dark_text_color;
+  }
+
+  //============================== blue ==============================
+  .astercasc-theme-blue-doc {
+    color: $yuno_dark_text_color;
+    background-color: $yuno-theme-blue;
+  }
+
+  .astercasc-theme-blue-doc.border-selected {
+    border: 2px solid $yuno_dark_text_color;
+  }
+
+  //============================== orange ==============================
+  .astercasc-theme-orange-doc {
+    color: $yuno_dark_text_color;
+    background-color: $yuno-theme-orange;
+  }
+
+  .astercasc-theme-orange-doc.border-selected {
+    border: 2px solid $yuno_dark_text_color;
+  }
+
+}

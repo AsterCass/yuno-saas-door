@@ -76,9 +76,17 @@
   opacity: .5;
 }
 
+.border-selected {
+  border: 2px solid $yuno_dark_text_color;
+}
+
 .mix-bg-black {
   color: $yuno_dark_text_color;
   background-image: $yuno-mix-bg-black;
+}
+
+.mix-bg-black.border-selected {
+  border: 2px solid $yuno_dark_text_color;
 }
 
 .mix-bg-black:after {
@@ -92,6 +100,10 @@
   background-image: $yuno-mix-bg-white;
 }
 
+.mix-bg-white.border-selected {
+  border: 2px solid $yuno_light_text-color;
+}
+
 .mix-bg-white:after {
   opacity: .7;
   color: $yuno_light_text-color;
@@ -101,6 +113,10 @@
 .mix-bg-yellow {
   color: $yuno_light_text-color;
   background-image: $yuno-mix-bg-yellow;
+}
+
+.mix-bg-yellow.border-selected {
+  border: 2px solid $yuno_light_text-color;
 }
 
 .mix-bg-yellow:after {
@@ -114,6 +130,10 @@
   background-image: $yuno-mix-bg-purple;
 }
 
+.mix-bg-purple.border-selected {
+  border: 2px solid $yuno_dark_text_color;
+}
+
 .mix-bg-purple:after {
   opacity: .7;
   color: $yuno_dark_text_color;
@@ -123,6 +143,10 @@
 .mix-bg-green {
   color: $yuno_dark_text_color;
   background-image: $yuno-mix-bg-green;
+}
+
+.mix-bg-green.border-selected {
+  border: 2px solid $yuno_dark_text_color;
 }
 
 .mix-bg-green:after {
@@ -149,26 +173,6 @@
 .left-switch-drawer-bg-img4 {
   background-image: url("https://vue-material-dashboard-laravel-pro-bs4.creative-tim.com/img/sidebar-4.jpg");
   background-size: cover;
-}
-
-.left-switch-drawer-selected-color-black {
-  background-color: black;
-}
-
-.left-switch-drawer-selected-color-white {
-  background-color: white;
-}
-
-.left-switch-drawer-selected-color-orange {
-  background-color: orange;
-}
-
-.left-switch-drawer-selected-color-red {
-  background-color: red;
-}
-
-.left-switch-drawer-selected-color-green {
-  background-color: green;
 }
 
 //============================== main ==============================
@@ -243,8 +247,7 @@
   .right-overlay-drawer {
   }
 
-  .border-selected {
-    border: $yuno_dark_border_select;
+  .yuno-label-text-color {
   }
 }
 
@@ -266,8 +269,7 @@
   .right-overlay-drawer {
   }
 
-  .border-selected {
-    border: $yuno_light_border_select;
+  .yuno-label-text-color {
   }
 }
 

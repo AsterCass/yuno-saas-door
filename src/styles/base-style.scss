@@ -26,6 +26,11 @@ $yuno-mix-bg-white: linear-gradient(180deg, #d4d4d4, #d0d0d0);
 $yuno-mix-bg-yellow: linear-gradient(180deg, #FB8C00, #FA8200);
 $yuno-mix-bg-purple: linear-gradient(180deg, #DC301E, #DC2D19);
 $yuno-mix-bg-green: linear-gradient(180deg, #32A032, #289628);
+//yuno theme
+$yuno-theme-black: $yuno_light_text-color;
+$yuno-theme-green: #1B5E20; //green-10
+$yuno-theme-blue: #1976D2; //blue-8
+$yuno-theme-orange: #E65100; //orange-10;
 
 //base
 html, body, aside {
@@ -69,10 +74,12 @@ html, body, aside {
 //}
 
 h5 {
+  font-weight: 600;
   margin: 0 0 .6rem 0;
 }
 
 h6 {
+  font-weight: 550;
   font-size: 1.05rem;
   margin: 0 0 .3rem 0;
 }
