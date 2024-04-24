@@ -144,6 +144,7 @@ let styleModel = ref('light')
 let sidebarBg = ref('black')
 let sidebarBgImg = ref('img1')
 let themeColor = ref('black')
+let leftFocusOne = ref(false)
 
 let currentPage = ref('/navigation/shopping_cart/navigation')
 
@@ -223,9 +224,33 @@ let loadUserPageRight = ref([
         pageCode: "my_location",
         pageTitle: "My Location",
         pageIcon: "my_location",
-        haveChild: false,
+        haveChild: true,
         webIsOpenChild: false,
-        child: []
+        child: [
+          {
+            pageCode: "navigation",
+            pageTitle: "Navigation",
+            pageIcon: "navigation",
+            haveChild: false,
+            webIsOpenChild: false,
+            child: []
+          },
+          {
+            pageCode: "my_location",
+            pageTitle: "My Location",
+            pageIcon: "my_location",
+            haveChild: false,
+            webIsOpenChild: false,
+            child: []
+          },
+          {
+            pageCode: "edit_location",
+            pageTitle: "Edit Location",
+            pageIcon: "edit_location",
+            haveChild: false,
+            webIsOpenChild: false,
+            child: []
+          },]
       },
       {
         pageCode: "edit_location",
@@ -295,11 +320,29 @@ let loadUserPageRight = ref([
   },
 ])
 
+function closeOtherExpand(item, childItem) {
+  if (leftFocusOne.value && loadUserPageRight.value && loadUserPageRight.value.length > 0) {
+    loadUserPageRight.value.forEach((gItem) => {
+      if (item && gItem.pageCode !== item.pageCode) {
+        gItem.webIsOpenChild = false
+      }
+      if (gItem.child && gItem.child.length > 0) {
+        gItem.child.forEach((gChildItem) => {
+          if (childItem && gChildItem.pageCode !== childItem.pageCode) {
+            gChildItem.webIsOpenChild = false
+          }
+        })
+      }
+    })
+  }
+}
+
 function routeToPage(item, childItem, dChildItem) {
   let path = ''
   if (item) {
     if (item.haveChild && !childItem) {
       item.webIsOpenChild = !item.webIsOpenChild
+      closeOtherExpand(item, childItem)
       return
     }
     path = path + '/' + item.pageCode
@@ -307,6 +350,7 @@ function routeToPage(item, childItem, dChildItem) {
   if (childItem) {
     if (childItem.haveChild && !dChildItem) {
       childItem.webIsOpenChild = !childItem.webIsOpenChild
+      closeOtherExpand(item, childItem)
       return
     }
     path = path + '/' + childItem.pageCode
@@ -315,6 +359,7 @@ function routeToPage(item, childItem, dChildItem) {
     path = path + '/' + dChildItem.pageCode
   }
   currentPage.value = path
+  closeOtherExpand(item, childItem)
 }
 
 function leftMenuDataInit() {
@@ -324,6 +369,7 @@ function leftMenuDataInit() {
   sidebarBg.value = userBehavior.sidebarBg
   sidebarBgImg.value = userBehavior.sidebarImg
   themeColor.value = userBehavior.themeColor
+  leftFocusOne.value = userBehavior.leftFocusOne
 }
 
 function changeLeftMiniEvent(toStatus) {
@@ -342,6 +388,10 @@ function changeThemeColorEvent(toStatus) {
   themeColor.value = toStatus
 }
 
+function changeLeftFocusOneEvent(toStatus) {
+  leftFocusOne.value = toStatus
+}
+
 
 onMounted(() => {
   leftMenuDataInit()
@@ -349,6 +399,7 @@ onMounted(() => {
   emitter.on("changeSidebarBgEvent", changeSidebarBgEvent)
   emitter.on("changeSidebarImgEvent", changeSidebarImgEvent)
   emitter.on("changeThemeColorEvent", changeThemeColorEvent)
+  emitter.on("changeLeftFocusOneEvent", changeLeftFocusOneEvent)
 })
 
 onUnmounted(() => {
@@ -356,6 +407,7 @@ onUnmounted(() => {
   emitter.off("changeSidebarBgEvent", changeSidebarBgEvent)
   emitter.off("changeSidebarImgEvent", changeSidebarImgEvent)
   emitter.off("changeThemeColorEvent", changeThemeColorEvent)
+  emitter.on("changeLeftFocusOneEvent", changeLeftFocusOneEvent)
 })
 
 </script>

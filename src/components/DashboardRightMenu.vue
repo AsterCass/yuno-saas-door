@@ -85,6 +85,14 @@
           <q-icon :name="themeColor === themeModel ? 'check' : '' "/>
         </q-btn>
 
+        <h6 style="margin: 1rem auto 0 auto" :class="`astercasc-theme-${getUserBehavior().themeColor}`">
+          边栏唯一选中：
+        </h6>
+        <p class="half-opacity q-mt-xl">
+          左侧边栏在点击切换时，是否收起其他选中的下拉
+        </p>
+        <q-toggle v-model="leftFocusOne" @click="changeLeftFocusOne(leftFocusOne)"/>
+
       </div>
 
 
@@ -109,6 +117,7 @@ let styleModel = ref('light')
 let sidebarBg = ref('black')
 let sidebarImg = ref("img1")
 let themeModel = ref('black')
+let leftFocusOne = ref(false)
 
 
 function rightMenuDataInit() {
@@ -118,6 +127,7 @@ function rightMenuDataInit() {
   sidebarImg.value = userBehavior.sidebarImg
   styleModel.value = userBehavior.styleModel
   themeModel.value = userBehavior.themeColor
+  leftFocusOne.value = userBehavior.leftFocusOne
 
   updateWebsiteStyleModel(styleModel.value)
 }
@@ -191,6 +201,12 @@ function changeThemeColor(toStatus) {
   emitter.emit('changeThemeColorEvent', toStatus)
   saveUserBehavior({themeColor: toStatus})
   themeModel.value = toStatus;
+}
+
+function changeLeftFocusOne(toStatus) {
+  emitter.emit('changeLeftFocusOneEvent', toStatus)
+  saveUserBehavior({leftFocusOne: toStatus})
+  leftFocusOne.value = toStatus;
 }
 
 

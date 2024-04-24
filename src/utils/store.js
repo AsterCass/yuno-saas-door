@@ -36,6 +36,7 @@ export function getUserBehavior() {
             styleModel: 'light',
             sidebarImg: 'img1',
             themeColor: 'black',
+            leftFocusOne: false,
         }
     }
     return data;

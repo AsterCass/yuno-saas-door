@@ -11,11 +11,15 @@
 
   .astercasc-theme-black-bg-op {
     color: white;
-    opacity: .8;
+    opacity: .7;
     background-color: $yuno-theme-black;
 
     .q-separator {
       background-color: white;
+    }
+
+    .astercasc-theme-black-bg-focus {
+      opacity: 1;
     }
   }
 
@@ -32,7 +36,7 @@
     $b: blue($yuno-theme-black) * 0.2;
     color: white;
     background-color: rgb($r, $g, $b);
-    opacity: .8;
+    opacity: .7;
   }
 
   .astercasc-theme-black-radio {
@@ -61,12 +65,17 @@
 
   .astercasc-theme-green-bg-op {
     color: white;
-    opacity: .8;
+    opacity: .7;
     background-color: $yuno-theme-green;
 
     .q-separator {
       background-color: white;
     }
+
+    .astercasc-theme-green-bg-focus {
+      opacity: 1;
+    }
+
   }
 
   .astercasc-theme-green-bg-enhance {
@@ -82,7 +91,7 @@
     $b: blue($yuno-theme-green) * 0.2;
     color: white;
     background-color: rgb($r, $g, $b);
-    opacity: .8;
+    opacity: .7;
   }
 
   .astercasc-theme-green-radio {
@@ -111,11 +120,15 @@
 
   .astercasc-theme-blue-bg-op {
     color: white;
-    opacity: .8;
+    opacity: .7;
     background-color: $yuno-theme-blue;
 
     .q-separator {
       background-color: white;
+    }
+
+    .astercasc-theme-blue-bg-focus {
+      opacity: 1;
     }
   }
 
@@ -132,7 +145,7 @@
     $b: blue($yuno-theme-blue) * 0.7;
     color: white;
     background-color: rgb($r, $g, $b);
-    opacity: .8;
+    opacity: .7;
   }
 
   .astercasc-theme-blue-radio {
@@ -162,11 +175,15 @@
 
   .astercasc-theme-orange-bg-op {
     color: white;
-    opacity: .8;
+    opacity: .7;
     background-color: $yuno-theme-orange;
 
     .q-separator {
       background-color: white;
+    }
+
+    .astercasc-theme-orange-bg-focus {
+      opacity: 1;
     }
   }
 
@@ -183,7 +200,7 @@
     $b: blue($yuno-theme-orange) * 0.85;
     color: white;
     background-color: rgb($r, $g, $b);
-    opacity: .8;
+    opacity: .7;
   }
 
   .astercasc-theme-orange-radio {
@@ -232,7 +249,7 @@
     $b: blue($yuno-theme-black) * 0.2;
     color: white;
     background-color: rgb($r, $g, $b);
-    opacity: .8;
+    opacity: .7;
   }
 
 
@@ -252,7 +269,7 @@
     $b: blue($yuno-theme-green) * 0.2;
     color: white;
     background-color: rgb($r, $g, $b);
-    opacity: .8;
+    opacity: .7;
   }
 
   //============================== blue ==============================
@@ -271,7 +288,7 @@
     $b: blue($yuno-theme-blue) * 0.7;
     color: white;
     background-color: rgb($r, $g, $b);
-    opacity: .8;
+    opacity: .7;
   }
 
   //============================== orange ==============================
@@ -290,7 +307,7 @@
     $b: blue($yuno-theme-orange) * 0.85;
     color: white;
     background-color: rgb($r, $g, $b);
-    opacity: .8;
+    opacity: .7;
   }
 
 }
