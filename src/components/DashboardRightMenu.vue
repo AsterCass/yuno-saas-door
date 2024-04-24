@@ -76,7 +76,7 @@
           主题颜色：
         </h6>
         <p class="half-opacity q-mt-xl">
-          用户偏好主题色，仅在日光模式下生效
+          用户偏好主题色，夜间模式半渲染
         </p>
         <q-btn v-for="(themeColor, index) in themeStyleList" :key="index"
                style="width: 3.5rem" class="q-ma-sm"
