@@ -37,6 +37,16 @@
     color: white;
     background-color: rgb($r, $g, $b);
     opacity: .7;
+    overflow: hidden;
+  }
+
+  .astercasc-theme-black-bg-focus::before {
+    content: '';
+    display: block;
+    box-sizing: border-box;
+    border: 2px solid transparent;
+    border-image-source: linear-gradient(30deg, transparent 20%, white 50%, transparent 80%);
+    border-image-slice: 1;
   }
 
   .astercasc-theme-black-radio {
@@ -92,6 +102,16 @@
     color: white;
     background-color: rgb($r, $g, $b);
     opacity: .7;
+    overflow: hidden;
+  }
+
+  .astercasc-theme-green-bg-focus::before {
+    content: '';
+    display: block;
+    box-sizing: border-box;
+    border: 2px solid transparent;
+    border-image-source: linear-gradient(30deg, transparent 20%, white 50%, transparent 80%);
+    border-image-slice: 1;
   }
 
   .astercasc-theme-green-radio {
@@ -146,6 +166,16 @@
     color: white;
     background-color: rgb($r, $g, $b);
     opacity: .7;
+    overflow: hidden;
+  }
+
+  .astercasc-theme-blue-bg-focus::before {
+    content: '';
+    display: block;
+    box-sizing: border-box;
+    border: 2px solid transparent;
+    border-image-source: linear-gradient(30deg, transparent 20%, white 50%, transparent 80%);
+    border-image-slice: 1;
   }
 
   .astercasc-theme-blue-radio {
@@ -201,6 +231,16 @@
     color: white;
     background-color: rgb($r, $g, $b);
     opacity: .7;
+    overflow: hidden;
+  }
+
+  .astercasc-theme-orange-bg-focus::before {
+    content: '';
+    display: block;
+    box-sizing: border-box;
+    border: 2px solid transparent;
+    border-image-source: linear-gradient(30deg, transparent 20%, white 50%, transparent 80%);
+    border-image-slice: 1;
   }
 
   .astercasc-theme-orange-radio {
