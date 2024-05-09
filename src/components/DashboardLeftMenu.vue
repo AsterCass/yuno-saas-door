@@ -132,11 +132,13 @@
 </template>
 
 <script setup>
-
-
 import {onMounted, onUnmounted, ref} from "vue";
 import {getUserBehavior} from "@/utils/store";
 import {emitter} from "@/utils/bus";
+import {useRouter} from "vue-router";
+
+//router
+const thisRouter = useRouter()
 
 let leftMenuMini = ref(false);
 let showLeftMenu = ref(true)
@@ -150,174 +152,113 @@ let currentPage = ref('/navigation/shopping_cart/navigation')
 
 let loadUserPageRight = ref([
   {
-    pageCode: "chart_line",
-    pageTitle: "Chart Line",
+    pageCode: "dashboard",
+    pageTitle: "仪表盘",
     pageIcon: "fa-solid fa-chart-line",
     haveChild: false,
     webIsOpenChild: false,
     child: []
   },
   {
-    pageCode: "shopping_cart",
-    pageTitle: "Shopping Cart",
-    pageIcon: "shopping_cart",
+    pageCode: "account",
+    pageTitle: "账户管理",
+    pageIcon: "fa-solid fa-file-invoice",
+    haveChild: true,
+    webIsOpenChild: false,
+    child: [
+      {
+        pageCode: "members",
+        pageTitle: "成员管理",
+        pageIcon: "fa-solid fa-users-viewfinder",
+        haveChild: false,
+        webIsOpenChild: false,
+        child: []
+      },
+      {
+        pageCode: "roles",
+        pageTitle: "角色管理",
+        pageIcon: "fa-solid fa-id-card-clip",
+        haveChild: false,
+        webIsOpenChild: false,
+        child: []
+      },
+      {
+        pageCode: "rights",
+        pageTitle: "权限管理",
+        pageIcon: "fa-solid fa-wand-sparkles",
+        haveChild: false,
+        webIsOpenChild: false,
+        child: []
+      },
+    ],
+  },
+  {
+    pageCode: "message",
+    pageTitle: "消息管理",
+    pageIcon: "fa-regular fa-envelope",
+    haveChild: true,
+    webIsOpenChild: false,
+    child: [
+      {
+        pageCode: "inbox",
+        pageTitle: "消息通知",
+        pageIcon: "fa-solid fa-inbox",
+        haveChild: false,
+        webIsOpenChild: false,
+        child: []
+      },
+      {
+        pageCode: "postbox",
+        pageTitle: "发送通知",
+        pageIcon: "fa-solid fa-signs-post",
+        haveChild: false,
+        webIsOpenChild: false,
+        child: []
+      },
+    ],
+  },
+  {
+    pageCode: "approval",
+    pageTitle: "审批管理",
+    pageIcon: "fa-solid fa-check-to-slot",
+    haveChild: true,
+    webIsOpenChild: false,
+    child: [
+      {
+        pageCode: "flux",
+        pageTitle: "审批流程",
+        pageIcon: "fa-solid fa-bars-progress",
+        haveChild: false,
+        webIsOpenChild: false,
+        child: []
+      },
+      {
+        pageCode: "settings",
+        pageTitle: "审批设置",
+        pageIcon: "fa-solid fa-gears",
+        haveChild: false,
+        webIsOpenChild: false,
+        child: []
+      },
+    ],
+  },
+  {
+    pageCode: "dict",
+    pageTitle: "字典管理",
+    pageIcon: "fa-regular fa-address-book",
     haveChild: false,
     webIsOpenChild: false,
     child: []
   },
   {
-    pageCode: "navigation",
-    pageTitle: "Navigation",
-    pageIcon: "navigation",
-    haveChild: true,
-    webIsOpenChild: false,
-    child: [
-      {
-        pageCode: "chart_line",
-        pageTitle: "Chart Line",
-        pageIcon: "fa-solid fa-chart-line",
-        haveChild: false,
-        webIsOpenChild: false,
-        child: []
-      },
-      {
-        pageCode: "shopping_cart",
-        pageTitle: "Shopping Cart",
-        pageIcon: "shopping_cart",
-        haveChild: true,
-        webIsOpenChild: false,
-        child: [
-          {
-            pageCode: "navigation",
-            pageTitle: "Navigation",
-            pageIcon: "navigation",
-            haveChild: false,
-            webIsOpenChild: false,
-            child: []
-          },
-          {
-            pageCode: "my_location",
-            pageTitle: "My Location",
-            pageIcon: "my_location",
-            haveChild: false,
-            webIsOpenChild: false,
-            child: []
-          },
-          {
-            pageCode: "edit_location",
-            pageTitle: "Edit Location",
-            pageIcon: "edit_location",
-            haveChild: false,
-            webIsOpenChild: false,
-            child: []
-          },]
-      },
-      {
-        pageCode: "navigation",
-        pageTitle: "Navigation",
-        pageIcon: "navigation",
-        haveChild: false,
-        webIsOpenChild: false,
-        child: []
-      },
-      {
-        pageCode: "my_location",
-        pageTitle: "My Location",
-        pageIcon: "my_location",
-        haveChild: true,
-        webIsOpenChild: false,
-        child: [
-          {
-            pageCode: "navigation",
-            pageTitle: "Navigation",
-            pageIcon: "navigation",
-            haveChild: false,
-            webIsOpenChild: false,
-            child: []
-          },
-          {
-            pageCode: "my_location",
-            pageTitle: "My Location",
-            pageIcon: "my_location",
-            haveChild: false,
-            webIsOpenChild: false,
-            child: []
-          },
-          {
-            pageCode: "edit_location",
-            pageTitle: "Edit Location",
-            pageIcon: "edit_location",
-            haveChild: false,
-            webIsOpenChild: false,
-            child: []
-          },]
-      },
-      {
-        pageCode: "edit_location",
-        pageTitle: "Edit Location",
-        pageIcon: "edit_location",
-        haveChild: false,
-        webIsOpenChild: false,
-        child: []
-      },
-    ]
-  },
-  {
-    pageCode: "my_location",
-    pageTitle: "My Location",
-    pageIcon: "my_location",
+    pageCode: "settings",
+    pageTitle: "通用设置",
+    pageIcon: "fa-solid fa-wrench",
     haveChild: false,
     webIsOpenChild: false,
     child: []
   },
-  {
-    pageCode: "edit_location",
-    pageTitle: "Edit Location",
-    pageIcon: "edit_location",
-    haveChild: true,
-    webIsOpenChild: false,
-    child: [
-      {
-      pageCode: "chart_line",
-      pageTitle: "Chart Line",
-      pageIcon: "fa-solid fa-chart-line",
-      haveChild: true,
-      webIsOpenChild: false,
-      child: []
-    },
-      {
-        pageCode: "shopping_cart",
-        pageTitle: "Shopping Cart",
-        pageIcon: "shopping_cart",
-        haveChild: true,
-        webIsOpenChild: false,
-        child: []
-      },
-      {
-        pageCode: "navigation",
-        pageTitle: "Navigation",
-        pageIcon: "navigation",
-        haveChild: true,
-        webIsOpenChild: false,
-        child: []
-      },
-      {
-        pageCode: "my_location",
-        pageTitle: "My Location",
-        pageIcon: "my_location",
-        haveChild: false,
-        webIsOpenChild: false,
-        child: []
-      },
-      {
-        pageCode: "edit_location",
-        pageTitle: "Edit Location",
-        pageIcon: "edit_location",
-        haveChild: true,
-        webIsOpenChild: false,
-        child: []
-      },]
-  },
+
 ])
 
 function closeOtherExpand(item, childItem) {
@@ -360,6 +301,10 @@ function routeToPage(item, childItem, dChildItem) {
   }
   currentPage.value = path
   closeOtherExpand(item, childItem)
+
+  thisRouter.push({
+    path: currentPage.value
+  })
 }
 
 function leftMenuDataInit() {
@@ -430,12 +375,12 @@ onUnmounted(() => {
 
 .left-switch-drawer-btn-dropdown-enter-active {
   max-height: 40rem;
-  transition: opacity .5s cubic-bezier(0.1, 0.9, 0.2, 0.9), max-height 0.5s cubic-bezier(0.9, 0.1, 0.9, 0.2);
+  transition: opacity .3s cubic-bezier(0.1, 0.9, 0.2, 0.9), max-height 0.3s cubic-bezier(0.9, 0.1, 0.9, 0.2);
 }
 
 .left-switch-drawer-btn-dropdown-leave-active {
   max-height: 40rem;
-  transition: opacity 0.5s cubic-bezier(0.1, 0.9, 0.2, 0.9), max-height 0.5s cubic-bezier(0.1, 0.9, 0.2, 0.9);
+  transition: opacity 0.3s cubic-bezier(0.1, 0.9, 0.2, 0.9), max-height 0.3s cubic-bezier(0.1, 0.9, 0.2, 0.9);
 }
 
 .left-switch-drawer-btn-dropdown-enter-from,
