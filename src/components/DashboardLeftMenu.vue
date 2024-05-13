@@ -41,7 +41,7 @@
           <div class="full-width" v-for="(item, index) in loadUserPageRight" :key="index">
             <q-btn class=" full-width no-padding" flat no-caps style="border-radius:1rem;"
                    :class="currentPage === `${item.pageCode}`
-                   ? `astercasc-theme-${themeColor}-bg-focus` : '' "
+                   ? `astercasc-theme-bg-focus` : '' "
                    size="1.2rem" @click="routeToPage(item)">
               <template v-slot:default>
                 <div class="col row justify-center">
@@ -61,13 +61,13 @@
 
             <transition name="left-switch-drawer-btn-dropdown">
               <div v-show="item.webIsOpenChild"
-                   :class="`astercasc-theme-${themeColor}-bg-op`"
+                   :class="`astercasc-theme-bg-op`"
                    class="left-switch-drawer-btn-first-level">
                 <div class="full-width" v-for="(childItem, index) in item.child" :key="index">
                   <q-btn class=" full-width no-padding" flat no-caps
                          style="border-radius: 1rem" size="1.2rem"
                          :class="currentPage === `${childItem.pageCode}`
-                                ? `astercasc-theme-${themeColor}-bg-focus` : '' "
+                                ? `astercasc-theme-bg-focus` : '' "
                          @click="routeToPage(item, childItem)">
                     <template v-slot:default>
                       <div class="col row justify-center">
@@ -86,13 +86,13 @@
 
                   <transition name="left-switch-drawer-btn-dropdown">
                     <div v-show="childItem.webIsOpenChild"
-                         :class="`astercasc-theme-${themeColor}-bg-enhance`"
+                         :class="`astercasc-theme-bg-enhance`"
                          class="left-switch-drawer-btn-second-level">
                       <div class="full-width" v-for="(dChildItem, index) in childItem.child" :key="index">
 
                         <q-btn class=" full-width no-padding" flat no-caps
                                :class="currentPage === `${dChildItem.pageCode}`
-                               ? `astercasc-theme-${themeColor}-bg-focus` : '' "
+                               ? `astercasc-theme-bg-focus` : '' "
                                style="border-radius: 1rem;" size="1.2rem"
                                @click="routeToPage(item, childItem, dChildItem)">
                           <template v-slot:default>
@@ -148,7 +148,6 @@ let showLeftMenu = ref(true)
 let styleModel = ref('light')
 let sidebarBg = ref('black')
 let sidebarBgImg = ref('img1')
-let themeColor = ref('black')
 let leftFocusOne = ref(false)
 
 let currentPage = ref('saasDashboard')
@@ -230,14 +229,12 @@ function leftMenuDataInit() {
   //data
   loadUserPageRight.value = leftBarRouter
   routeToAnyPage(useRoute().name)
-  //
   //style
   let userBehavior = getUserBehavior()
   leftMenuMini.value = userBehavior.leftMenuMini
   styleModel.value = userBehavior.styleModel
   sidebarBg.value = userBehavior.sidebarBg
   sidebarBgImg.value = userBehavior.sidebarImg
-  themeColor.value = userBehavior.themeColor
   leftFocusOne.value = userBehavior.leftFocusOne
 }
 
@@ -253,10 +250,6 @@ function changeSidebarImgEvent(toStatus) {
   sidebarBgImg.value = toStatus
 }
 
-function changeThemeColorEvent(toStatus) {
-  themeColor.value = toStatus
-}
-
 function changeLeftFocusOneEvent(toStatus) {
   leftFocusOne.value = toStatus
 }
@@ -267,7 +260,6 @@ onMounted(() => {
   emitter.on("changeLeftMiniEvent", changeLeftMiniEvent)
   emitter.on("changeSidebarBgEvent", changeSidebarBgEvent)
   emitter.on("changeSidebarImgEvent", changeSidebarImgEvent)
-  emitter.on("changeThemeColorEvent", changeThemeColorEvent)
   emitter.on("changeLeftFocusOneEvent", changeLeftFocusOneEvent)
 })
 
@@ -275,7 +267,6 @@ onUnmounted(() => {
   emitter.off("changeLeftMiniEvent", changeLeftMiniEvent)
   emitter.off("changeSidebarBgEvent", changeSidebarBgEvent)
   emitter.off("changeSidebarImgEvent", changeSidebarImgEvent)
-  emitter.off("changeThemeColorEvent", changeThemeColorEvent)
   emitter.on("changeLeftFocusOneEvent", changeLeftFocusOneEvent)
 })
 

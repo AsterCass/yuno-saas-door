@@ -8,7 +8,7 @@
       </div>
 
 
-      <h3 class="text-center" :class="`astercasc-theme-${getUserBehavior().themeColor}`">
+      <h3 class="text-center astercasc-theme-base">
         系统设置
       </h3>
       <p class="text-center half-opacity">
@@ -18,7 +18,7 @@
       <q-separator inset class="q-ma-md" :dark="styleModel === 'dark'"/>
 
       <div class="q-mx-lg">
-        <h6 style="margin: 1rem auto 0 auto" :class="`astercasc-theme-${getUserBehavior().themeColor}`">
+        <h6 style="margin: 1rem auto 0 auto" class="astercasc-theme-base">
           主题模式：
         </h6>
         <p class="half-opacity q-mt-xl">
@@ -27,30 +27,15 @@
         <q-radio v-model="styleModel" checked-icon="task_alt"
                  @click="changeStyleModel('light')"
                  unchecked-icon="panorama_fish_eye" val="light"
-                 :class="`astercasc-theme-${getUserBehavior().themeColor}-radio`"
+                 class="astercasc-theme-radio"
                  label="日光模式" :dark="styleModel === 'dark'"/>
         <q-radio v-model="styleModel" checked-icon="task_alt"
                  @click="changeStyleModel('dark')"
                  unchecked-icon="panorama_fish_eye" val="dark"
-                 :class="`astercasc-theme-${getUserBehavior().themeColor}-radio`"
+                 class="astercasc-theme-radio"
                  label="夜间模式" :dark="styleModel === 'dark'"/>
 
-
-        <!--        <h6 style="margin-top: 1rem;">-->
-        <!--          边栏背景颜色：-->
-        <!--        </h6>-->
-        <!--        <div class="row">-->
-        <!--          <div class="column q-ma-sm items-center" style="width: 3.5rem" v-for="(bgName, index) in sidebarBgList"-->
-        <!--               :key="index">-->
-        <!--            <q-btn class="full-width"-->
-        <!--                   @click="changeSidebarBg(bgName)"-->
-        <!--                   :class="generateSidebarBgClass(bgName)"/>-->
-        <!--            <q-radio checked-icon="task_alt" v-model="sidebarBg" :val="bgName" :dark="styleModel === 'dark'"/>-->
-        <!--          </div>-->
-        <!--        </div>-->
-
-
-        <h6 style="margin: 1rem auto 0 auto" :class="`astercasc-theme-${getUserBehavior().themeColor}`">
+        <h6 style="margin: 1rem auto 0 auto" class="astercasc-theme-base">
           边栏背景颜色：
         </h6>
         <p class="half-opacity q-mt-xl">
@@ -62,7 +47,7 @@
                :class="generateSidebarBgClass(bgName)">
           <q-icon :name="bgName === sidebarBg ? 'check' : '' "/>
         </q-btn>
-        <h6 style="margin: 1rem auto 0 auto" :class="`astercasc-theme-${getUserBehavior().themeColor}`">
+        <h6 style="margin: 1rem auto 0 auto" class="astercasc-theme-base">
           边栏背景：
         </h6>
         <p class="half-opacity q-mt-xl">
@@ -72,7 +57,7 @@
                style="height: 6rem;width: 3.5rem" class="q-ma-sm"
                @click="changeSidebarImg(imgName)"
                :class="generateSidebarImgClass(imgName)"/>
-        <h6 style="margin: 1rem auto 0 auto" :class="`astercasc-theme-${getUserBehavior().themeColor}`">
+        <h6 style="margin: 1rem auto 0 auto" class="astercasc-theme-base">
           主题颜色：
         </h6>
         <p class="half-opacity q-mt-xl">
@@ -85,13 +70,14 @@
           <q-icon :name="themeColor === themeModel ? 'check' : '' "/>
         </q-btn>
 
-        <h6 style="margin: 1rem auto 0 auto" :class="`astercasc-theme-${getUserBehavior().themeColor}`">
+        <h6 style="margin: 1rem auto 0 auto" class="astercasc-theme-base">
           边栏唯一选中：
         </h6>
         <p class="half-opacity q-mt-xl">
           左侧边栏在点击切换时，是否收起其他选中的下拉
         </p>
-        <q-toggle v-model="leftFocusOne" @click="changeLeftFocusOne(leftFocusOne)"/>
+        <q-toggle v-model="leftFocusOne" class="astercasc-theme-toggle"
+                  @click="changeLeftFocusOne(leftFocusOne)"/>
 
       </div>
 
@@ -130,6 +116,7 @@ function rightMenuDataInit() {
   leftFocusOne.value = userBehavior.leftFocusOne
 
   updateWebsiteStyleModel(styleModel.value)
+  updateWebsiteThemeModel(themeModel.value)
 }
 
 function updateWebsiteStyleModel(styleModel) {
@@ -139,6 +126,25 @@ function updateWebsiteStyleModel(styleModel) {
   } else {
     document.documentElement.classList.remove("yuno-light-model")
     document.documentElement.classList.add("yuno-dark-model")
+  }
+}
+
+function updateWebsiteThemeModel(themeModel) {
+  document.documentElement.classList.remove("astercasc-theme-black")
+  document.documentElement.classList.remove("astercasc-theme-green")
+  document.documentElement.classList.remove("astercasc-theme-blue")
+  document.documentElement.classList.remove("astercasc-theme-orange")
+  if (themeModel === 'black') {
+    document.documentElement.classList.add("astercasc-theme-black")
+  }
+  if (themeModel === 'green') {
+    document.documentElement.classList.add("astercasc-theme-green")
+  }
+  if (themeModel === 'blue') {
+    document.documentElement.classList.add("astercasc-theme-blue")
+  }
+  if (themeModel === 'orange') {
+    document.documentElement.classList.add("astercasc-theme-orange")
   }
 }
 
@@ -157,7 +163,7 @@ function generateSidebarImgClass(imgName) {
     retClass += "border-selected "
   }
   retClass += `left-switch-drawer-bg-${imgName} `
-  retClass += `astercasc-theme-${getUserBehavior().themeColor} `
+  retClass += "astercasc-theme-base "
   return retClass;
 }
 
@@ -177,6 +183,10 @@ function changeRightMenuEvent(toStatus) {
 function changeStyleModel(model) {
   updateWebsiteStyleModel(model)
   saveUserBehavior({styleModel: model})
+  styleModel.value = model
+  //suggestion config auto enable
+  changeSidebarBg("black")
+  changeThemeColor("black")
 }
 
 function changeRightMenu(toStatus) {
@@ -198,7 +208,7 @@ function changeSidebarImg(toStatus) {
 }
 
 function changeThemeColor(toStatus) {
-  emitter.emit('changeThemeColorEvent', toStatus)
+  updateWebsiteThemeModel(toStatus)
   saveUserBehavior({themeColor: toStatus})
   themeModel.value = toStatus;
 }

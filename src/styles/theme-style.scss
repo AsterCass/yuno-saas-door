@@ -1,63 +1,7 @@
 @import "@/styles/base-style";
 
 //============================== light ==============================
-
 .yuno-light-model {
-
-  //============================== black ==============================
-  .astercasc-theme-black {
-    color: $yuno-theme-black;
-  }
-
-  .astercasc-theme-black-bg-op {
-    color: white;
-    opacity: .7;
-    background-color: $yuno-theme-black;
-
-    .q-separator {
-      background-color: white;
-    }
-
-    .astercasc-theme-black-bg-focus {
-      opacity: 1;
-    }
-  }
-
-  .astercasc-theme-black-bg-enhance {
-    $r: red($yuno-theme-black) * 0.5;
-    $g: green($yuno-theme-black) * 0.5;
-    $b: blue($yuno-theme-black) * 0.5;
-    background-color: rgb($r, $g, $b);
-  }
-
-  .astercasc-theme-black-bg-focus {
-    $r: red($yuno-theme-black) * 0.2;
-    $g: green($yuno-theme-black) * 0.2;
-    $b: blue($yuno-theme-black) * 0.2;
-    color: white;
-    background-color: rgb($r, $g, $b);
-    opacity: .7;
-    overflow: hidden;
-  }
-
-  .astercasc-theme-black-bg-focus::before {
-    content: '';
-    display: block;
-    box-sizing: border-box;
-    border: 2px solid transparent;
-    border-image-source: linear-gradient(45deg, transparent 30%, white 50%, transparent 70%);
-    border-image-slice: 1;
-  }
-
-  .astercasc-theme-black-radio {
-    .q-radio__inner--truthy {
-      color: $yuno-theme-black;
-    }
-  }
-
-  .astercasc-theme-black.border-selected {
-    border: 2px solid $yuno-theme-black;
-  }
 
   .astercasc-theme-black-doc {
     color: $yuno_dark_text_color;
@@ -66,62 +10,6 @@
 
   .astercasc-theme-black-doc.border-selected {
     border: 2px solid $yuno_dark_text_color;
-  }
-
-  //============================== green ==============================
-  .astercasc-theme-green {
-    color: $yuno-theme-green;
-  }
-
-  .astercasc-theme-green-bg-op {
-    color: white;
-    opacity: .7;
-    background-color: $yuno-theme-green;
-
-    .q-separator {
-      background-color: white;
-    }
-
-    .astercasc-theme-green-bg-focus {
-      opacity: 1;
-    }
-
-  }
-
-  .astercasc-theme-green-bg-enhance {
-    $r: red($yuno-theme-green) * 0.6;
-    $g: green($yuno-theme-green) * 0.7;
-    $b: blue($yuno-theme-green) * 0.6;
-    background-color: rgb($r, $g, $b);
-  }
-
-  .astercasc-theme-green-bg-focus {
-    $r: red($yuno-theme-green) * 0.2;
-    $g: green($yuno-theme-green) * 0.3;
-    $b: blue($yuno-theme-green) * 0.2;
-    color: white;
-    background-color: rgb($r, $g, $b);
-    opacity: .7;
-    overflow: hidden;
-  }
-
-  .astercasc-theme-green-bg-focus::before {
-    content: '';
-    display: block;
-    box-sizing: border-box;
-    border: 2px solid transparent;
-    border-image-source: linear-gradient(45deg, transparent 30%, white 50%, transparent 70%);
-    border-image-slice: 1;
-  }
-
-  .astercasc-theme-green-radio {
-    .q-radio__inner--truthy {
-      color: $yuno-theme-green;
-    }
-  }
-
-  .astercasc-theme-green.border-selected {
-    border: 2px solid $yuno-theme-green;
   }
 
   .astercasc-theme-green-doc {
@@ -133,61 +21,6 @@
     border: 2px solid $yuno_dark_text_color;
   }
 
-  //============================== blue ==============================
-  .astercasc-theme-blue {
-    color: $yuno-theme-blue;
-  }
-
-  .astercasc-theme-blue-bg-op {
-    color: white;
-    opacity: .7;
-    background-color: $yuno-theme-blue;
-
-    .q-separator {
-      background-color: white;
-    }
-
-    .astercasc-theme-blue-bg-focus {
-      opacity: 1;
-    }
-  }
-
-  .astercasc-theme-blue-bg-enhance {
-    $r: red($yuno-theme-blue) * 0.8;
-    $g: green($yuno-theme-blue) * 0.8;
-    $b: blue($yuno-theme-blue) * 1;
-    background-color: rgb($r, $g, $b);
-  }
-
-  .astercasc-theme-blue-bg-focus {
-    $r: red($yuno-theme-blue) * 0.2;
-    $g: green($yuno-theme-blue) * 0.2;
-    $b: blue($yuno-theme-blue) * 0.7;
-    color: white;
-    background-color: rgb($r, $g, $b);
-    opacity: .7;
-    overflow: hidden;
-  }
-
-  .astercasc-theme-blue-bg-focus::before {
-    content: '';
-    display: block;
-    box-sizing: border-box;
-    border: 2px solid transparent;
-    border-image-source: linear-gradient(45deg, transparent 30%, white 50%, transparent 70%);
-    border-image-slice: 1;
-  }
-
-  .astercasc-theme-blue-radio {
-    .q-radio__inner--truthy {
-      color: $yuno-theme-blue;
-    }
-  }
-
-  .astercasc-theme-blue.border-selected {
-    border: 2px solid $yuno-theme-blue;
-  }
-
   .astercasc-theme-blue-doc {
     color: $yuno_dark_text_color;
     background-color: $yuno-theme-blue;
@@ -196,63 +29,6 @@
   .astercasc-theme-blue-doc.border-selected {
     border: 2px solid $yuno_dark_text_color;
   }
-
-  //============================== orange ==============================
-
-  .astercasc-theme-orange {
-    color: $yuno-theme-orange;
-  }
-
-  .astercasc-theme-orange-bg-op {
-    color: white;
-    opacity: .7;
-    background-color: $yuno-theme-orange;
-
-    .q-separator {
-      background-color: white;
-    }
-
-    .astercasc-theme-orange-bg-focus {
-      opacity: 1;
-    }
-  }
-
-  .astercasc-theme-orange-bg-enhance {
-    $r: red($yuno-theme-orange) * 1;
-    $g: green($yuno-theme-orange) * 0.5;
-    $b: blue($yuno-theme-orange) * 1;
-    background-color: rgb($r, $g, $b);
-  }
-
-  .astercasc-theme-orange-bg-focus {
-    $r: red($yuno-theme-orange) * 0.85;
-    $g: green($yuno-theme-orange) * 0.4;
-    $b: blue($yuno-theme-orange) * 0.85;
-    color: white;
-    background-color: rgb($r, $g, $b);
-    opacity: .7;
-    overflow: hidden;
-  }
-
-  .astercasc-theme-orange-bg-focus::before {
-    content: '';
-    display: block;
-    box-sizing: border-box;
-    border: 2px solid transparent;
-    border-image-source: linear-gradient(45deg, transparent 30%, white 50%, transparent 70%);
-    border-image-slice: 1;
-  }
-
-  .astercasc-theme-orange-radio {
-    .q-radio__inner--truthy {
-      color: $yuno-theme-orange;
-    }
-  }
-
-  .astercasc-theme-orange.border-selected {
-    border: 2px solid $yuno-theme-orange;
-  }
-
 
   .astercasc-theme-orange-doc {
     color: $yuno_dark_text_color;
@@ -266,14 +42,275 @@
 }
 
 
+.yuno-light-model.astercasc-theme-black {
+
+  //============================== black ==============================
+
+  .astercasc-theme-base {
+    color: $yuno-theme-black;
+  }
+
+  .astercasc-theme-base.border-selected {
+    border: 2px solid $yuno-theme-black;
+  }
+
+  .astercasc-theme-bg-op {
+    color: white;
+    opacity: .7;
+    background-color: $yuno-theme-black;
+
+    .q-separator {
+      background-color: white;
+    }
+
+    .astercasc-theme-bg-focus {
+      opacity: 1;
+    }
+  }
+
+  .astercasc-theme-bg-enhance {
+    $r: red($yuno-theme-black) * 0.5;
+    $g: green($yuno-theme-black) * 0.5;
+    $b: blue($yuno-theme-black) * 0.5;
+    background-color: rgb($r, $g, $b);
+  }
+
+  .astercasc-theme-bg-focus {
+    $r: red($yuno-theme-black) * 0.2;
+    $g: green($yuno-theme-black) * 0.2;
+    $b: blue($yuno-theme-black) * 0.2;
+    color: white;
+    background-color: rgb($r, $g, $b);
+    opacity: .7;
+    overflow: hidden;
+  }
+
+  .astercasc-theme-bg-focus::before {
+    content: '';
+    display: block;
+    box-sizing: border-box;
+    border: 2px solid transparent;
+    border-image-source: linear-gradient(45deg, transparent 30%, white 50%, transparent 70%);
+    border-image-slice: 1;
+  }
+
+  .astercasc-theme-radio {
+    .q-radio__inner--truthy {
+      color: $yuno-theme-black;
+    }
+  }
+
+  .astercasc-theme-toggle {
+    .q-toggle__inner--truthy {
+      color: $yuno-theme-black;
+    }
+  }
+
+
+}
+
+.yuno-light-model.astercasc-theme-green {
+
+  //============================== green ==============================
+  .astercasc-theme-base {
+    color: $yuno-theme-green;
+  }
+
+  .astercasc-theme-base.border-selected {
+    border: 2px solid $yuno-theme-green;
+  }
+
+  .astercasc-theme-bg-op {
+    color: white;
+    opacity: .7;
+    background-color: $yuno-theme-green;
+
+    .q-separator {
+      background-color: white;
+    }
+
+    .astercasc-theme-bg-focus {
+      opacity: 1;
+    }
+
+  }
+
+  .astercasc-theme-bg-enhance {
+    $r: red($yuno-theme-green) * 0.6;
+    $g: green($yuno-theme-green) * 0.7;
+    $b: blue($yuno-theme-green) * 0.6;
+    background-color: rgb($r, $g, $b);
+  }
+
+  .astercasc-theme-bg-focus {
+    $r: red($yuno-theme-green) * 0.2;
+    $g: green($yuno-theme-green) * 0.3;
+    $b: blue($yuno-theme-green) * 0.2;
+    color: white;
+    background-color: rgb($r, $g, $b);
+    opacity: .7;
+    overflow: hidden;
+  }
+
+  .astercasc-theme-bg-focus::before {
+    content: '';
+    display: block;
+    box-sizing: border-box;
+    border: 2px solid transparent;
+    border-image-source: linear-gradient(45deg, transparent 30%, white 50%, transparent 70%);
+    border-image-slice: 1;
+  }
+
+  .astercasc-theme-radio {
+    .q-radio__inner--truthy {
+      color: $yuno-theme-green;
+    }
+  }
+
+  .astercasc-theme-toggle {
+    .q-toggle__inner--truthy {
+      color: $yuno-theme-green;
+    }
+  }
+}
+
+  //============================== blue ==============================
+
+.yuno-light-model.astercasc-theme-blue {
+
+  .astercasc-theme-base {
+    color: $yuno-theme-blue;
+  }
+
+  .astercasc-theme-base.border-selected {
+    border: 2px solid $yuno-theme-blue;
+  }
+
+  .astercasc-theme-bg-op {
+    color: white;
+    opacity: .7;
+    background-color: $yuno-theme-blue;
+
+    .q-separator {
+      background-color: white;
+    }
+
+    .astercasc-theme-bg-focus {
+      opacity: 1;
+    }
+  }
+
+  .astercasc-theme-bg-enhance {
+    $r: red($yuno-theme-blue) * 0.8;
+    $g: green($yuno-theme-blue) * 0.8;
+    $b: blue($yuno-theme-blue) * 1;
+    background-color: rgb($r, $g, $b);
+  }
+
+  .astercasc-theme-bg-focus {
+    $r: red($yuno-theme-blue) * 0.2;
+    $g: green($yuno-theme-blue) * 0.2;
+    $b: blue($yuno-theme-blue) * 0.7;
+    color: white;
+    background-color: rgb($r, $g, $b);
+    opacity: .7;
+    overflow: hidden;
+  }
+
+  .astercasc-theme-bg-focus::before {
+    content: '';
+    display: block;
+    box-sizing: border-box;
+    border: 2px solid transparent;
+    border-image-source: linear-gradient(45deg, transparent 30%, white 50%, transparent 70%);
+    border-image-slice: 1;
+  }
+
+  .astercasc-theme-radio {
+    .q-radio__inner--truthy {
+      color: $yuno-theme-blue;
+    }
+  }
+
+  .astercasc-theme-toggle {
+    .q-toggle__inner--truthy {
+      color: $yuno-theme-blue;
+    }
+  }
+
+}
+
+  //============================== orange ==============================
+
+.yuno-light-model.astercasc-theme-orange {
+
+  .astercasc-theme-base {
+    color: $yuno-theme-orange;
+  }
+
+  .astercasc-theme-base.border-selected {
+    border: 2px solid $yuno-theme-orange;
+  }
+
+  .astercasc-theme-bg-op {
+    color: white;
+    opacity: .7;
+    background-color: $yuno-theme-orange;
+
+    .q-separator {
+      background-color: white;
+    }
+
+    .astercasc-theme-bg-focus {
+      opacity: 1;
+    }
+  }
+
+  .astercasc-theme-bg-enhance {
+    $r: red($yuno-theme-orange) * 1;
+    $g: green($yuno-theme-orange) * 0.5;
+    $b: blue($yuno-theme-orange) * 1;
+    background-color: rgb($r, $g, $b);
+  }
+
+  .astercasc-theme-bg-focus {
+    $r: red($yuno-theme-orange) * 0.85;
+    $g: green($yuno-theme-orange) * 0.4;
+    $b: blue($yuno-theme-orange) * 0.85;
+    color: white;
+    background-color: rgb($r, $g, $b);
+    opacity: .7;
+    overflow: hidden;
+  }
+
+  .astercasc-theme-bg-focus::before {
+    content: '';
+    display: block;
+    box-sizing: border-box;
+    border: 2px solid transparent;
+    border-image-source: linear-gradient(45deg, transparent 30%, white 50%, transparent 70%);
+    border-image-slice: 1;
+  }
+
+  .astercasc-theme-radio {
+    .q-radio__inner--truthy {
+      color: $yuno-theme-orange;
+    }
+  }
+
+  .astercasc-theme-toggle {
+    .q-toggle__inner--truthy {
+      color: $yuno-theme-orange;
+    }
+  }
+
+}
+
+
 //============================== dark ==============================
 
 .yuno-dark-model {
-  .q-radio__inner--truthy {
-    color: $yuno_dark_text_color !important;
-  }
 
-  //============================== black ==============================
   .astercasc-theme-black-doc {
     color: $yuno_dark_text_color;
     background-color: $yuno-theme-black;
@@ -283,17 +320,6 @@
     border: 2px solid $yuno_dark_text_color;
   }
 
-  .astercasc-theme-black-bg-focus {
-    $r: red($yuno-theme-black) * 0.2;
-    $g: green($yuno-theme-black) * 0.2;
-    $b: blue($yuno-theme-black) * 0.2;
-    color: white;
-    background-color: rgb($r, $g, $b);
-    opacity: .7;
-  }
-
-
-  //============================== green ==============================
   .astercasc-theme-green-doc {
     color: $yuno_dark_text_color;
     background-color: $yuno-theme-green;
@@ -303,16 +329,6 @@
     border: 2px solid $yuno_dark_text_color;
   }
 
-  .astercasc-theme-green-bg-focus {
-    $r: red($yuno-theme-green) * 0.2;
-    $g: green($yuno-theme-green) * 0.7;
-    $b: blue($yuno-theme-green) * 0.2;
-    color: white;
-    background-color: rgb($r, $g, $b);
-    opacity: .7;
-  }
-
-  //============================== blue ==============================
   .astercasc-theme-blue-doc {
     color: $yuno_dark_text_color;
     background-color: $yuno-theme-blue;
@@ -322,16 +338,7 @@
     border: 2px solid $yuno_dark_text_color;
   }
 
-  .astercasc-theme-blue-bg-focus {
-    $r: red($yuno-theme-blue) * 0.5;
-    $g: green($yuno-theme-blue) * 0.5;
-    $b: blue($yuno-theme-blue) * 0.7;
-    color: white;
-    background-color: rgb($r, $g, $b);
-    opacity: .7;
-  }
 
-  //============================== orange ==============================
   .astercasc-theme-orange-doc {
     color: $yuno_dark_text_color;
     background-color: $yuno-theme-orange;
@@ -341,7 +348,68 @@
     border: 2px solid $yuno_dark_text_color;
   }
 
-  .astercasc-theme-orange-bg-focus {
+  .astercasc-theme-radio {
+    .q-radio__inner--truthy {
+      color: $yuno_dark_text_color !important;
+    }
+  }
+
+  .astercasc-theme-toggle {
+    .q-toggle__inner--truthy {
+      color: $dark !important;
+    }
+  }
+
+
+}
+
+//============================== black ==============================
+.yuno-dark-model.astercasc-theme-black {
+
+  .astercasc-theme-bg-focus {
+    $r: red($yuno-theme-black) * 0.2;
+    $g: green($yuno-theme-black) * 0.2;
+    $b: blue($yuno-theme-black) * 0.2;
+    color: white;
+    background-color: rgb($r, $g, $b);
+    opacity: .7;
+  }
+
+}
+
+
+
+  //============================== green ==============================
+.yuno-dark-model.astercasc-theme-green {
+
+  .astercasc-theme-bg-focus {
+    $r: red($yuno-theme-green) * 0.2;
+    $g: green($yuno-theme-green) * 0.7;
+    $b: blue($yuno-theme-green) * 0.2;
+    color: white;
+    background-color: rgb($r, $g, $b);
+    opacity: .7;
+  }
+}
+
+  //============================== blue ==============================
+
+.yuno-dark-model.astercasc-theme-blue {
+
+  .astercasc-theme-bg-focus {
+    $r: red($yuno-theme-blue) * 0.5;
+    $g: green($yuno-theme-blue) * 0.5;
+    $b: blue($yuno-theme-blue) * 0.7;
+    color: white;
+    background-color: rgb($r, $g, $b);
+    opacity: .7;
+  }
+}
+
+  //============================== orange ==============================
+.yuno-dark-model.astercasc-theme-orange {
+
+  .astercasc-theme-bg-focus {
     $r: red($yuno-theme-orange) * 0.85;
     $g: green($yuno-theme-orange) * 0.4;
     $b: blue($yuno-theme-orange) * 0.85;
