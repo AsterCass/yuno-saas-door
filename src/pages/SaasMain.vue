@@ -6,8 +6,9 @@
     <DashboardRightMenu/>
 
     <q-page-container>
-      <div class="q-mt-xl"/>
-      <router-view/>
+      <div class="q-my-xl q-mr-md">
+        <router-view/>
+      </div>
     </q-page-container>
 
     <!--    <q-footer/>-->

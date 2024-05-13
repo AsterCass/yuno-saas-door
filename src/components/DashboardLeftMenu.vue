@@ -11,9 +11,9 @@
               <q-img :src="require('@/assets/img/logo.png')"/>
             </q-avatar>
           </div>
-          <h5 class="col-9 no-margin" v-show="!leftMenuMini">
+          <h3 class="col-9 no-margin" v-show="!leftMenuMini">
             Yuno Saas
-          </h5>
+          </h3>
         </div>
 
         <q-separator inset class="q-ma-sm half-opacity"/>
@@ -27,9 +27,9 @@
                   <q-img :src="require('@/assets/img/test-avatar.jpg')"/>
                 </q-avatar>
               </div>
-              <h6 class="col-9 no-margin" v-show="!leftMenuMini" style="text-align: start">
+              <h5 class="col-9 no-margin" v-show="!leftMenuMini" style="text-align: start">
                 AsterCasc
-              </h6>
+              </h5>
             </template>
           </q-btn>
         </div>
@@ -40,7 +40,7 @@
 
           <div class="full-width" v-for="(item, index) in loadUserPageRight" :key="index">
             <q-btn class=" full-width no-padding" flat no-caps style="border-radius:1rem;"
-                   :class="currentPage === `/${item.pageCode}`
+                   :class="currentPage === `${item.pageCode}`
                    ? `astercasc-theme-${themeColor}-bg-focus` : '' "
                    size="1.2rem" @click="routeToPage(item)">
               <template v-slot:default>
@@ -66,7 +66,7 @@
                 <div class="full-width" v-for="(childItem, index) in item.child" :key="index">
                   <q-btn class=" full-width no-padding" flat no-caps
                          style="border-radius: 1rem" size="1.2rem"
-                         :class="currentPage === `/${item.pageCode}/${childItem.pageCode}`
+                         :class="currentPage === `${childItem.pageCode}`
                                 ? `astercasc-theme-${themeColor}-bg-focus` : '' "
                          @click="routeToPage(item, childItem)">
                     <template v-slot:default>
@@ -91,7 +91,7 @@
                       <div class="full-width" v-for="(dChildItem, index) in childItem.child" :key="index">
 
                         <q-btn class=" full-width no-padding" flat no-caps
-                               :class="currentPage === `/${item.pageCode}/${childItem.pageCode}/${dChildItem.pageCode}`
+                               :class="currentPage === `${dChildItem.pageCode}`
                                ? `astercasc-theme-${themeColor}-bg-focus` : '' "
                                style="border-radius: 1rem;" size="1.2rem"
                                @click="routeToPage(item, childItem, dChildItem)">
@@ -136,6 +136,8 @@ import {onMounted, onUnmounted, ref} from "vue";
 import {getUserBehavior} from "@/utils/store";
 import {emitter} from "@/utils/bus";
 import {useRouter} from "vue-router";
+import {toSpecifyPage} from "@/router";
+import {leftBarRouter} from "@/router/user-router";
 
 //router
 const thisRouter = useRouter()
@@ -148,118 +150,9 @@ let sidebarBgImg = ref('img1')
 let themeColor = ref('black')
 let leftFocusOne = ref(false)
 
-let currentPage = ref('/navigation/shopping_cart/navigation')
+let currentPage = ref('saasDashboard')
 
-let loadUserPageRight = ref([
-  {
-    pageCode: "dashboard",
-    pageTitle: "仪表盘",
-    pageIcon: "fa-solid fa-chart-line",
-    haveChild: false,
-    webIsOpenChild: false,
-    child: []
-  },
-  {
-    pageCode: "account",
-    pageTitle: "账户管理",
-    pageIcon: "fa-solid fa-file-invoice",
-    haveChild: true,
-    webIsOpenChild: false,
-    child: [
-      {
-        pageCode: "members",
-        pageTitle: "成员管理",
-        pageIcon: "fa-solid fa-users-viewfinder",
-        haveChild: false,
-        webIsOpenChild: false,
-        child: []
-      },
-      {
-        pageCode: "roles",
-        pageTitle: "角色管理",
-        pageIcon: "fa-solid fa-id-card-clip",
-        haveChild: false,
-        webIsOpenChild: false,
-        child: []
-      },
-      {
-        pageCode: "rights",
-        pageTitle: "权限管理",
-        pageIcon: "fa-solid fa-wand-sparkles",
-        haveChild: false,
-        webIsOpenChild: false,
-        child: []
-      },
-    ],
-  },
-  {
-    pageCode: "message",
-    pageTitle: "消息管理",
-    pageIcon: "fa-regular fa-envelope",
-    haveChild: true,
-    webIsOpenChild: false,
-    child: [
-      {
-        pageCode: "inbox",
-        pageTitle: "消息通知",
-        pageIcon: "fa-solid fa-inbox",
-        haveChild: false,
-        webIsOpenChild: false,
-        child: []
-      },
-      {
-        pageCode: "postbox",
-        pageTitle: "发送通知",
-        pageIcon: "fa-solid fa-signs-post",
-        haveChild: false,
-        webIsOpenChild: false,
-        child: []
-      },
-    ],
-  },
-  {
-    pageCode: "approval",
-    pageTitle: "审批管理",
-    pageIcon: "fa-solid fa-check-to-slot",
-    haveChild: true,
-    webIsOpenChild: false,
-    child: [
-      {
-        pageCode: "flux",
-        pageTitle: "审批流程",
-        pageIcon: "fa-solid fa-bars-progress",
-        haveChild: false,
-        webIsOpenChild: false,
-        child: []
-      },
-      {
-        pageCode: "settings",
-        pageTitle: "审批设置",
-        pageIcon: "fa-solid fa-gears",
-        haveChild: false,
-        webIsOpenChild: false,
-        child: []
-      },
-    ],
-  },
-  {
-    pageCode: "dict",
-    pageTitle: "字典管理",
-    pageIcon: "fa-regular fa-address-book",
-    haveChild: false,
-    webIsOpenChild: false,
-    child: []
-  },
-  {
-    pageCode: "settings",
-    pageTitle: "通用设置",
-    pageIcon: "fa-solid fa-wrench",
-    haveChild: false,
-    webIsOpenChild: false,
-    child: []
-  },
-
-])
+let loadUserPageRight = ref([])
 
 function closeOtherExpand(item, childItem) {
   if (leftFocusOne.value && loadUserPageRight.value && loadUserPageRight.value.length > 0) {
@@ -286,7 +179,7 @@ function routeToPage(item, childItem, dChildItem) {
       closeOtherExpand(item, childItem)
       return
     }
-    path = path + '/' + item.pageCode
+    path = item.pageCode
   }
   if (childItem) {
     if (childItem.haveChild && !dChildItem) {
@@ -294,20 +187,22 @@ function routeToPage(item, childItem, dChildItem) {
       closeOtherExpand(item, childItem)
       return
     }
-    path = path + '/' + childItem.pageCode
+    path = childItem.pageCode
   }
   if (dChildItem) {
-    path = path + '/' + dChildItem.pageCode
+    path = dChildItem.pageCode
   }
+
   currentPage.value = path
   closeOtherExpand(item, childItem)
-
-  thisRouter.push({
-    path: currentPage.value
-  })
+  toSpecifyPage(thisRouter, currentPage.value)
+  console.log(currentPage.value)
 }
 
 function leftMenuDataInit() {
+  //data
+  loadUserPageRight.value = leftBarRouter
+  //style
   let userBehavior = getUserBehavior()
   leftMenuMini.value = userBehavior.leftMenuMini
   styleModel.value = userBehavior.styleModel

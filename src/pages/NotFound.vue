@@ -14,7 +14,7 @@
             页面地址错咯，回到主页重新看看吧
           </p>
           <q-btn class="q-mt-lg error-page-btn"
-                 outline push label="Go to Homepage" to="/"/>
+                 outline push label="Go to Homepage" @click="backToHome(thisRouter)"/>
         </div>
       </div>
     </div>
@@ -23,7 +23,12 @@
 
 </template>
 
-<script setup></script>
+<script setup>
+import {backToHome} from "@/router/index.js"
+import {useRouter} from "vue-router";
+
+const thisRouter = useRouter()
+</script>
 
 <style lang="scss" scoped>
 @import "@/styles/main-style";

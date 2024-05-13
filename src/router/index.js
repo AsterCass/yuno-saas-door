@@ -180,4 +180,24 @@ router.afterEach(() => {
     window.scrollTo(0, 0)
 })
 
+
+export function backToHome(thisRouter) {
+    thisRouter.push({
+        name: "saasDashboard"
+    })
+}
+
+export function toSpecifyPage(thisRouter, pageName) {
+    thisRouter.push({
+        name: pageName
+    })
+}
+
+export function toSpecifyPageWithQuery(thisRouter, pageName, queryMap) {
+    thisRouter.push({
+        name: pageName,
+        query: queryMap,
+    })
+}
+
 export default router;

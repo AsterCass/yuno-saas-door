@@ -8,9 +8,9 @@
       </div>
 
 
-      <h5 class="text-center" :class="`astercasc-theme-${getUserBehavior().themeColor}`">
+      <h3 class="text-center" :class="`astercasc-theme-${getUserBehavior().themeColor}`">
         系统设置
-      </h5>
+      </h3>
       <p class="text-center half-opacity">
         Saas系统下当前用户的偏好设置
       </p>
