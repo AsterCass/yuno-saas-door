@@ -135,12 +135,13 @@
 import {onMounted, onUnmounted, ref} from "vue";
 import {getUserBehavior} from "@/utils/store";
 import {emitter} from "@/utils/bus";
-import {useRouter} from "vue-router";
+import {useRoute, useRouter} from "vue-router";
 import {toSpecifyPage} from "@/router";
 import {leftBarRouter} from "@/router/user-router";
 
 //router
 const thisRouter = useRouter()
+
 
 let leftMenuMini = ref(false);
 let showLeftMenu = ref(true)
@@ -151,6 +152,7 @@ let themeColor = ref('black')
 let leftFocusOne = ref(false)
 
 let currentPage = ref('saasDashboard')
+
 
 let loadUserPageRight = ref([])
 
@@ -172,14 +174,14 @@ function closeOtherExpand(item, childItem) {
 }
 
 function routeToPage(item, childItem, dChildItem) {
-  let path = ''
+  let name = ''
   if (item) {
     if (item.haveChild && !childItem) {
       item.webIsOpenChild = !item.webIsOpenChild
       closeOtherExpand(item, childItem)
       return
     }
-    path = item.pageCode
+    name = item.pageCode
   }
   if (childItem) {
     if (childItem.haveChild && !dChildItem) {
@@ -187,21 +189,48 @@ function routeToPage(item, childItem, dChildItem) {
       closeOtherExpand(item, childItem)
       return
     }
-    path = childItem.pageCode
+    name = childItem.pageCode
   }
   if (dChildItem) {
-    path = dChildItem.pageCode
+    name = dChildItem.pageCode
   }
 
-  currentPage.value = path
+  currentPage.value = name
   closeOtherExpand(item, childItem)
   toSpecifyPage(thisRouter, currentPage.value)
-  console.log(currentPage.value)
+}
+
+function routeToAnyPage(item) {
+  if (loadUserPageRight.value && loadUserPageRight.value.length > 0) {
+    for (let top of loadUserPageRight.value) {
+      if (top.pageCode === item) {
+        currentPage.value = item
+        break;
+      }
+      for (let sec of top.child) {
+        if (sec.pageCode === item) {
+          currentPage.value = item
+          top.webIsOpenChild = true
+          break;
+        }
+        for (let thi of sec.child) {
+          if (sec.pageCode === item) {
+            currentPage.value = item
+            top.webIsOpenChild = true
+            sec.webIsOpenChild = true
+            break;
+          }
+        }
+      }
+    }
+  }
 }
 
 function leftMenuDataInit() {
   //data
   loadUserPageRight.value = leftBarRouter
+  routeToAnyPage(useRoute().name)
+  //
   //style
   let userBehavior = getUserBehavior()
   leftMenuMini.value = userBehavior.leftMenuMini

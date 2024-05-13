@@ -1,0 +1,172 @@
+@import "@/styles/base-style";
+
+
+
+@mixin astercasc-simple-btn($margin: 0, $min-height:2rem, $min-width:4rem,
+$background-image: $yuno_black_gradient_195) {
+  margin: $margin;
+  text-align: center;
+  color: $yuno_dark_text_color;
+  min-height: $min-height;
+  min-width: $min-width;
+  background-image: $background-image;
+  border-radius: 0.8rem;
+}
+
+@mixin astercasc-outline-btn($margin: 0, $min-height:2rem, $min-width:4rem) {
+  margin: $margin;
+  text-align: center;
+  color: $yuno_light_text-color;
+  min-height: $min-height;
+  min-width: $min-width;
+  border-radius: 0.8rem;
+}
+
+.astercasc-simple-btn-margin-pri {
+  @include astercasc-simple-btn(0rem, 2.5rem, 6rem, $yuno_black_gradient_195)
+}
+
+.astercasc-outline-btn-margin-pri {
+  @include astercasc-outline-btn(0rem, 2.5rem, 6rem)
+}
+
+.astercasc-outline-btn-margin-pri.q-btn--outline:before {
+  border: 2px solid currentColor !important;
+}
+
+.astercasc-simple-btn-margin-pri-mid {
+  @include astercasc-simple-btn(0rem, 2.2rem, 5rem, $yuno_black_gradient_195)
+}
+
+.astercasc-outline-btn-margin-pri-mid {
+  @include astercasc-outline-btn(0rem, 2.2rem, 5rem)
+}
+
+.astercasc-outline-btn-margin-pri-mid.q-btn--outline:before {
+  border: 2px solid currentColor !important;
+}
+
+.astercasc-simple-card {
+  border-radius: 1rem !important;
+  color: $yuno_light_text-color !important;
+  background-color: rgb(240, 240, 240, 0.8) !important;
+  box-shadow: inset 0 0 1px 1px rgba(254, 254, 254, 0.9), 0 20px 27px 0 rgba(0, 0, 0, 0.05) !important;
+  backdrop-filter: saturate(200%) blur(30px) !important;
+
+  .q-item--active {
+    color: inherit !important;
+  }
+}
+
+.astercasc-simple-quoted-title {
+  background-color: $yuno_dark_text_color;
+  font-size: 1.35rem;
+  padding: .2rem .5rem;
+  border-radius: 0 .8rem .8rem 0;
+  border-left: 5px solid $yuno-theme-black;
+}
+
+.astercasc-simple-select-margin-pri {
+  min-width: 10rem;
+  background-color: $yuno_dark_text_color;
+  border-radius: .5rem;
+}
+
+.astercasc-simple-select-margin-pri.q-field--standout.q-field--highlighted {
+  .q-field__control {
+    color: inherit;
+    background-color: $yuno_dark_text_color;
+  }
+
+  .q-field__append {
+    color: inherit;
+  }
+
+  .q-field__native {
+    color: inherit;
+  }
+}
+
+.astercasc-simple-table-pri {
+  background-color: $yuno_dark_text_color;
+  color: $yuno_dark_bg;
+  border-radius: .5rem;
+
+  .astercasc-simple-table-header-pri {
+    background-image: $yuno_black_gradient_195;
+    color: $yuno_dark_text_color;
+  }
+
+  .q-table__bottom {
+    background-image: $yuno_black_gradient_195;
+    color: $yuno_dark_text_color;
+    font-size: .9rem;
+    padding: .7rem 1rem;
+
+    .astercasc-simple-table-bottom-pri {
+      width: 100%;
+
+      .astercasc-simple-table-bottom-selected-contain {
+        background-color: $yuno_light_text-color;
+      }
+
+      .q-pagination {
+        .bg-primary {
+          background-color: $yuno_light_text-color !important;
+        }
+
+        .text-primary {
+          color: $yuno_dark_text_color !important;
+        }
+
+        .q-btn--standard {
+          outline: 2px solid $yuno_dark_text_color !important;
+        }
+
+        .q-btn {
+          padding: 0.1rem !important;
+          min-height: .8rem !important;
+        }
+      }
+    }
+  }
+
+  .astercasc-header-checkbox {
+    .q-checkbox__inner {
+      color: $yuno_dark_text_color;
+    }
+
+    .q-checkbox__svg {
+      color: $yuno_dark_bg;
+    }
+  }
+
+
+}
+
+.astercasc-litter-title-asterisk {
+  font-size: 1.05rem;
+}
+
+.astercasc-litter-title-asterisk::before {
+  content: '*';
+  color: red;
+}
+
+.astercasc-litter-asterisk {
+  font-size: .95rem;
+}
+
+.astercasc-litter-asterisk::before {
+  content: '*';
+  color: red;
+}
+
+
+.astercasc-dialog-frame-standard {
+  min-height: 20rem;
+  min-width: 20rem;
+  padding: 1rem;
+  @extend .astercasc-simple-card;
+
+}
