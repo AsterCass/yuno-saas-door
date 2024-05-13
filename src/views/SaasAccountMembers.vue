@@ -4,14 +4,12 @@
     <div class="row items-center q-ml-sm">
       <q-input v-model="orderSearchNo" color="grey q-ma-sm" hide-bottom-space borderless
                placeholder="请输入订单编号"
-               :input-style="{fontSize: '.9rem', color:'#333',
-                       borderRadius: '.5rem', backgroundColor:'#ddd', margin: '0.5rem',
-                       padding: '0 1rem', width: '20rem'} "/>
+               input-class="astercasc-input-inner-base"
+               :input-style="{ width: '20rem'} "/>
       <q-input v-model="orderSearchKey" color="grey q-ma-sm" hide-bottom-space borderless
                placeholder="请输入关键信息查询（活动、房源、选房人等）"
-               :input-style="{fontSize: '.9rem', color:'#333',
-                       borderRadius: '.5rem', backgroundColor:'#ddd', margin: '0.5rem',
-                       padding: '0 1rem', width: '25rem'} "/>
+               input-class="astercasc-input-inner-base"
+               :input-style="{ width: '25rem'} "/>
 
       <q-select standout dense label="订单状态" class="q-ma-md astercasc-simple-select-margin-pri"
                 v-model="orderStatus" :options="orderStatusOpt"
@@ -209,5 +207,6 @@ onMounted(() => {
 
 <style lang="scss">
 @import "@/styles/main-component-style";
+
 
 </style>
