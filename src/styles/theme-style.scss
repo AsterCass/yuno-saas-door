@@ -709,6 +709,73 @@
   }
 
 
+  .astercasc-simple-table-pri {
+    background-color: $yuno_dark_bg;
+    color: $yuno_dark_text_color;
+
+    .astercasc-simple-table-header-pri {
+      background-image: $yuno-theme-dark-focus-gra;
+      color: $yuno_dark_text_color;
+    }
+
+    .q-table__bottom {
+      background-color: $yuno_dark_bg;
+      color: $yuno_dark_text_color;
+
+      .astercasc-simple-table-bottom-pri {
+        color: $yuno_dark_text_color;
+
+        .astercasc-simple-table-bottom-selected-contain {
+          color: $yuno_dark_bg;
+          background-color: $yuno_dark_text_color;
+        }
+
+        .astercasc-simple-table-bottom-line {
+          background-image: $yuno-theme-dark-focus-gra;
+        }
+
+        .q-pagination {
+          .bg-primary {
+            color: $yuno_dark_bg !important;
+            background-color: $yuno_dark_text_color !important;
+          }
+
+          .text-primary {
+            color: $yuno_dark_text_color !important;
+          }
+        }
+      }
+    }
+
+    .q-checkbox__inner {
+      color: $yuno_dark_text_color;
+    }
+
+    .q-checkbox__svg {
+      color: $yuno_dark_text_color;
+    }
+
+    .astercasc-header-checkbox {
+      .q-checkbox__svg {
+        color: $yuno_dark_text_color !important;
+      }
+
+      .q-checkbox__bg {
+        color: $yuno_dark_text_color;
+      }
+
+      .q-checkbox__inner--truthy .q-checkbox__bg {
+        color: $yuno-theme-black-focus;
+      }
+
+      .q-checkbox__inner--indet .q-checkbox__bg {
+        color: $yuno-theme-black-focus;
+      }
+
+    }
+  }
+
+
 }
 
 //============================== black ==============================
