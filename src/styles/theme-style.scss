@@ -157,6 +157,14 @@
     @include astercasc-simple-btn(0rem, 2.2rem, 5rem, $yuno-theme-black-gra)
   }
 
+  .astercasc-outline-btn-margin-pri {
+    @include astercasc-outline-btn(0rem, 2.5rem, 6rem, $yuno-theme-black)
+  }
+
+  .astercasc-outline-btn-margin-pri-mid {
+    @include astercasc-outline-btn(0rem, 2.2rem, 5rem, $yuno-theme-black)
+  }
+
   .astercasc-simple-table-pri {
     background-color: $yuno_dark_text_color;
     color: $yuno_dark_bg;
@@ -209,11 +217,19 @@
     }
   }
 
+  .astercasc-simple-quoted-title {
+    background-color: $yuno_dark_text_color;
+    color: $yuno-theme-black;
+    border-left: 5px solid $yuno-theme-black;
+  }
+
 }
+
+
+//============================== green ==============================
 
 .yuno-light-model.astercasc-theme-green {
 
-  //============================== green ==============================
   .astercasc-theme-base {
     color: $yuno-theme-green;
   }
@@ -283,6 +299,14 @@
     @include astercasc-simple-btn(0rem, 2.2rem, 5rem, $yuno-theme-green-gra)
   }
 
+  .astercasc-outline-btn-margin-pri {
+    @include astercasc-outline-btn(0rem, 2.5rem, 6rem, $yuno-theme-green)
+  }
+
+  .astercasc-outline-btn-margin-pri-mid {
+    @include astercasc-outline-btn(0rem, 2.2rem, 5rem, $yuno-theme-green)
+  }
+
   .astercasc-simple-table-pri {
     background-color: $yuno_dark_text_color;
     color: $yuno_dark_bg;
@@ -333,6 +357,12 @@
         color: $yuno-theme-green !important;
       }
     }
+  }
+
+  .astercasc-simple-quoted-title {
+    background-color: $yuno_dark_text_color;
+    color: $yuno-theme-green;
+    border-left: 5px solid $yuno-theme-green;
   }
 
 }
@@ -409,6 +439,14 @@
     @include astercasc-simple-btn(0rem, 2.2rem, 5rem, $yuno-theme-blue-gra)
   }
 
+  .astercasc-outline-btn-margin-pri {
+    @include astercasc-outline-btn(0rem, 2.5rem, 6rem, $yuno-theme-blue)
+  }
+
+  .astercasc-outline-btn-margin-pri-mid {
+    @include astercasc-outline-btn(0rem, 2.2rem, 5rem, $yuno-theme-blue)
+  }
+
   .astercasc-simple-table-pri {
     background-color: $yuno_dark_text_color;
     color: $yuno_dark_bg;
@@ -459,6 +497,12 @@
         color: $yuno-theme-blue !important;
       }
     }
+  }
+
+  .astercasc-simple-quoted-title {
+    background-color: $yuno_dark_text_color;
+    color: $yuno-theme-blue;
+    border-left: 5px solid $yuno-theme-blue;
   }
 
 }
@@ -535,6 +579,14 @@
     @include astercasc-simple-btn(0rem, 2.2rem, 5rem, $yuno-theme-orange-gra)
   }
 
+  .astercasc-outline-btn-margin-pri {
+    @include astercasc-outline-btn(0rem, 2.5rem, 6rem, $yuno-theme-orange)
+  }
+
+  .astercasc-outline-btn-margin-pri-mid {
+    @include astercasc-outline-btn(0rem, 2.2rem, 5rem, $yuno-theme-orange)
+  }
+
   .astercasc-simple-table-pri {
     background-color: $yuno_dark_text_color;
     color: $yuno_dark_bg;
@@ -586,6 +638,12 @@
         color: $yuno-theme-orange !important;
       }
     }
+  }
+
+  .astercasc-simple-quoted-title {
+    background-color: $yuno_dark_text_color;
+    color: $yuno-theme-orange;
+    border-left: 5px solid $yuno-theme-orange;
   }
 
 }
@@ -706,6 +764,14 @@
 
   .astercasc-simple-btn-margin-pri-mid {
     @include astercasc-simple-btn(0rem, 2.2rem, 5rem, $yuno-theme-dark-focus-gra)
+  }
+
+  .astercasc-outline-btn-margin-pri {
+    @include astercasc-outline-btn(0rem, 2.5rem, 6rem, $yuno_dark_text_color)
+  }
+
+  .astercasc-outline-btn-margin-pri-mid {
+    @include astercasc-outline-btn(0rem, 2.2rem, 5rem, $yuno_dark_text_color)
   }
 
 

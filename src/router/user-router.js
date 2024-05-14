@@ -83,8 +83,8 @@ export const leftBarRouter = [
                 child: []
             },
             {
-                pageCode: "saasApprovalSettings",
-                pageTitle: "审批设置",
+                pageCode: "saasApprovalTemplates",
+                pageTitle: "审批模板",
                 pageIcon: "fa-solid fa-gears",
                 haveChild: false,
                 webIsOpenChild: false,

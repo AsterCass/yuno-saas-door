@@ -12,7 +12,7 @@
     </q-page-container>
 
     <!--    <q-footer/>-->
-    <CopyrightFooter/>
+    <!--    <CopyrightFooter/>-->
   </q-layout>
 
   <!--  <CopyrightFooter/>-->
@@ -20,7 +20,6 @@
 </template>
 
 <script setup>
-import CopyrightFooter from "@/components/CopyrightFooter.vue";
 import DashboardHeader from "@/components/DashboardHeader.vue";
 import DashboardLeftMenu from "@/components/DashboardLeftMenu.vue";
 import DashboardRightMenu from "@/components/DashboardRightMenu.vue";

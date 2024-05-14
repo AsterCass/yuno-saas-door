@@ -12,7 +12,8 @@ import SaasMessageInbox from "@/views/SaasMessageInbox.vue";
 import SaasMessagePostbox from "@/views/SaasMessagePostbox.vue";
 import SaasDictionary from "@/views/SaasDictionary.vue";
 import SaasApprovalFlux from "@/views/SaasApprovalFlux.vue";
-import SaasApprovalSettings from "@/views/SaasApprovalSettings.vue";
+import SaasApprovalTemplates from "@/views/SaasApprovalTemplates.vue";
+import SaasApprovalTemplatesNew from "@/views/SaasApprovalTemplatesNew.vue";
 
 const router = createRouter({
     // history: createWebHashHistory(process.env.BASE_URL),
@@ -101,11 +102,19 @@ const router = createRouter({
                             },
                         },
                         {
-                            path: 'settings',
-                            name: 'saasApprovalSettings',
-                            component: SaasApprovalSettings,
+                            path: 'templates',
+                            name: 'saasApprovalTemplates',
+                            component: SaasApprovalTemplates,
                             meta: {
-                                title: 'YunoSaas审批设置'
+                                title: 'YunoSaas审批模板'
+                            },
+                        },
+                        {
+                            path: 'template/new',
+                            name: 'saasApprovalTemplatesNew',
+                            component: SaasApprovalTemplatesNew,
+                            meta: {
+                                title: 'YunoSaas创建审批模板'
                             },
                         },
                     ]
@@ -198,6 +207,10 @@ export function toSpecifyPageWithQuery(thisRouter, pageName, queryMap) {
         name: pageName,
         query: queryMap,
     })
+}
+
+export function toBack(thisRouter) {
+    thisRouter.go(-1)
 }
 
 export default router;

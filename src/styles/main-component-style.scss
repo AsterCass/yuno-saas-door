@@ -22,16 +22,8 @@ $min-width:4rem, $color: $yuno_light_text-color) {
   border-radius: 0.8rem;
 }
 
-.astercasc-outline-btn-margin-pri {
-  @include astercasc-outline-btn(0rem, 2.5rem, 6rem)
-}
-
 .astercasc-outline-btn-margin-pri.q-btn--outline:before {
   border: 2px solid currentColor !important;
-}
-
-.astercasc-outline-btn-margin-pri-mid {
-  @include astercasc-outline-btn(0rem, 2.2rem, 5rem)
 }
 
 .astercasc-outline-btn-margin-pri-mid.q-btn--outline:before {
@@ -39,11 +31,9 @@ $min-width:4rem, $color: $yuno_light_text-color) {
 }
 
 .astercasc-simple-quoted-title {
-  background-color: $yuno_dark_text_color;
   font-size: 1.35rem;
   padding: .2rem .5rem;
   border-radius: 0 .8rem .8rem 0;
-  border-left: 5px solid $yuno-theme-black;
 }
 
 .astercasc-simple-table-pri {

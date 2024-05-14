@@ -187,36 +187,44 @@ function changeStyleModel(model) {
   //suggestion config auto enable
   changeSidebarBg("black")
   changeThemeColor("black")
+
+  emitter.emit('changeStyleModelEvent', model)
 }
 
 function changeRightMenu(toStatus) {
-  emitter.emit('changeRightMenuEvent', toStatus)
   saveUserBehavior({rightMenuShow: toStatus})
   showRightMenu.value = toStatus
+
+  emitter.emit('changeRightMenuEvent', toStatus)
 }
 
 function changeSidebarBg(toStatus) {
-  emitter.emit('changeSidebarBgEvent', toStatus)
   saveUserBehavior({sidebarBg: toStatus})
   sidebarBg.value = toStatus;
+
+  emitter.emit('changeSidebarBgEvent', toStatus)
 }
 
 function changeSidebarImg(toStatus) {
-  emitter.emit('changeSidebarImgEvent', toStatus)
   saveUserBehavior({sidebarImg: toStatus})
   sidebarImg.value = toStatus;
+
+  emitter.emit('changeSidebarImgEvent', toStatus)
 }
 
 function changeThemeColor(toStatus) {
   updateWebsiteThemeModel(toStatus)
   saveUserBehavior({themeColor: toStatus})
   themeModel.value = toStatus;
+
+  emitter.emit('changeThemeColorEvent', toStatus)
 }
 
 function changeLeftFocusOne(toStatus) {
-  emitter.emit('changeLeftFocusOneEvent', toStatus)
   saveUserBehavior({leftFocusOne: toStatus})
   leftFocusOne.value = toStatus;
+
+  emitter.emit('changeLeftFocusOneEvent', toStatus)
 }
 
 
