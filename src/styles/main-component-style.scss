@@ -96,10 +96,22 @@ $min-width:4rem, $color: $yuno_light_text-color) {
   color: red;
 }
 
+.astercasc-input-inner-dense {
+  font-size: .9rem !important;
+  border-radius: .5rem !important;
+  margin: .3rem !important;
+  padding: 0 1rem !important;
+}
 
-//.astercasc-dialog-frame-standard {
-//  min-height: 20rem;
-//  min-width: 20rem;
-//  padding: 1rem;
-//  @extend .astercasc-simple-card;
-//}
+.astercasc-input-inner-file {
+  border-radius: .5rem;
+  font-size: .9rem;
+  margin: 0;
+  padding: 0 1rem;
+}
+
+.astercasc-dialog-frame-standard {
+  min-height: 20rem;
+  min-width: 20rem;
+  padding: 1rem;
+}

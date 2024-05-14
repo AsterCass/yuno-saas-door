@@ -22,6 +22,14 @@
 
     </div>
 
+    <div class="row q-mt-md q-ml-lg ">
+      <q-btn class=" astercasc-simple-btn-margin-pri-mid" label="导入用户"
+             @click="emitter.emit('showSaasImportUserEvent')"/>
+      <div class="q-mx-md"/>
+      <q-btn class=" astercasc-simple-btn-margin-pri-mid" label="新增用户"
+             @click="emitter.emit('showSaasNewUserEvent')"/>
+    </div>
+
 
     <div class="q-ma-lg">
       <q-table
@@ -77,11 +85,19 @@
 
 
   </div>
+
+  <SaasImportUser/>
+  <SaasNewUser/>
+
 </template>
 
 <script setup>
 import {onMounted, ref} from "vue";
 import {searchOrderRet} from "@/mock/account";
+import SaasImportUser from "@/components/SaasImportUser.vue";
+import SaasNewUser from "@/components/SaasNewUser.vue";
+import emitter from "@/utils/bus";
+
 
 const orderStatusOpt = ref([
   {

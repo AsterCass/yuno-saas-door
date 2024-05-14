@@ -83,6 +83,32 @@
     }
   }
 
+  .astercasc-dialog-frame-standard {
+    @extend .astercasc-simple-card;
+
+    .astercasc-input-inner-dense {
+      color: #333 !important;
+      background-color: #bbb !important;
+    }
+
+    .astercasc-input-inner-file {
+      background-color: #bbb;
+
+      .q-field__label {
+        color: #333;
+      }
+
+      .q-field__native {
+        color: #333;
+      }
+
+      .q-field__focusable-action {
+        color: #333;
+      }
+    }
+
+  }
+
 }
 
 //============================== black ==============================
@@ -755,6 +781,39 @@
 
     .q-item--active {
       color: inherit !important;
+    }
+  }
+
+  .astercasc-dialog-frame-standard {
+    @extend .astercasc-simple-card;
+
+    .astercasc-simple-btn-margin-pri {
+      @include astercasc-simple-btn(0rem, 2.5rem, 6rem, $yuno-theme-black-light-gra)
+    }
+
+    .astercasc-simple-btn-margin-pri-mid {
+      @include astercasc-simple-btn(0rem, 2.2rem, 5rem, $yuno-theme-black-light-gra)
+    }
+
+    .astercasc-input-inner-dense {
+      color: $yuno_light_bg !important;
+      background-color: $yuno_light_text-color !important;
+    }
+
+    .astercasc-input-inner-file {
+      background-color: $yuno_light_text-color;
+
+      .q-field__label {
+        color: $yuno_dark_text_color;
+      }
+
+      .q-field__native {
+        color: $yuno_dark_text_color;
+      }
+
+      .q-field__focusable-action {
+        color: $yuno_dark_text_color;
+      }
     }
   }
 
