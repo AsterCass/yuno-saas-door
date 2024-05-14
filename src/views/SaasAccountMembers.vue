@@ -29,36 +29,48 @@
           table-header-class="astercasc-simple-table-header-pri"
           :rows="testRow"
           :columns="projectColumns"
-          row-key="projectNo"
+          row-key="orderNo"
+          selection="multiple"
+          v-model:selected="multiSelect"
           :pagination="{rowsPerPage: 0}"
+
       >
         <template v-slot:bottom>
-          <div class="row justify-between astercasc-simple-table-bottom-pri items-center">
-            <div class="row justify-start items-center">
-              <div>
-                单页容量：
+          <div class="astercasc-simple-table-bottom-pri">
+
+            <div class="row justify-between items-center q-mx-lg">
+              <div class="row justify-start items-center">
+                <div>
+                  单页容量：
+                </div>
+                <q-btn :class="pageSize === 5 ? 'astercasc-simple-table-bottom-selected-contain' : ''"
+                       flat round dense class="q-mx-sm" label="5" @click="updatePageSize(5)"/>
+                <q-btn :class="pageSize === 10 ? 'astercasc-simple-table-bottom-selected-contain' : ''"
+                       flat round dense class="q-mx-sm" label="10" @click="updatePageSize(10)"/>
+                <q-btn :class="pageSize === 20 ? 'astercasc-simple-table-bottom-selected-contain' : ''"
+                       flat round dense class="q-mx-sm" label="20" @click="updatePageSize(20)"/>
+                <q-btn :class="pageSize === 30 ? 'astercasc-simple-table-bottom-selected-contain' : ''"
+                       flat round dense class="q-mx-sm" label="30" @click="updatePageSize(30)"/>
+                <q-btn :class="pageSize === 50 ? 'astercasc-simple-table-bottom-selected-contain' : ''"
+                       flat round dense class="q-mx-sm" label="50" @click="updatePageSize(50)"/>
               </div>
-              <q-btn :class="pageSize === 5 ? 'astercasc-simple-table-bottom-selected-contain' : ''"
-                     round dense class="q-mx-sm" label="5" @click="updatePageSize(5)"/>
-              <q-btn :class="pageSize === 10 ? 'astercasc-simple-table-bottom-selected-contain' : ''"
-                     round dense class="q-mx-sm" label="10" @click="updatePageSize(10)"/>
-              <q-btn :class="pageSize === 20 ? 'astercasc-simple-table-bottom-selected-contain' : ''"
-                     round dense class="q-mx-sm" label="20" @click="updatePageSize(20)"/>
-              <q-btn :class="pageSize === 30 ? 'astercasc-simple-table-bottom-selected-contain' : ''"
-                     round dense class="q-mx-sm" label="30" @click="updatePageSize(30)"/>
-              <q-btn :class="pageSize === 50 ? 'astercasc-simple-table-bottom-selected-contain' : ''"
-                     round dense class="q-mx-sm" label="50" @click="updatePageSize(50)"/>
-            </div>
-            <div class="row justify-end items-center">
-              <div>
-                <q-pagination
-                    v-model="pageNo" :max="pageSum" :max-pages="8"
-                    boundary-numbers directionLinks size=".85rem"
-                    @update:modelValue="toNewPage()"
-                />
+              <div class="row justify-end items-center">
+                <div>
+                  <q-pagination
+                      v-model="pageNo" :max="pageSum" :max-pages="8"
+                      boundary-numbers directionLinks size=".85rem"
+                      @update:modelValue="toNewPage()"
+                  />
+                </div>
               </div>
             </div>
+            <div class="astercasc-simple-table-bottom-line"/>
           </div>
+
+
+        </template>
+        <template v-slot:header-selection="scope">
+          <q-checkbox class="astercasc-header-checkbox" keep-color v-model="scope.selected"/>
         </template>
       </q-table>
     </div>
@@ -168,6 +180,7 @@ const testRow = ref([])
 let orderSearchNo = ref("")
 let orderSearchKey = ref("")
 let orderStatus = ref()
+let multiSelect = ref([])
 
 let pageSize = ref(10)
 let pageNo = ref(1)
@@ -201,12 +214,12 @@ onMounted(() => {
 
 </script>
 <style scoped lang="scss">
-@import "@/styles/main-component-style";
+@import "@/styles/theme-style";
 
 </style>
 
 <style lang="scss">
-@import "@/styles/main-component-style";
+@import "@/styles/theme-style";
 
 
 </style>

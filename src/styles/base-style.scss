@@ -29,10 +29,32 @@ $yuno-mix-bg-green: linear-gradient(180deg, #32A032, #289628);
 $yuno-mix-bg-blue: linear-gradient(180deg, #1976D2, #1070d0);
 $yuno-mix-bg-orange: linear-gradient(180deg, #E65151, #E04040);
 //yuno theme
-$yuno-theme-black: $yuno_light_text-color;
+$yuno-theme-black-focus: #020202;
+$yuno-theme-black: #212121; //grey-10;
+$yuno-theme-black-light: #424242; // grey-9
+$yuno-theme-black-light-light: #616161; //grey-8
+$yuno-theme-dark-focus-gra: linear-gradient(15deg, $yuno-theme-black-focus, $yuno-theme-black);
+$yuno-theme-black-gra: linear-gradient(15deg, $yuno-theme-black, $yuno-theme-black-light);
+$yuno-theme-black-light-gra: linear-gradient(15deg, $yuno-theme-black-light, $yuno-theme-black-light-light);
+
 $yuno-theme-green: #1B5E20; //green-10
+$yuno-theme-green-light: #2e7d32; //green-9
+$yuno-theme-green-light-light: #388e3c; //green-8
+$yuno-theme-green-gra: linear-gradient(15deg, $yuno-theme-green, $yuno-theme-green-light);
+$yuno-theme-green-light-gra: linear-gradient(15deg, $yuno-theme-green-light, $yuno-theme-green-light-light);
+
 $yuno-theme-blue: #1976D2; //blue-8
-$yuno-theme-orange: #E65151; //orange-10;
+$yuno-theme-blue-light: #1e88e5; //blue-7
+$yuno-theme-blue-light-light: #2196f3; //blue-6
+$yuno-theme-blue-gra: linear-gradient(15deg, $yuno-theme-blue, $yuno-theme-blue-light);
+$yuno-theme-blue-light-gra: linear-gradient(15deg, $yuno-theme-blue-light, $yuno-theme-blue-light-light);
+
+$yuno-theme-orange: #E65151;
+$yuno-theme-orange-light: #f06262;
+$yuno-theme-orange-light-light: #ff7070;
+$yuno-theme-orange-gra: linear-gradient(15deg, $yuno-theme-orange, $yuno-theme-orange);
+$yuno-theme-orange-light-gra: linear-gradient(15deg, $yuno-theme-orange-light, $yuno-theme-orange-light-light);
+
 
 //base
 html, body, aside {
