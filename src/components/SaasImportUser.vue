@@ -8,7 +8,7 @@
           导入活动租客
         </h5>
 
-        <q-separator inset class="q-ma-sm half-opacity"/>
+        <q-separator inset class="q-ma-sm half-opacity" :dark="getUserBehavior().styleModel === 'dark'"/>
 
         <div class="q-mx-lg q-mt-lg q-mb-xs">
 
@@ -57,6 +57,7 @@ import {onMounted, onUnmounted, ref} from "vue";
 import emitter from "@/utils/bus";
 import {useQuasar} from "quasar";
 import {notifyTopWarning} from "@/utils/global-notify";
+import {getUserBehavior} from "@/utils/store";
 
 const notify = useQuasar().notify
 

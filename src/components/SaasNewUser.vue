@@ -9,7 +9,7 @@
           新增活动租客
         </h5>
 
-        <q-separator inset class="q-ma-sm half-opacity"/>
+        <q-separator inset class="q-ma-sm half-opacity" :dark="getUserBehavior().styleModel === 'dark'"/>
 
         <div class="q-ma-lg">
           <div class="row items-center">
@@ -66,6 +66,7 @@
 <script setup>
 import {onMounted, onUnmounted, ref} from "vue";
 import emitter from "@/utils/bus";
+import {getUserBehavior} from "@/utils/store";
 
 let showNewBookUser = ref(false);
 let newBookUserData = ref({
@@ -80,12 +81,10 @@ function closeNewBookUser() {
 }
 
 function showSaasNewUserEvent() {
-  console.log(2222222222222)
   showNewBookUser.value = true
 }
 
 onMounted(() => {
-  console.log(1111111111)
   emitter.on('showSaasNewUserEvent', showSaasNewUserEvent)
 })
 

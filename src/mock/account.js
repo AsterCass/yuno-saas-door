@@ -12,6 +12,8 @@ export const searchOrderRet = [
         bookUserIdCard: "330458555555555555",
         orderStatus: "待验房",
         createTime: "2024-05-12 12:26:56",
+        inUpStyle: true,
+        inDownStyle: false,
     },
     {
         orderNo: "20321351216352",
@@ -24,6 +26,8 @@ export const searchOrderRet = [
         bookUserIdCard: "330458555555555555",
         orderStatus: "待验房",
         createTime: "2024-05-12 12:26:56",
+        inUpStyle: true,
+        inDownStyle: false,
     },
     {
         orderNo: "20321351216353",
@@ -36,6 +40,8 @@ export const searchOrderRet = [
         bookUserIdCard: "330458555555555555",
         orderStatus: "待验房",
         createTime: "2024-05-12 12:26:56",
+        inUpStyle: true,
+        inDownStyle: false,
     },
     {
         orderNo: "20321351216354",
@@ -48,6 +54,8 @@ export const searchOrderRet = [
         bookUserIdCard: "330458555555555555",
         orderStatus: "待验房",
         createTime: "2024-05-12 12:26:56",
+        inUpStyle: true,
+        inDownStyle: false,
     },
     {
         orderNo: "20321351216355",
@@ -60,6 +68,8 @@ export const searchOrderRet = [
         bookUserIdCard: "330458555555555555",
         orderStatus: "待验房",
         createTime: "2024-05-12 12:26:56",
+        inUpStyle: false,
+        inDownStyle: true,
     },
     {
         orderNo: "20321351216356",
@@ -72,49 +82,7 @@ export const searchOrderRet = [
         bookUserIdCard: "330458555555555555",
         orderStatus: "待验房",
         createTime: "2024-05-12 12:26:56",
-    },
-]
-
-
-export const searchBookUserRet = [
-    {
-        bookOrder: 1,
-        bookUserName: "张三",
-        bookUserPhone: "15855556666",
-        bookUserIdCard: "330724111155555555",
-        bookUserMailStatus: "已发送",
-        bookUserGroupStatus: "待确认",
-        bookStartTime: "2024-05-12 09:30",
-        operation: "删除 | 重发短信",
-    },
-    {
-        bookOrder: 2,
-        bookUserName: "张三",
-        bookUserPhone: "15855556666",
-        bookUserIdCard: "330724111155555555",
-        bookUserMailStatus: "已发送",
-        bookUserGroupStatus: "待确认",
-        bookStartTime: "2024-05-12 09:30",
-        operation: "删除 | 重发短信",
-    },
-    {
-        bookOrder: 3,
-        bookUserName: "张三",
-        bookUserPhone: "15855556666",
-        bookUserIdCard: "330724111155555555",
-        bookUserMailStatus: "已发送",
-        bookUserGroupStatus: "待确认",
-        bookStartTime: "2024-05-12 09:30",
-        operation: "删除 | 重发短信",
-    },
-    {
-        bookOrder: 4,
-        bookUserName: "张三",
-        bookUserPhone: "15855556666",
-        bookUserIdCard: "330724111155555555",
-        bookUserMailStatus: "已发送",
-        bookUserGroupStatus: "待确认",
-        bookStartTime: "2024-05-12 09:30",
-        operation: "删除 | 重发短信",
+        inUpStyle: false,
+        inDownStyle: true,
     },
 ]

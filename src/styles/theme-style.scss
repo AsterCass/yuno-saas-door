@@ -109,6 +109,10 @@
 
   }
 
+  .astercasc-dialog-frame-big {
+    background-color: $yuno_light_bg;
+  }
+
 }
 
 //============================== black ==============================
@@ -815,6 +819,10 @@
         color: $yuno_dark_text_color;
       }
     }
+  }
+
+  .astercasc-dialog-frame-big {
+    background-color: $yuno_dark_bg;
   }
 
   .astercasc-simple-btn-margin-pri {
