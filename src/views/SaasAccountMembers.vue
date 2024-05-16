@@ -12,7 +12,7 @@
                :input-style="{ width: '25rem'} "/>
 
       <q-select standout dense label="订单状态" class="q-ma-md astercasc-simple-select-margin-pri"
-                v-model="orderStatus" :options="orderStatusOpt"
+                v-model="orderStatus" :options="orderStatusOpt" clearable
                 popup-content-class="astercasc-simple-card" menu-anchor="bottom start" :menu-offset="[0, 5]"
       />
 
@@ -115,7 +115,7 @@ let accountMemberTable = ref(null)
 //search
 let orderSearchNo = ref("")
 let orderSearchKey = ref("")
-let orderStatus = ref()
+let orderStatus = ref(null)
 let orderAddressCode = ref("")
 //judgement dialog
 let dialogJudgmentData = ref({})

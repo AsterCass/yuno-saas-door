@@ -5,6 +5,11 @@
            align="between" icon-right="checklist">
       <q-menu class="astercasc-simple-card" :offset="[0, 5]">
         <q-list style="max-height: 20rem; width: 15rem; direction: rtl;overflow:auto;">
+
+          <q-item v-show="showClear" style="direction:ltr;" clickable @click="clearCode()" v-close-popup>
+            <q-item-section class="text-red-10">清除选择...</q-item-section>
+          </q-item>
+
           <q-item style="direction:ltr;" v-for="(thisProvince, index) in provinceData" :key="index" clickable
                   @click="loadCityData(thisProvince.code)">
             <q-item-section>{{ thisProvince.label }}</q-item-section>
@@ -45,6 +50,7 @@
 <script setup>
 
 import {defineEmits, onMounted, ref} from "vue";
+import {delay} from "@/utils/delay-exe";
 
 
 const emit = defineEmits(['update-address'])
@@ -54,10 +60,22 @@ let cityData = ref([])
 let districtData = ref([])
 
 let retDistrict = ref("区域选择")
+let showClear = ref(false)
 
 function selectedCode(title, code) {
   retDistrict.value = title
   emit('update-address', code);
+  delay(200).then(() => {
+    showClear.value = true
+  })
+}
+
+function clearCode() {
+  retDistrict.value = "区域选择"
+  emit('update-address', "");
+  delay(200).then(() => {
+    showClear.value = false
+  })
 }
 
 function loadDistrictData(cityCode) {
