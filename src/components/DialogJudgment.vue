@@ -51,6 +51,10 @@ const props = defineProps({
   callbackMethod: {
     type: Function,
     required: true,
+  },
+  emitStr: {
+    type: String,
+    required: true,
   }
 })
 
@@ -61,15 +65,18 @@ function closeImportBookUser() {
 }
 
 function showDialogJudgmentEvent(show = true) {
-  showDialogJudgment.value = show;
+  if (props.dialogJudgmentData.title &&
+      props.dialogJudgmentData.content) {
+    showDialogJudgment.value = show;
+  }
 }
 
 onMounted(() => {
-  emitter.on('showDialogJudgmentEvent', showDialogJudgmentEvent)
+  emitter.on(props.emitStr, showDialogJudgmentEvent)
 })
 
 onUnmounted(() => {
-  emitter.off('showDialogJudgmentEvent', showDialogJudgmentEvent)
+  emitter.off(props.emitStr, showDialogJudgmentEvent)
 })
 
 </script>

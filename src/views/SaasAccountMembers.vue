@@ -51,7 +51,8 @@
   <SaasImportUser/>
   <SaasNewUser/>
   <DialogJudgment :dialog-judgment-data="dialogJudgmentData"
-                  :callback-method="deleteUserDialog"/>
+                  :callback-method="deleteUserDialog"
+                  emit-str="showDialogJudgmentEvent"/>
 
 </template>
 
@@ -170,8 +171,6 @@ function saasAccountMembersDownEvent(map) {
 }
 
 function saasAccountMembersDeleteEvent(map) {
-  console.log(map)
-
   dialogJudgmentData.value.title = "删除用户"
   dialogJudgmentData.value.content = `确认是否删除用户 ${map.id}`
   dialogJudgmentData.value.trueLabel = `删除`
