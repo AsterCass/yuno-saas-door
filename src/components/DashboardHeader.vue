@@ -2,10 +2,11 @@
   <q-header class="top-semi-trans-header">
     <q-toolbar class="row justify-between">
       <div class="col-9 row justify-start items-center">
-        <q-btn v-show="leftMenuMini" class="header-btn" @click="changeLeftMini(!leftMenuMini)"
-               flat dense icon="fa-solid fa-angle-right"/>
-        <q-btn v-show="!leftMenuMini" class="header-btn" @click="changeLeftMini(!leftMenuMini)"
-               flat dense icon="fa-solid fa-angle-left"/>
+        <q-btn class="header-btn" @click="changeLeftMini(!leftMenuMini)"
+               flat dense icon="fa-solid fa-bars"/>
+
+        <div class="q-mx-xs"/>
+
         <q-breadcrumbs>
           <template v-slot:separator>
             <q-icon
@@ -42,6 +43,9 @@
 import {onMounted, ref} from "vue";
 import {getUserBehavior, saveUserBehavior} from "@/utils/store";
 import {emitter} from "@/utils/bus";
+
+//router
+// const thisRouter = useRouter()
 
 let leftMenuMini = ref(false);
 let rightMenuShow = ref(false)
