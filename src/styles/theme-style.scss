@@ -119,6 +119,10 @@
 
 .yuno-light-model.astercasc-theme-black {
 
+  ::-webkit-scrollbar-thumb {
+    background-color: $yuno-theme-black;
+  }
+
   .astercasc-theme-base {
     color: $yuno-theme-black;
   }
@@ -259,6 +263,10 @@
 //============================== green ==============================
 
 .yuno-light-model.astercasc-theme-green {
+
+  ::-webkit-scrollbar-thumb {
+    background-color: $yuno-theme-green;
+  }
 
   .astercasc-theme-base {
     color: $yuno-theme-green;
@@ -401,6 +409,10 @@
 
 .yuno-light-model.astercasc-theme-blue {
 
+  ::-webkit-scrollbar-thumb {
+    background-color: $yuno-theme-blue;
+  }
+
   .astercasc-theme-base {
     color: $yuno-theme-blue;
   }
@@ -540,6 +552,10 @@
   //============================== orange ==============================
 
 .yuno-light-model.astercasc-theme-orange {
+
+  ::-webkit-scrollbar-thumb {
+    background-color: $yuno-theme-orange;
+  }
 
   .astercasc-theme-base {
     color: $yuno-theme-orange;
@@ -682,6 +698,10 @@
 //============================== dark ==============================
 
 .yuno-dark-model {
+
+  ::-webkit-scrollbar-thumb {
+    background-color: $yuno_dark_text_color;
+  }
 
   .astercasc-theme-black-doc {
     color: $yuno_dark_text_color;

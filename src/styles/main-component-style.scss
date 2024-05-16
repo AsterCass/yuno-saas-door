@@ -1,5 +1,25 @@
 @import "@/styles/base-style";
 
+::-webkit-scrollbar {
+  overflow: visible;
+  z-index: 12;
+  background: transparent;
+  height: 14px;
+  width: 18px;
+}
+
+::-webkit-scrollbar-thumb {
+  cursor: pointer;
+  width: 10px;
+  border-radius: 8px;
+  z-index: 12;
+  border: 4px solid rgba(0, 0, 0, 0);
+  background-clip: padding-box;
+  transition: background-color .28s ease-in-out;
+  margin: 4px;
+  min-height: 32px;
+  min-width: 32px;
+}
 
 @mixin astercasc-simple-btn($margin: 0, $min-height:2rem, $min-width:4rem,
 $background-image: $yuno_black_gradient_195, $color: $yuno_dark_text_color) {
