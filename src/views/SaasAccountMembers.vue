@@ -50,6 +50,8 @@
 
   <SaasImportUser/>
   <SaasNewUser/>
+  <DialogJudgment :dialog-judgment-data="dialogJudgmentData"
+                  :callback-method="deleteUserDialog"/>
 
 </template>
 
@@ -62,7 +64,12 @@ import ComplexTable from "@/components/ComplexTable.vue";
 import {bookHouseOrderColumns} from "@/constant/tables";
 import {ComplexTableColumnEnum, orderStatusOpt} from "@/constant/enums";
 import {searchOrderRet} from "@/mock/account";
+import DialogJudgment from "@/components/DialogJudgment.vue";
+import {useQuasar} from "quasar";
+import {notifyTopPositive} from "@/utils/global-notify";
 
+//notify
+const notify = useQuasar().notify
 //table
 const tableBaseInfo = ref({
   tableColumns: bookHouseOrderColumns,
@@ -109,6 +116,8 @@ let accountMemberTable = ref(null)
 let orderSearchNo = ref("")
 let orderSearchKey = ref("")
 let orderStatus = ref()
+//judgement dialog
+let dialogJudgmentData = ref({})
 
 function searchOrder() {
   console.log(orderSearchKey.value, orderStatus.value, orderSearchNo.value)
@@ -141,6 +150,13 @@ function saasAccountMembersRenewEvent(param) {
   tableDataSum.value = searchOrderRet.length
 }
 
+function deleteUserDialog(isDo) {
+  if (isDo) {
+    notifyTopPositive("删除成功", 2000, notify)
+  }
+  emitter.emit("showDialogJudgmentEvent", false)
+}
+
 function saasAccountMembersToRoleEvent(map) {
   console.log(map)
 }
@@ -155,6 +171,13 @@ function saasAccountMembersDownEvent(map) {
 
 function saasAccountMembersDeleteEvent(map) {
   console.log(map)
+
+  dialogJudgmentData.value.title = "删除用户"
+  dialogJudgmentData.value.content = `确认是否删除用户 ${map.id}`
+  dialogJudgmentData.value.trueLabel = `删除`
+  dialogJudgmentData.value.falseLabel = `取消`
+
+  emitter.emit("showDialogJudgmentEvent")
 }
 
 
