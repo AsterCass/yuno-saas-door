@@ -84,26 +84,22 @@ const customColumnBuilder = [
     slotName: "body-cell-houseNo",
     type: ComplexTableColumnEnum.POINTED,
     emitStr: 'saasAccountMembersToRoleEvent',
-    emitWithProp: 'orderNo',
   },
 ]
 const customTableOperation = [
   {
     label: '启用',
     emitStr: 'saasAccountMembersUpEvent',
-    emitWithProp: 'orderNo',
     showCondition: 'inDownStyle'
   },
   {
     label: '禁用',
     emitStr: 'saasAccountMembersDownEvent',
-    emitWithProp: 'orderNo',
     showCondition: 'inUpStyle'
   },
   {
     label: '删除',
     emitStr: 'saasAccountMembersDeleteEvent',
-    emitWithProp: 'orderNo',
   },
 ]
 let mountTable = ref(false)
@@ -172,7 +168,7 @@ function saasAccountMembersDownEvent(map) {
 
 function saasAccountMembersDeleteEvent(map) {
   dialogJudgmentData.value.title = "删除用户"
-  dialogJudgmentData.value.content = `确认是否删除用户 ${map.id}`
+  dialogJudgmentData.value.content = `确认是否删除用户 ${map.orderNo}`
   dialogJudgmentData.value.trueLabel = `删除`
   dialogJudgmentData.value.falseLabel = `取消`
 
