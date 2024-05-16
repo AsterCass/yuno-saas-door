@@ -16,6 +16,8 @@
                 popup-content-class="astercasc-simple-card" menu-anchor="bottom start" :menu-offset="[0, 5]"
       />
 
+      <AddressCascadeSelector @update-address="(code)=>orderAddressCode = code"/>
+
       <div class="q-ma-md">
         <q-btn class=" astercasc-simple-btn-margin-pri-mid" label="查询" @click="searchOrder()"/>
       </div>
@@ -68,6 +70,7 @@ import {searchOrderRet} from "@/mock/account";
 import DialogJudgment from "@/components/DialogJudgment.vue";
 import {useQuasar} from "quasar";
 import {notifyTopPositive} from "@/utils/global-notify";
+import AddressCascadeSelector from "@/components/AddressCascadeSelector.vue";
 
 //notify
 const notify = useQuasar().notify
@@ -113,11 +116,12 @@ let accountMemberTable = ref(null)
 let orderSearchNo = ref("")
 let orderSearchKey = ref("")
 let orderStatus = ref()
+let orderAddressCode = ref("")
 //judgement dialog
 let dialogJudgmentData = ref({})
 
 function searchOrder() {
-  console.log(orderSearchKey.value, orderStatus.value, orderSearchNo.value)
+  console.log(orderSearchKey.value, orderStatus.value, orderSearchNo.value, orderAddressCode.value)
 }
 
 function multiDeleteUserMembers() {
