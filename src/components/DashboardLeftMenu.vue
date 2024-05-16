@@ -213,7 +213,7 @@ function routeToAnyPage(item) {
           break;
         }
         for (let thi of sec.child) {
-          if (sec.pageCode === item) {
+          if (thi.pageCode === item) {
             currentPage.value = item
             top.webIsOpenChild = true
             sec.webIsOpenChild = true

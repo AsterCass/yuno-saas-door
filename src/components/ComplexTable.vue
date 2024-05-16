@@ -49,7 +49,7 @@
     <template v-for="(thisSlot, index) in customSlot" :key="index" v-slot:[thisSlot.slotName]="props">
       <q-td :props="props">
         <div style="color: #1976D2; cursor: pointer"
-             @click="emitter.emit(thisSlot.emitStr, {id: props.row[thisSlot.emitWithProp]})">
+             @click="emitter.emit(thisSlot.emitStr, props.row)">
           {{ props.row[thisSlot.name] }}
         </div>
       </q-td>
@@ -61,7 +61,7 @@
           <div v-show="!operation.showCondition ||  props.row[operation.showCondition]"
                v-for="(operation, index) in customTableOperation" :key="index"
                style="color: #1976D2; cursor: pointer; margin: 0 .2rem"
-               @click="emitter.emit(operation.emitStr, {id: props.row[operation.emitWithProp]})">
+               @click="emitter.emit(operation.emitStr, props.row)">
             {{ operation.label }}
           </div>
 
