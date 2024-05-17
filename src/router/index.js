@@ -14,6 +14,11 @@ import SaasDictionary from "@/views/SaasDictionary.vue";
 import SaasApprovalFlux from "@/views/SaasApprovalFlux.vue";
 import SaasApprovalTemplates from "@/views/SaasApprovalTemplates.vue";
 import SaasApprovalTemplatesNew from "@/views/SaasApprovalTemplatesNew.vue";
+import SaasHouseBookProject from "@/views/biz/SaasHouseBookProject.vue";
+import SaasHouseBookOrder from "@/views/biz/SaasHouseBookOrder.vue";
+import SaasHouseBookProjectNew from "@/views/biz/SaasHouseBookProjectNew.vue";
+import SaasHouseBookProjectHouse from "@/views/biz/SaasHouseBookProjectHouse.vue";
+import SaasHouseBookProjectBookUser from "@/views/biz/SaasHouseBookProjectBookUser.vue";
 
 const router = createRouter({
     // history: createWebHashHistory(process.env.BASE_URL),
@@ -38,31 +43,52 @@ const router = createRouter({
                     },
                 },
                 {
-                    path: 'account',
-                    name: 'sassAccount',
+                    path: 'book',
+                    name: 'saasHouseBook',
                     children: [
                         {
-                            path: 'members',
-                            name: 'saasAccountMembers',
-                            component: SaasAccountMembers,
+                            path: '',
+                            name: 'saasHouseBookDefault',
+                            redirect: {name: 'saasHouseBookProject'}
+                        },
+                        {
+                            path: 'project',
+                            name: 'saasHouseBookProject',
+                            component: SaasHouseBookProject,
                             meta: {
-                                title: 'YunoSaas成员管理'
+                                title: '选房活动'
                             },
                         },
                         {
-                            path: 'roles',
-                            name: 'saasAccountRoles',
-                            component: SaasAccountRoles,
+                            path: 'order',
+                            name: 'saasHouseBookOrder',
+                            component: SaasHouseBookOrder,
                             meta: {
-                                title: 'YunoSaas角色管理'
+                                title: '选房订单'
                             },
                         },
                         {
-                            path: 'rights',
-                            name: 'saasAccountRights',
-                            component: SaasAccountRights,
+                            path: 'project/new',
+                            name: 'saasHouseBookProjectNew',
+                            component: SaasHouseBookProjectNew,
                             meta: {
-                                title: 'YunoSaas权限管理'
+                                title: '新建活动'
+                            },
+                        },
+                        {
+                            path: 'project/house',
+                            name: 'saasHouseBookProjectHouse',
+                            component: SaasHouseBookProjectHouse,
+                            meta: {
+                                title: '活动房源'
+                            },
+                        },
+                        {
+                            path: 'project/user',
+                            name: 'saasHouseBookProjectBookUser',
+                            component: SaasHouseBookProjectBookUser,
+                            meta: {
+                                title: '活动租客'
                             },
                         },
                     ]
@@ -123,6 +149,36 @@ const router = createRouter({
                     path: 'workOder',
                     name: 'saasWorkOrder',
                     children: [],
+                },
+                {
+                    path: 'account',
+                    name: 'sassAccount',
+                    children: [
+                        {
+                            path: 'members',
+                            name: 'saasAccountMembers',
+                            component: SaasAccountMembers,
+                            meta: {
+                                title: 'YunoSaas成员管理'
+                            },
+                        },
+                        {
+                            path: 'roles',
+                            name: 'saasAccountRoles',
+                            component: SaasAccountRoles,
+                            meta: {
+                                title: 'YunoSaas角色管理'
+                            },
+                        },
+                        {
+                            path: 'rights',
+                            name: 'saasAccountRights',
+                            component: SaasAccountRights,
+                            meta: {
+                                title: 'YunoSaas权限管理'
+                            },
+                        },
+                    ]
                 },
                 {
                     path: 'dict',

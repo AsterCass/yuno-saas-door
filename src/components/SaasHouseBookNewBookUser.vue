@@ -52,7 +52,7 @@
 
           <div class="row justify-evenly q-mt-xl">
             <q-btn outline class="astercasc-outline-btn-margin-pri-mid" label="取消" @click="closeNewBookUser"/>
-            <q-btn class="astercasc-simple-btn-margin-pri-mid" label="完成" @click="closeNewBookUser"/>
+            <q-btn class="astercasc-simple-btn-margin-pri-mid" label="完成" @click="submitNewBookUser"/>
           </div>
 
         </div>
@@ -67,7 +67,12 @@
 import {onMounted, onUnmounted, ref} from "vue";
 import emitter from "@/utils/bus";
 import {getUserBehavior} from "@/utils/store";
+import {notifyTopPositive} from "@/utils/global-notify";
+import {useQuasar} from "quasar";
 
+//notify
+const notify = useQuasar().notify
+//input
 let showNewBookUser = ref(false);
 let newBookUserData = ref({
   bookUserOrder: "",
@@ -76,20 +81,26 @@ let newBookUserData = ref({
   bookUserIdCard: "",
 })
 
+function submitNewBookUser() {
+  newBookUserData.value = {}
+  notifyTopPositive("新增成功", 2000, notify)
+  showNewBookUser.value = false
+}
+
 function closeNewBookUser() {
   showNewBookUser.value = false
 }
 
-function showSaasNewUserEvent() {
+function showNewBookUserEvent() {
   showNewBookUser.value = true
 }
 
 onMounted(() => {
-  emitter.on('showSaasNewUserEvent', showSaasNewUserEvent)
+  emitter.on('showNewBookUserEvent', showNewBookUserEvent)
 })
 
 onUnmounted(() => {
-  emitter.off('showSaasNewUserEvent', showSaasNewUserEvent)
+  emitter.off('showNewBookUserEvent', showNewBookUserEvent)
 })
 
 </script>

@@ -1,14 +1,10 @@
 <template>
   <div>
-    <AddressCascadeSelector/>
+    this is account rights
   </div>
 </template>
 
-<script setup>
-
-
-import AddressCascadeSelector from "@/components/AddressCascadeSelector.vue";
-</script>
+<script setup></script>
 
 <style scoped lang="scss">
 

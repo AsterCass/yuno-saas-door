@@ -16,10 +16,10 @@
             <!--fa-solid fa-arrow-right-->
           </template>
 
-          <q-breadcrumbs-el class="breadcrumbs-el-link" label="Dashboard"/>
-          <q-breadcrumbs-el class="breadcrumbs-el-link" label="Move1"/>
-          <q-breadcrumbs-el class="breadcrumbs-el-link" label="Move2"/>
-          <q-breadcrumbs-el class="breadcrumbs-el-link-last" label="CurrentPage"/>
+<!--          <q-breadcrumbs-el class="breadcrumbs-el-link" label="Dashboard"/>-->
+          <!--          <q-breadcrumbs-el class="breadcrumbs-el-link" label="Move1"/>-->
+          <!--          <q-breadcrumbs-el class="breadcrumbs-el-link" label="Move2"/>-->
+          <!--          <q-breadcrumbs-el class="breadcrumbs-el-link-last" label="CurrentPage"/>-->
 
 
         </q-breadcrumbs>

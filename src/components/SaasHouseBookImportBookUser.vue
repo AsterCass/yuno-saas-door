@@ -40,8 +40,9 @@
             </template>
           </q-file>
 
-          <div class="row justify-center q-mt-md">
-            <q-btn class="astercasc-simple-btn-margin-pri-mid" label="提交" @click="closeImportBookUser"/>
+          <div class="row justify-evenly q-mt-md">
+            <q-btn outline class="astercasc-outline-btn-margin-pri-mid" label="取消" @click="closeImportBookUser"/>
+            <q-btn class="astercasc-simple-btn-margin-pri-mid" label="提交" @click="submitImportBookUser"/>
           </div>
 
 
@@ -56,40 +57,47 @@
 import {onMounted, onUnmounted, ref} from "vue";
 import emitter from "@/utils/bus";
 import {useQuasar} from "quasar";
-import {notifyTopWarning} from "@/utils/global-notify";
+import {notifyTopPositive, notifyTopWarning} from "@/utils/global-notify";
 import {getUserBehavior} from "@/utils/store";
 
+//notify
 const notify = useQuasar().notify
-
+//input
 let showImportBookUser = ref(false);
 let importUserData = ref(null)
+
+
+function submitImportBookUser() {
+  notifyTopPositive("导入成功", 2000, notify)
+  showImportBookUser.value = false
+}
 
 function closeImportBookUser() {
   showImportBookUser.value = false
 }
 
-function showSaasImportUserEvent() {
+function showImportBookUserEvent() {
   showImportBookUser.value = true
 }
 
 onMounted(() => {
-  emitter.on('showSaasImportUserEvent', showSaasImportUserEvent)
+  emitter.on('showImportBookUserEvent', showImportBookUserEvent)
 })
 
 onUnmounted(() => {
-  emitter.off('showSaasImportUserEvent', showSaasImportUserEvent)
+  emitter.off('showImportBookUserEvent', showImportBookUserEvent)
 })
 
 </script>
 
 <style lang="scss">
-@import "@/styles/theme-style";
+@import "@/styles/main-component-style";
 
 
 </style>
 
 <style scoped lang="scss">
-@import "@/styles/theme-style";
+@import "@/styles/main-component-style";
 
 
 </style>

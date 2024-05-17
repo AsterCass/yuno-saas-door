@@ -10,32 +10,24 @@ export const leftBarRouter = [
         child: []
     },
     {
-        pageCode: "sassAccount",
-        pageTitle: "账户管理",
-        pageIcon: "fa-solid fa-file-invoice",
+        pageCode: "saasHouseBook",
+        pageTitle: "选房管理",
+        pageIcon: "fa-solid fa-house-circle-check",
         haveChild: true,
-        webIsOpenChild: false,
+        webIsOpenChild: true,
         child: [
             {
-                pageCode: "saasAccountMembers",
-                pageTitle: "成员管理",
-                pageIcon: "fa-solid fa-users-viewfinder",
+                pageCode: "saasHouseBookProject",
+                pageTitle: "选房活动",
+                pageIcon: "fa-solid fa-house-chimney-user",
                 haveChild: false,
                 webIsOpenChild: false,
                 child: []
             },
             {
-                pageCode: "saasAccountRoles",
-                pageTitle: "角色管理",
-                pageIcon: "fa-solid fa-id-card-clip",
-                haveChild: false,
-                webIsOpenChild: false,
-                child: []
-            },
-            {
-                pageCode: "saasAccountRights",
-                pageTitle: "权限管理",
-                pageIcon: "fa-solid fa-wand-sparkles",
+                pageCode: "saasHouseBookOrder",
+                pageTitle: "选房订单",
+                pageIcon: "fa-solid fa-house-lock",
                 haveChild: false,
                 webIsOpenChild: false,
                 child: []
@@ -86,6 +78,39 @@ export const leftBarRouter = [
                 pageCode: "saasApprovalTemplates",
                 pageTitle: "审批模板",
                 pageIcon: "fa-solid fa-gears",
+                haveChild: false,
+                webIsOpenChild: false,
+                child: []
+            },
+        ],
+    },
+    {
+        pageCode: "sassAccount",
+        pageTitle: "账户管理",
+        pageIcon: "fa-solid fa-file-invoice",
+        haveChild: true,
+        webIsOpenChild: false,
+        child: [
+            {
+                pageCode: "saasAccountMembers",
+                pageTitle: "成员管理",
+                pageIcon: "fa-solid fa-users-viewfinder",
+                haveChild: false,
+                webIsOpenChild: false,
+                child: []
+            },
+            {
+                pageCode: "saasAccountRoles",
+                pageTitle: "角色管理",
+                pageIcon: "fa-solid fa-id-card-clip",
+                haveChild: false,
+                webIsOpenChild: false,
+                child: []
+            },
+            {
+                pageCode: "saasAccountRights",
+                pageTitle: "权限管理",
+                pageIcon: "fa-solid fa-wand-sparkles",
                 haveChild: false,
                 webIsOpenChild: false,
                 child: []
