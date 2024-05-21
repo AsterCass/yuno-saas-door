@@ -137,13 +137,6 @@ export const bookHouseOrderColumns = [
         align: 'center',
         field: 'createTime',
     },
-    {
-        name: 'operation',
-        required: false,
-        label: '操作',
-        align: 'center',
-        field: 'operation',
-    },
 ]
 
 

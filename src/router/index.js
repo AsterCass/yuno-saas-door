@@ -4,13 +4,13 @@ import NotAuth from "@/pages/NotAuth.vue";
 import NotLogin from "@/pages/NotLogin.vue";
 import SaasMain from "@/pages/SaasMain.vue";
 import SaasDashboard from "@/views/SaasDashboard.vue";
-import SaasCommonSettings from "@/views/SaasCommonSettings.vue";
+import SaasPersonalSettings from "@/views/SaasPersonalSettings.vue";
 import SaasAccountMembers from "@/views/SaasAccountMembers.vue";
 import SaasAccountRoles from "@/views/SaasAccountRoles.vue";
 import SaasAccountRights from "@/views/SaasAccountRights.vue";
 import SaasMessageInbox from "@/views/SaasMessageInbox.vue";
 import SaasMessagePostbox from "@/views/SaasMessagePostbox.vue";
-import SaasDictionary from "@/views/SaasDictionary.vue";
+import SaasSystemDictionary from "@/views/SaasSystemDictionary.vue";
 import SaasApprovalFlux from "@/views/SaasApprovalFlux.vue";
 import SaasApprovalTemplates from "@/views/SaasApprovalTemplates.vue";
 import SaasApprovalTemplatesNew from "@/views/SaasApprovalTemplatesNew.vue";
@@ -19,6 +19,7 @@ import SaasHouseBookOrder from "@/views/biz/SaasHouseBookOrder.vue";
 import SaasHouseBookProjectNew from "@/views/biz/SaasHouseBookProjectNew.vue";
 import SaasHouseBookProjectHouse from "@/views/biz/SaasHouseBookProjectHouse.vue";
 import SaasHouseBookProjectBookUser from "@/views/biz/SaasHouseBookProjectBookUser.vue";
+import SaasSystemMenu from "@/views/SaasSystemMenu.vue";
 
 const router = createRouter({
     // history: createWebHashHistory(process.env.BASE_URL),
@@ -181,19 +182,33 @@ const router = createRouter({
                     ]
                 },
                 {
-                    path: 'dict',
-                    name: 'saasDictionary',
-                    component: SaasDictionary,
-                    meta: {
-                        title: 'YunoSaas字典管理'
-                    },
+                    path: 'system',
+                    name: 'saasSystem',
+                    children: [
+                        {
+                            path: 'dict',
+                            name: 'saasSystemDictionary',
+                            component: SaasSystemDictionary,
+                            meta: {
+                                title: 'YunoSaas字典管理'
+                            },
+                        },
+                        {
+                            path: 'menu',
+                            name: 'saasSystemMenu',
+                            component: SaasSystemMenu,
+                            meta: {
+                                title: 'YunoSaas菜单管理'
+                            },
+                        },
+                    ]
                 },
                 {
                     path: 'settings',
-                    name: 'saasCommonSettings',
-                    component: SaasCommonSettings,
+                    name: 'saasPersonalSettings',
+                    component: SaasPersonalSettings,
                     meta: {
-                        title: 'YunoSaas通用设置'
+                        title: 'YunoSaas个人设置'
                     },
                 },
             ],

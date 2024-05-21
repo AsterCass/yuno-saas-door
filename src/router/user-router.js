@@ -118,16 +118,33 @@ export const leftBarRouter = [
         ],
     },
     {
-        pageCode: "saasDictionary",
-        pageTitle: "字典管理",
-        pageIcon: "fa-regular fa-address-book",
-        haveChild: false,
+        pageCode: "saasSystem",
+        pageTitle: "系统管理",
+        pageIcon: "fa-brands fa-microsoft",
+        haveChild: true,
         webIsOpenChild: false,
-        child: []
+        child: [
+            {
+                pageCode: "saasSystemMenu",
+                pageTitle: "菜单管理",
+                pageIcon: "fa-solid fa-chart-bar",
+                haveChild: false,
+                webIsOpenChild: false,
+                child: []
+            },
+            {
+                pageCode: "saasSystemDictionary",
+                pageTitle: "字典管理",
+                pageIcon: "fa-regular fa-address-book",
+                haveChild: false,
+                webIsOpenChild: false,
+                child: []
+            },
+        ],
     },
     {
-        pageCode: "saasCommonSettings",
-        pageTitle: "通用设置",
+        pageCode: "saasPersonalSettings",
+        pageTitle: "个人设置",
         pageIcon: "fa-solid fa-wrench",
         haveChild: false,
         webIsOpenChild: false,
