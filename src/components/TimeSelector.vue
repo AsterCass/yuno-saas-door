@@ -1,5 +1,5 @@
 <template>
-  <q-input v-model="dateConvertShow" color="grey" hide-bottom-space borderless
+  <q-input v-model="dateConvertTimeInput" color="grey" hide-bottom-space borderless
            :placeholder="placeholder"
            input-class="astercasc-input-inner-base"
            :input-style="{width: componentWidth} ">
@@ -10,11 +10,6 @@
     >
       <div>
         <div class="row">
-          <q-date
-              :color="getColorFromStyleTheme()"
-              class="q-mx-sm" :dark="styleModel === 'dark'"
-              v-model="dateConvertDateInput">
-          </q-date>
           <q-time
               :color="getColorFromStyleTheme()"
               class="q-mx-sm" :dark="styleModel === 'dark'"
@@ -33,7 +28,6 @@
 
 <script setup>
 import {defineEmits, defineProps, onMounted, onUnmounted, ref, watch} from "vue";
-import {date} from "quasar";
 import {emitter} from "@/utils/bus";
 import {getUserBehavior} from "@/utils/store";
 
@@ -59,18 +53,12 @@ let themeColor = ref("")
 
 const emit = defineEmits(['time-change'])
 
-let dateConvertShow = ref("")
-let dateConvertDateInput = ref("")
-let dateConvertTimeInput = ref("")
+let dateConvertTimeInput = ref('')
 
 watch(
     () => props.value,
     (newValue) => {
-      dateConvertShow.value = newValue
-
-      let thisDate = date.extractDate(newValue, 'YYYY-MM-DD HH:mm')
-      dateConvertDateInput.value = date.formatDate(thisDate, 'YYYY/MM/DD')
-      dateConvertTimeInput.value = date.formatDate(thisDate, 'HH:mm')
+      dateConvertTimeInput.value = newValue
     }
 );
 
@@ -94,10 +82,8 @@ function getColorFromStyleTheme() {
 }
 
 function saveDateTime() {
-  if (dateConvertDateInput.value && dateConvertTimeInput.value) {
-    const timeStamp = new Date(dateConvertDateInput.value + " " + dateConvertTimeInput.value)
-    dateConvertShow.value = date.formatDate(timeStamp, 'YYYY-MM-DD HH:mm')
-    emit('time-change', dateConvertShow.value);
+  if (dateConvertTimeInput.value) {
+    emit('time-change', dateConvertTimeInput.value);
   }
 }
 

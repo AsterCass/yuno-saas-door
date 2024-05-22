@@ -81,16 +81,16 @@
       </div>
 
       <div class="q-my-md">
-        <div class="q-ml-sm astercasc-litter-title-asterisk">
+        <div class="q-ml-sm" style="font-size: 1.05rem">
           不可组队选房时段
         </div>
         <div class="row items-center">
-          <DatetimeSelector :value="newProjectData.projectNoTeamStartTime" placeholder="请输入不可组队选房时段开始时间"
+          <TimeSelector :value="newProjectData.projectNoTeamStartTime" placeholder="请输入不可组队选房时段开始时间"
                             @time-change="(time)=>newProjectData.projectNoTeamStartTime = time"/>
           <div class="text-center" style="width: 3rem">
             至
           </div>
-          <DatetimeSelector :value="newProjectData.projectNoTeamEndTime" placeholder="请输入不可组队选房时段截至时间"
+          <TimeSelector :value="newProjectData.projectNoTeamEndTime" placeholder="请输入不可组队选房时段截至时间"
                             @time-change="(time)=>newProjectData.projectNoTeamEndTime = time"/>
         </div>
       </div>
@@ -131,17 +131,17 @@
       </div>
 
       <div class="q-my-md">
-        <div class="q-ml-sm astercasc-litter-title-asterisk">
+        <div class="q-ml-sm" style="font-size: 1.05rem">
           不可个人选房时段
         </div>
         <div class="row items-center">
-          <DatetimeSelector :value="newProjectData.projectNoPersonalStartTime"
+          <TimeSelector :value="newProjectData.projectNoPersonalStartTime"
                             placeholder="请输入不可个人选房时段开始时间"
                             @time-change="(time)=>newProjectData.projectNoPersonalStartTime = time"/>
           <div class="text-center" style="width: 3rem">
             至
           </div>
-          <DatetimeSelector :value="newProjectData.projectNoPersonalEndTime"
+          <TimeSelector :value="newProjectData.projectNoPersonalEndTime"
                             placeholder="请输入不可个人选房时段截至时间"
                             @time-change="(time)=>newProjectData.projectNoPersonalEndTime = time"/>
         </div>
@@ -172,12 +172,12 @@
           可验房日期
         </div>
         <div class="row items-center">
-          <DatetimeSelector :value="newProjectData.projectHouseCheckStartTime" placeholder="请输入可验房日期开始时间"
+          <DateSelector :value="newProjectData.projectHouseCheckStartTime" placeholder="请输入可验房日期开始时间"
                             @time-change="(time)=>newProjectData.projectHouseCheckStartTime = time"/>
           <div class="text-center" style="width: 3rem">
             至
           </div>
-          <DatetimeSelector :value="newProjectData.projectHouseCheckEndTime" placeholder="请输入可验房日期截止时间"
+          <DateSelector :value="newProjectData.projectHouseCheckEndTime" placeholder="请输入可验房日期截止时间"
                             @time-change="(time)=>newProjectData.projectHouseCheckEndTime = time"/>
         </div>
       </div>
@@ -190,13 +190,13 @@
           <div>
             上午场
           </div>
-          <DatetimeSelector :value="newProjectData.projectHouseCheckAmCheckStartTime" placeholder="开始时间"
+          <TimeSelector :value="newProjectData.projectHouseCheckAmCheckStartTime" placeholder="开始时间"
                             componentWidth="10rem"
                             @time-change="(time)=>newProjectData.projectHouseCheckAmCheckStartTime = time"/>
           <div class="text-center" style="width: 3rem">
             至
           </div>
-          <DatetimeSelector :value="newProjectData.projectHouseCheckAmCheckEndTime" placeholder="结束时间"
+          <TimeSelector :value="newProjectData.projectHouseCheckAmCheckEndTime" placeholder="结束时间"
                             componentWidth="10rem"
                             @time-change="(time)=>newProjectData.projectHouseCheckAmCheckEndTime = time"/>
           <q-input class="q-ml-md" v-model="newProjectData.projectHouseCheckAmCheckCap" color="grey" hide-bottom-space
@@ -213,13 +213,13 @@
           <div>
             下午场
           </div>
-          <DatetimeSelector :value="newProjectData.projectHouseCheckPmCheckStartTime" placeholder="开始时间"
+          <TimeSelector :value="newProjectData.projectHouseCheckPmCheckStartTime" placeholder="开始时间"
                             componentWidth="10rem"
                             @time-change="(time)=>newProjectData.projectHouseCheckPmCheckStartTime = time"/>
           <div class="text-center" style="width: 3rem">
             至
           </div>
-          <DatetimeSelector :value="newProjectData.projectHouseCheckPmCheckEndTime" placeholder="结束时间"
+          <TimeSelector :value="newProjectData.projectHouseCheckPmCheckEndTime" placeholder="结束时间"
                             componentWidth="10rem"
                             @time-change="(time)=>newProjectData.projectHouseCheckPmCheckEndTime = time"/>
           <q-input class="q-ml-md" v-model="newProjectData.projectHouseCheckPmCheckCap" color="grey" hide-bottom-space
@@ -236,7 +236,7 @@
 
       <div class="row justify-evenly">
         <q-btn outline class="astercasc-outline-btn-margin-pri" label="取消" @click="toBack(thisRouter);"/>
-        <q-btn class="astercasc-simple-btn-margin-pri" label="完成" @click="projectNewSubmit();toBack(thisRouter);"/>
+        <q-btn class="astercasc-simple-btn-margin-pri" label="完成" @click="projectNewSubmit();"/>
       </div>
 
     </div>
@@ -248,14 +248,26 @@
 <script setup>
 
 import DatetimeSelector from "@/components/DatetimeSelector.vue";
-import {ref} from "vue";
+import {defineProps, onMounted, ref} from "vue";
 import {useRouter} from "vue-router";
-import {toBack} from "@/router";
-import {notifyTopPositive} from "@/utils/global-notify";
-import {useQuasar} from "quasar";
+import {toBack, toSpecifyPage} from "@/router";
+import {notifyTopPositive, notifyTopWarning} from "@/utils/global-notify";
+import {extend, useQuasar} from "quasar";
+import DateSelector from "@/components/DateSelector.vue";
+import TimeSelector from "@/components/TimeSelector.vue";
+import {bookProjectDetail, bookProjectNew} from "@/api/book-project";
 
 //notify
 const notify = useQuasar().notify
+
+const props = defineProps({
+  projectId: {
+    type: String,
+    required: false,
+    default: ""
+  }
+})
+
 //router
 const thisRouter = useRouter()
 
@@ -270,13 +282,13 @@ let newProjectData = ref({
   projectTeamEndTime: "",
   projectNoTeamStartTime: "",
   projectNoTeamEndTime: "",
-  projectTeamInterval: null,
+  projectTeamInterval: 4,
 
   projectPersonalStartTime: "",
   projectPersonalEndTime: "",
   projectNoPersonalStartTime: "",
   projectNoPersonalEndTime: "",
-  projectPersonalInterval: null,
+  projectPersonalInterval: 2,
 
   projectHouseCheckStartTime: "",
   projectHouseCheckEndTime: "",
@@ -292,9 +304,33 @@ let newProjectData = ref({
 
 
 function projectNewSubmit() {
-  console.log(newProjectData.value)
-  notifyTopPositive("新增成功", 2000, notify)
+
+  //todo check
+
+  bookProjectNew(props.projectId, newProjectData.value).then(data => {
+    if (data && 200 === data.status) {
+      notifyTopPositive("操作成功", 2000, notify)
+      toSpecifyPage(thisRouter, 'saasHouseBookProject')
+    }
+  }).catch(() => {
+    notifyTopWarning("新增失败，请重试", 2000, notify)
+  });
+
 }
+
+
+onMounted(() => {
+  if (props.projectId) {
+    bookProjectDetail(props.projectId).then(data => {
+      if (data && 200 === data.status) {
+        extend(true, data.data, data.data.bookProjectData)
+        extend(true, newProjectData.value, data.data)
+      }
+    }).catch(() => {
+      notifyTopWarning("获取项目失败，请重试", 2000, notify)
+    });
+  }
+})
 
 
 </script>

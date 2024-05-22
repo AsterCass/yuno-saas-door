@@ -58,7 +58,7 @@
 import {onMounted, onUnmounted, ref} from "vue";
 import {searchProjectHouseRet} from "@/mock/house-book-project";
 import emitter from "@/utils/bus";
-import SaasHouseBookImportHouseProject from "@/components/SaasHouseBookImportHouseProject.vue";
+import SaasHouseBookImportHouseProject from "@/components/biz/SaasHouseBookImportHouseProject.vue";
 import {houseModelOpt, rentalStyleOpt} from "@/constant/enums";
 import ComplexTable from "@/components/ComplexTable.vue";
 import {bookHouseColumns} from "@/constant/tables";

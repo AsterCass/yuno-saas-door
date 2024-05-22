@@ -28,7 +28,12 @@
             <q-btn :class="pageSize === 50 ? 'astercasc-simple-table-bottom-selected-contain' : ''"
                    flat round dense class="q-mx-sm" label="50" @click="updatePageSize(50)"/>
           </div>
+
+
           <div class="row justify-end items-center">
+            <div class="q-mr-md">
+              数据总条数：{{ tableDataSum }}
+            </div>
             <div>
               <q-pagination
                   v-model="pageNo" :max="Math.ceil(tableDataSum / pageSize)" :max-pages="8"
@@ -44,6 +49,15 @@
 
     <template v-slot:header-selection="scope">
       <q-checkbox class="astercasc-header-checkbox" keep-color v-model="scope.selected"/>
+    </template>
+
+    <template v-slot:no-data>
+      <div class="full-width row flex-center q-mt-md q-mb-lg items-center">
+        <q-icon size="1.2rem" class="q-mr-sm" name="fa-solid fa-triangle-exclamation"/>
+        <h6>
+          无可获得数据
+        </h6>
+      </div>
     </template>
 
     <template v-for="(thisSlot, index) in customSlot" :key="index" v-slot:[thisSlot.slotName]="props">

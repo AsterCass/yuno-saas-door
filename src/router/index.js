@@ -73,8 +73,11 @@ const router = createRouter({
                             name: 'saasHouseBookProjectNew',
                             component: SaasHouseBookProjectNew,
                             meta: {
-                                title: '新建活动'
+                                title: '新建&编辑活动'
                             },
+                            props: ($route) => ({
+                                projectId: $route.query.id,
+                            }),
                         },
                         {
                             path: 'project/house',
@@ -83,6 +86,9 @@ const router = createRouter({
                             meta: {
                                 title: '活动房源'
                             },
+                            props: ($route) => ({
+                                projectId: $route.query.id,
+                            }),
                         },
                         {
                             path: 'project/user',
@@ -91,6 +97,9 @@ const router = createRouter({
                             meta: {
                                 title: '活动租客'
                             },
+                            props: ($route) => ({
+                                projectId: $route.query.id,
+                            }),
                         },
                     ]
                 },

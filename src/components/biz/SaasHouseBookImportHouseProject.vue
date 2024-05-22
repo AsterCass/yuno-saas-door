@@ -108,9 +108,6 @@ function saasHouseBookImportHouseRenewTableEvent(param) {
 }
 
 function saasHouseBookImportHouseLinkEvent(obj) {
-
-  console.log(obj)
-
   dialogJudgmentData.value.title = "关联烦房源项目"
   dialogJudgmentData.value.content = `确定要关联${obj.houseProjectName}吗？
   确认后项目中${obj.houseProjectNum}套房源将用于选房活动`

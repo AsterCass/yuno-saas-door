@@ -32,4 +32,21 @@ export function bookProjectDelete(id) {
     })
 }
 
+export function bookProjectNew(projectId, body) {
+    return serviceShiro({
+        url: `/book/admin/project/upsert/auth`,
+        method: 'post',
+        data: body,
+        params: {projectId: `${projectId}`}
+    })
+}
+
+
+export function bookProjectDetail(id) {
+    return serviceShiro({
+        url: `/book/admin/project/${id}/detail/auth`,
+        method: 'get',
+    })
+}
+
 

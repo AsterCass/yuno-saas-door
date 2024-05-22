@@ -15,12 +15,6 @@
               class="q-mx-sm" :dark="styleModel === 'dark'"
               v-model="dateConvertDateInput">
           </q-date>
-          <q-time
-              :color="getColorFromStyleTheme()"
-              class="q-mx-sm" :dark="styleModel === 'dark'"
-              v-model="dateConvertTimeInput"
-              format24h>
-          </q-time>
         </div>
         <div class="row items-center justify-center q-my-md">
           <q-btn v-close-popup class="astercasc-simple-btn-margin-pri-mid"
@@ -61,16 +55,13 @@ const emit = defineEmits(['time-change'])
 
 let dateConvertShow = ref("")
 let dateConvertDateInput = ref("")
-let dateConvertTimeInput = ref("")
 
 watch(
     () => props.value,
     (newValue) => {
       dateConvertShow.value = newValue
-
-      let thisDate = date.extractDate(newValue, 'YYYY-MM-DD HH:mm')
-      dateConvertDateInput.value = date.formatDate(thisDate, 'YYYY/MM/DD')
-      dateConvertTimeInput.value = date.formatDate(thisDate, 'HH:mm')
+      dateConvertDateInput.value = date.formatDate(
+          date.extractDate(newValue, 'YYYY-MM-DD'), 'YYYY/MM/DD')
     }
 );
 
@@ -94,9 +85,9 @@ function getColorFromStyleTheme() {
 }
 
 function saveDateTime() {
-  if (dateConvertDateInput.value && dateConvertTimeInput.value) {
-    const timeStamp = new Date(dateConvertDateInput.value + " " + dateConvertTimeInput.value)
-    dateConvertShow.value = date.formatDate(timeStamp, 'YYYY-MM-DD HH:mm')
+  if (dateConvertDateInput.value) {
+    const timeStamp = new Date(dateConvertDateInput.value)
+    dateConvertShow.value = date.formatDate(timeStamp, 'YYYY-MM-DD')
     emit('time-change', dateConvertShow.value);
   }
 }

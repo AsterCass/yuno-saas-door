@@ -70,9 +70,9 @@
 
 <script setup>
 import {onMounted, onUnmounted, ref} from "vue";
-import SaasHouseBookNewBookUser from "@/components/SaasHouseBookNewBookUser.vue";
+import SaasHouseBookNewBookUser from "@/components/biz/SaasHouseBookNewBookUser.vue";
 import emitter from "@/utils/bus";
-import SaasHouseBookImportBookUser from "@/components/SaasHouseBookImportBookUser.vue";
+import SaasHouseBookImportBookUser from "@/components/biz/SaasHouseBookImportBookUser.vue";
 import {bookGroupStatusOpt, bookMailStatusOpt} from "@/constant/enums";
 import {bookUserColumns} from "@/constant/tables";
 import ComplexTable from "@/components/ComplexTable.vue";
@@ -133,7 +133,6 @@ function sendMultiMsgToUser() {
     showMultiSelect.value = true
   } else {
     if (multiSelect.value.length > 0) {
-      console.log(multiSelect.value)
 
       let multiSendUserId = ""
       for (let obj of multiSelect.value) {

@@ -71,7 +71,7 @@ const thisRouter = useRouter()
 //table
 const tableBaseInfo = ref({
   tableColumns: bookHouseProjectColumns,
-  tableKey: "projectNo",
+  tableKey: "projectId",
   renewDataEmitStr: 'saasHouseBookProjectRenewTableEvent',
   selectType: 'none',
 })
@@ -140,13 +140,11 @@ function deleteProjectDialog(isDo) {
 }
 
 function saasHouseBookProjectToProjectHouseEvent(map) {
-  console.log(map)
-  toSpecifyPageWithQuery(thisRouter, 'saasHouseBookProjectHouse', {id: map.projectNo})
+  toSpecifyPageWithQuery(thisRouter, 'saasHouseBookProjectHouse', {id: map.projectId})
 }
 
 function saasHouseBookProjectToProjectBookUserEvent(map) {
-  console.log(map)
-  toSpecifyPageWithQuery(thisRouter, 'saasHouseBookProjectBookUser', {id: map.projectNo})
+  toSpecifyPageWithQuery(thisRouter, 'saasHouseBookProjectBookUser', {id: map.projectId})
 }
 
 function saasHouseBookProjectUpEvent(map) {
@@ -173,8 +171,7 @@ function saasHouseBookProjectDownEvent(map) {
 }
 
 function saasHouseBookProjectEditEvent(map) {
-  console.log(map)
-  toSpecifyPage(thisRouter, 'saasHouseBookProjectNew')
+  toSpecifyPageWithQuery(thisRouter, 'saasHouseBookProjectNew', {id: map.projectId})
 }
 
 function saasHouseBookProjectDeleteEvent(map) {
