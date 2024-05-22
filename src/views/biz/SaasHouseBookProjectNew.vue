@@ -38,7 +38,9 @@
         <div>
           <div class="q-ml-sm astercasc-litter-title-asterisk">
             组队截止时间
+            <BadgeTips text="组队截止后，将不允许进行关系认定，会按照现有选房人员进行选房排序"/>
           </div>
+
           <div class="row items-center">
             <DatetimeSelector :value="newProjectData.projectTeamDeadlineTime" placeholder="请输入组队截止时间"
                               @time-change="(time)=>newProjectData.projectTeamDeadlineTime = time"/>
@@ -51,6 +53,7 @@
         <div>
           <div class="q-ml-sm astercasc-litter-title-asterisk">
             签约截止时间
+            <BadgeTips text="确认选房后，如在签约截止时间前仍未完成签约，则被选中房源将释放"/>
           </div>
           <div class="row items-center">
             <DatetimeSelector :value="newProjectData.projectSignDeadlineTime" placeholder="请输入签约截止时间"
@@ -83,6 +86,7 @@
       <div class="q-my-md">
         <div class="q-ml-sm" style="font-size: 1.05rem">
           不可组队选房时段
+          <BadgeTips text="设置时段后，则不会在该时段内安排选房人员"/>
         </div>
         <div class="row items-center">
           <TimeSelector :value="newProjectData.projectNoTeamStartTime" placeholder="请输入不可组队选房时段开始时间"
@@ -98,6 +102,7 @@
       <div class="q-my-md">
         <div class="q-ml-sm astercasc-litter-title-asterisk">
           组队选房间隔
+          <BadgeTips text="设置后将按该间隔安排组队选房人员"/>
         </div>
         <div class="row items-center">
           <q-input v-model="newProjectData.projectTeamInterval" color="grey" hide-bottom-space borderless
@@ -133,6 +138,7 @@
       <div class="q-my-md">
         <div class="q-ml-sm" style="font-size: 1.05rem">
           不可个人选房时段
+          <BadgeTips text="设置时段后，则不会在该时段内安排选房人员"/>
         </div>
         <div class="row items-center">
           <TimeSelector :value="newProjectData.projectNoPersonalStartTime"
@@ -150,6 +156,7 @@
       <div class="q-my-md">
         <div class="q-ml-sm astercasc-litter-title-asterisk">
           个人选房间隔
+          <BadgeTips text="设置后将按该间隔安排选房人员"/>
         </div>
         <div class="row items-center">
           <q-input v-model="newProjectData.projectPersonalInterval" color="grey" hide-bottom-space borderless
@@ -170,6 +177,7 @@
       <div class="q-my-md">
         <div class="q-ml-sm astercasc-litter-title-asterisk">
           可验房日期
+          <BadgeTips text="设置后，租客可预约该日期进行验房"/>
         </div>
         <div class="row items-center">
           <DateSelector :value="newProjectData.projectHouseCheckStartTime" placeholder="请输入可验房日期开始时间"
@@ -185,6 +193,7 @@
       <div class="q-my-md">
         <div class="q-ml-sm astercasc-litter-title-asterisk">
           可验房时段/人数
+          <BadgeTips text="设置后，租客可预约该时段进行验房，同时可以设置每个时段的可验房人数"/>
         </div>
         <div class="row items-center">
           <div>
@@ -256,6 +265,7 @@ import {extend, useQuasar} from "quasar";
 import DateSelector from "@/components/DateSelector.vue";
 import TimeSelector from "@/components/TimeSelector.vue";
 import {bookProjectDetail, bookProjectNew} from "@/api/book-project";
+import BadgeTips from "@/components/BadgeTips.vue";
 
 //notify
 const notify = useQuasar().notify
