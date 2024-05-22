@@ -16,7 +16,7 @@
             <div class="astercasc-litter-asterisk q-mr-md">
               选房顺序
             </div>
-            <q-input v-model="newBookUserData.bookUserOrder" color="grey" hide-bottom-space borderless
+            <q-input v-model="newBookUserData.bookOrder" color="grey" hide-bottom-space borderless
                      placeholder="请输入选房顺序" mask="#####" dense class="q-my-xs"
                      input-class="astercasc-input-inner-dense"
                      :input-style="{ width: '12rem'} "/>
@@ -67,31 +67,41 @@
 import {onMounted, onUnmounted, ref} from "vue";
 import emitter from "@/utils/bus";
 import {getUserBehavior} from "@/utils/store";
-import {notifyTopPositive} from "@/utils/global-notify";
+import {notifyTopPositive, notifyTopWarning} from "@/utils/global-notify";
 import {useQuasar} from "quasar";
+import {bookProjectUserInsert} from "@/api/book-project-user";
 
 //notify
 const notify = useQuasar().notify
 //input
 let showNewBookUser = ref(false);
 let newBookUserData = ref({
-  bookUserOrder: "",
+  bookOrder: "",
   bookUserName: "",
   bookUserPhone: "",
   bookUserIdCard: "",
 })
+let thisProjectId = ref("")
 
 function submitNewBookUser() {
-  newBookUserData.value = {}
-  notifyTopPositive("新增成功", 2000, notify)
-  showNewBookUser.value = false
+  bookProjectUserInsert(thisProjectId.value, newBookUserData.value).then(data => {
+    if (data && 200 === data.status) {
+      newBookUserData.value = {}
+      notifyTopPositive("新增成功", 2000, notify)
+      showNewBookUser.value = false
+      emitter.emit("saasHouseBookProjectBookUserRenewTableEvent")
+    }
+  }).catch(() => {
+    notifyTopWarning("新增失败，请重试", 2000, notify)
+  });
 }
 
 function closeNewBookUser() {
   showNewBookUser.value = false
 }
 
-function showNewBookUserEvent() {
+function showNewBookUserEvent(projectId) {
+  thisProjectId.value = projectId
   showNewBookUser.value = true
 }
 

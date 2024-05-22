@@ -34,6 +34,35 @@ export const ProjectStatusEnum = {
     }
 }
 
+export const BookMailStatusEnum = {
+    N: {code: 0, desc: "未发送"},
+    Y: {code: 1, desc: "已发送"},
+
+    getDesc: function (code) {
+        for (let key in this) {
+            if (this[key].code === code) {
+                return this[key].desc;
+            }
+        }
+        return "已发送";
+    }
+}
+
+export const BookTeamStatusEnum = {
+    UNKNOWN: {code: 0, desc: "待确认"},
+    N: {code: 1, desc: "未组队"},
+    Y: {code: 2, desc: "已组队"},
+
+    getDesc: function (code) {
+        for (let key in this) {
+            if (this[key].code === code) {
+                return this[key].desc;
+            }
+        }
+        return null;
+    }
+}
+
 export const projectProcessStatusOpt = ref([
     {
         label: ProjectProcessStatusEnum.WILL.desc,
@@ -61,6 +90,31 @@ export const projectStatusOpt = ref([
     },
 ])
 
+export const bookMailStatusOpt = ref([
+    {
+        label: BookMailStatusEnum.N.desc,
+        value: BookMailStatusEnum.N.code,
+    },
+    {
+        label: BookMailStatusEnum.Y.desc,
+        value: BookMailStatusEnum.Y.code,
+    },
+])
+export const bookTeamStatusOpt = ref([
+    {
+        label: BookTeamStatusEnum.UNKNOWN.desc,
+        value: BookTeamStatusEnum.UNKNOWN.code,
+    },
+    {
+        label: BookTeamStatusEnum.N.desc,
+        value: BookTeamStatusEnum.N.code,
+    },
+    {
+        label: BookTeamStatusEnum.Y.desc,
+        value: BookTeamStatusEnum.Y.code,
+    },
+])
+
 export const orderStatusOpt = ref([
     {
         label: '待验房',
@@ -77,31 +131,6 @@ export const orderStatusOpt = ref([
     {
         label: '已取消',
         value: 4,
-    },
-])
-
-export const bookMailStatusOpt = ref([
-    {
-        label: '未发送',
-        value: 1,
-    },
-    {
-        label: '已发送',
-        value: 2,
-    },
-])
-export const bookGroupStatusOpt = ref([
-    {
-        label: '待确认',
-        value: 1,
-    },
-    {
-        label: '未组队',
-        value: 2,
-    },
-    {
-        label: '已组队',
-        value: 3,
     },
 ])
 

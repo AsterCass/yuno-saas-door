@@ -185,12 +185,14 @@ function saasHouseBookProjectDeleteEvent(map) {
 }
 
 function saasHouseBookProjectRenewTableEvent(param) {
-  pageParam.value = param
+  if (param) {
+    pageParam.value = param
+  }
   bookProjectList(extend(true, {
     projectKeyword: projectSearchKey.value,
     projectProcessStatus: null == projectProcessStatus.value ? null : projectProcessStatus.value.value,
     projectStatus: null == projectStatus.value ? null : projectStatus.value.value,
-  }, param)).then(data => {
+  }, pageParam.value)).then(data => {
     if (data && 200 === data.status) {
       let thisData = data.data
       let content = thisData.content

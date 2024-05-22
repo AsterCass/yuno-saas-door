@@ -3,7 +3,7 @@
   <div>
 
     <div class="row items-center q-ml-sm">
-      <q-input v-model="bookSearchKey" color="grey q-ma-sm" hide-bottom-space borderless
+      <q-input v-model="bookUserSearchKey" color="grey q-ma-sm" hide-bottom-space borderless
                placeholder="请输入选房顺序号、姓名、手机号、身份证查询"
                input-class="astercasc-input-inner-base"
                :input-style="{ width: '25rem'} "/>
@@ -14,7 +14,7 @@
       />
 
       <q-select standout dense label="组队状态" class="q-ma-md astercasc-simple-select-margin-pri"
-                v-model="bookGroupStatus" :options="bookGroupStatusOpt" clearable
+                v-model="bookTeamStatus" :options="bookTeamStatusOpt" clearable
                 popup-content-class="astercasc-simple-card" menu-anchor="bottom start" :menu-offset="[0, 5]"
       />
 
@@ -28,7 +28,7 @@
     <div class="row q-mt-sm q-mb-md">
       <div class="q-ml-lg q-mr-md">
         <q-btn class="astercasc-simple-btn-margin-pri" label="+ 新增活动租客"
-               @click="emitter.emit('showNewBookUserEvent')"/>
+               @click="emitter.emit('showNewBookUserEvent', props.projectId)"/>
       </div>
       <div class="q-mx-md">
         <q-btn class="astercasc-simple-btn-margin-pri" label="+ 导入活动租客"
@@ -69,20 +69,27 @@
 </template>
 
 <script setup>
-import {onMounted, onUnmounted, ref} from "vue";
+import {defineProps, onMounted, onUnmounted, ref} from "vue";
 import SaasHouseBookNewBookUser from "@/components/biz/SaasHouseBookNewBookUser.vue";
 import emitter from "@/utils/bus";
 import SaasHouseBookImportBookUser from "@/components/biz/SaasHouseBookImportBookUser.vue";
-import {bookGroupStatusOpt, bookMailStatusOpt} from "@/constant/enums";
+import {BookMailStatusEnum, bookMailStatusOpt, BookTeamStatusEnum, bookTeamStatusOpt} from "@/constant/enums";
 import {bookUserColumns} from "@/constant/tables";
 import ComplexTable from "@/components/ComplexTable.vue";
-import {searchBookUserRet} from "@/mock/house-book-project";
-import {useQuasar} from "quasar";
+import {extend, useQuasar} from "quasar";
 import DialogJudgment from "@/components/DialogJudgment.vue";
-import {notifyTopPositive} from "@/utils/global-notify";
+import {notifyTopPositive, notifyTopWarning} from "@/utils/global-notify";
+import {bookProjectUserDelete, bookProjectUserList} from "@/api/book-project-user";
 
 //notify
 const notify = useQuasar().notify
+const props = defineProps({
+  projectId: {
+    type: String,
+    required: false,
+    default: ""
+  }
+})
 //table
 let tableBaseInfo = ref({
   tableColumns: bookUserColumns,
@@ -114,9 +121,10 @@ let multiSelect = ref([])
 let showMultiSelect = ref(false)
 let bookProjectBookUserTable = ref(null)
 //search
-let bookSearchKey = ref("")
+let bookUserSearchKey = ref("")
 let bookMailStatus = ref(null)
-let bookGroupStatus = ref(null)
+let bookTeamStatus = ref(null)
+let pageParam = ref({})
 //judgement dialog
 let dialogJudgmentDeleteData = ref({})
 let dialogJudgmentSendData = ref({})
@@ -124,7 +132,7 @@ let dialogJudgmentMultiSendData = ref({})
 
 
 function searchOrder() {
-  console.log(bookSearchKey.value, bookMailStatus.value, bookGroupStatus.value)
+  saasHouseBookProjectBookUserRenewTableEvent(pageParam.value)
 }
 
 function sendMultiMsgToUser() {
@@ -170,20 +178,46 @@ function sendMsgToUser(isDo) {
 
 function deleteProjectUser(isDo) {
   if (isDo) {
-    notifyTopPositive("删除成功", 2000, notify)
+    bookProjectUserDelete(props.projectId, dialogJudgmentDeleteData.value.projectUserId).then(data => {
+      if (data && 200 === data.status) {
+        notifyTopPositive("刪除成功", 2000, notify)
+        saasHouseBookProjectBookUserRenewTableEvent(pageParam.value)
+      }
+    }).catch(() => {
+      notifyTopWarning("删除失败，请重试", 2000, notify)
+    });
   }
   emitter.emit("showDialogJudgmentDeleteEvent", false)
 }
 
 function saasHouseBookProjectBookUserRenewTableEvent(param) {
-  let pageNo = param.pageNo
-  let pageSize = param.pageSize
-
-  let offset = (pageNo - 1) * pageSize
-  let last = offset + pageSize > searchBookUserRet.length ? searchBookUserRet.length : offset + pageSize
-
-  tableData.value = searchBookUserRet.slice(offset, last)
-  tableDataSum.value = searchBookUserRet.length
+  if(param) {
+    pageParam.value = param
+  }
+  bookProjectUserList(props.projectId, extend(true, {
+    projectUserKeyword: bookUserSearchKey.value,
+    bookMailStatus: null == bookMailStatus.value ? null : bookMailStatus.value.value,
+    bookTeamStatus: null == bookTeamStatus.value ? null : bookTeamStatus.value.value,
+  }, pageParam.value)).then(data => {
+    if (data && 200 === data.status) {
+      let thisData = data.data
+      let content = thisData.content
+      for (let inData of content) {
+        inData.bookMailStatusName = BookMailStatusEnum.getDesc(inData.sendMailCount)
+        inData.bookTeamStatusName = BookTeamStatusEnum.getDesc(inData.bookUserTeamStatus)
+        if (!inData.bookUserRealStartTime) {
+          inData.bookUserRealStartTime = "未生成"
+        }
+        if (inData.sendMailCount > 0) {
+          inData.isResend = true
+        } else {
+          inData.isFirst = true
+        }
+      }
+      tableData.value = content
+      tableDataSum.value = thisData.totalElements
+    }
+  })
 }
 
 function saasHouseBookProjectDeleteEvent(map) {
@@ -191,6 +225,7 @@ function saasHouseBookProjectDeleteEvent(map) {
   dialogJudgmentDeleteData.value.content = `确认是否删除选房用户“${map.bookUserName}”`
   dialogJudgmentDeleteData.value.trueLabel = `删除`
   dialogJudgmentDeleteData.value.falseLabel = `取消`
+  dialogJudgmentDeleteData.value.projectUserId = `${map.projectUserId}`
 
   emitter.emit("showDialogJudgmentDeleteEvent")
 }
