@@ -5,8 +5,10 @@ import {Quasar} from 'quasar'
 import quasarUserOptions from './options/quasar-user-options'
 
 
-const app = createApp(App).use(Quasar, quasarUserOptions);
+const app = createApp(App)
 
+
+app.use(Quasar, quasarUserOptions);
 app.use(router)
 
 app.mount("#app");
