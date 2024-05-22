@@ -51,13 +51,19 @@ import {onMounted, onUnmounted, ref} from "vue";
 import {useRouter} from "vue-router";
 import {toSpecifyPage, toSpecifyPageWithQuery} from "@/router";
 import ComplexTable from "@/components/ComplexTable.vue";
-import {ComplexTableColumnEnum, projectProcessStatusOpt, projectStatusOpt} from "@/constant/enums";
+import {
+  ComplexTableColumnEnum,
+  ProjectProcessStatusEnum,
+  projectProcessStatusOpt,
+  ProjectStatusEnum,
+  projectStatusOpt
+} from "@/constant/enums";
 import emitter from "@/utils/bus";
 import {bookHouseProjectColumns} from "@/constant/tables";
-import {searchHouse} from "@/mock/house-book-project";
 import DialogJudgment from "@/components/DialogJudgment.vue";
-import {useQuasar} from "quasar";
-import {notifyTopPositive} from "@/utils/global-notify";
+import {extend, useQuasar} from "quasar";
+import {notifyTopPositive, notifyTopWarning} from "@/utils/global-notify";
+import {bookProjectDelete, bookProjectDown, bookProjectList, bookProjectUp} from "@/api/book-project";
 
 //notify
 const notify = useQuasar().notify
@@ -71,14 +77,14 @@ const tableBaseInfo = ref({
 })
 const customColumnBuilder = [
   {
-    name: "projectHouseNum",
-    slotName: "body-cell-projectHouseNum",
+    name: "houseSum",
+    slotName: "body-cell-houseSum",
     type: ComplexTableColumnEnum.POINTED,
     emitStr: 'saasHouseBookProjectToProjectHouseEvent',
   },
   {
-    name: "projectPersonNum",
-    slotName: "body-cell-projectPersonNum",
+    name: "personSum",
+    slotName: "body-cell-personSum",
     type: ComplexTableColumnEnum.POINTED,
     emitStr: 'saasHouseBookProjectToProjectBookUserEvent',
   },
@@ -110,17 +116,25 @@ let tableDataSum = ref(0)
 let projectSearchKey = ref("")
 let projectProcessStatus = ref(null)
 let projectStatus = ref(null)
+let pageParam = ref({})
 //judgement dialog
 let dialogJudgmentData = ref({})
 
 
 function searchProject() {
-  console.log(projectSearchKey.value, projectProcessStatus.value, projectStatus.value)
+  saasHouseBookProjectRenewTableEvent(pageParam.value)
 }
 
 function deleteProjectDialog(isDo) {
   if (isDo) {
-    notifyTopPositive("删除成功", 2000, notify)
+    bookProjectDelete(dialogJudgmentData.value.projectId).then(data => {
+      if (data && 200 === data.status) {
+        notifyTopPositive("刪除成功", 2000, notify)
+        saasHouseBookProjectRenewTableEvent(pageParam.value)
+      }
+    }).catch(() => {
+      notifyTopWarning("删除失败，请重试", 2000, notify)
+    });
   }
   emitter.emit("showDialogJudgmentEvent", false)
 }
@@ -136,13 +150,26 @@ function saasHouseBookProjectToProjectBookUserEvent(map) {
 }
 
 function saasHouseBookProjectUpEvent(map) {
-  console.log(map)
-  notifyTopPositive("上架成功", 2000, notify)
+  bookProjectUp(map.projectId).then(data => {
+    if (data && 200 === data.status) {
+      notifyTopPositive("上架成功", 2000, notify)
+      saasHouseBookProjectRenewTableEvent(pageParam.value)
+    }
+  }).catch(() => {
+    notifyTopWarning("上架失败，请重试", 2000, notify)
+  });
+
 }
 
 function saasHouseBookProjectDownEvent(map) {
-  console.log(map)
-  notifyTopPositive("下架成功", 2000, notify)
+  bookProjectDown(map.projectId).then(data => {
+    if (data && 200 === data.status) {
+      notifyTopPositive("下架成功", 2000, notify)
+      saasHouseBookProjectRenewTableEvent(pageParam.value)
+    }
+  }).catch(() => {
+    notifyTopWarning("下架失败，请重试", 2000, notify)
+  });
 }
 
 function saasHouseBookProjectEditEvent(map) {
@@ -155,19 +182,34 @@ function saasHouseBookProjectDeleteEvent(map) {
   dialogJudgmentData.value.content = `确认是否删除活动“${map.projectName}”`
   dialogJudgmentData.value.trueLabel = `删除`
   dialogJudgmentData.value.falseLabel = `取消`
+  dialogJudgmentData.value.projectId = map.projectId
 
   emitter.emit("showDialogJudgmentEvent")
 }
 
 function saasHouseBookProjectRenewTableEvent(param) {
-  let pageNo = param.pageNo
-  let pageSize = param.pageSize
-
-  let offset = (pageNo - 1) * pageSize
-  let last = offset + pageSize > searchHouse.length ? searchHouse.length : offset + pageSize
-
-  tableData.value = searchHouse.slice(offset, last)
-  tableDataSum.value = searchHouse.length
+  pageParam.value = param
+  bookProjectList(extend(true, {
+    projectKeyword: projectSearchKey.value,
+    projectProcessStatus: null == projectProcessStatus.value ? null : projectProcessStatus.value.value,
+    projectStatus: null == projectStatus.value ? null : projectStatus.value.value,
+  }, param)).then(data => {
+    if (data && 200 === data.status) {
+      let thisData = data.data
+      let content = thisData.content
+      for (let inData of content) {
+        inData.projectProcessStatusName = ProjectProcessStatusEnum.getDesc(inData.projectProcessStatus)
+        inData.projectStatusName = ProjectStatusEnum.getDesc(inData.projectStatus)
+        if (inData.projectStatus === ProjectStatusEnum.DOWN.code) {
+          inData.inDownStyle = true
+        } else {
+          inData.inUpStyle = true
+        }
+      }
+      tableData.value = content
+      tableDataSum.value = thisData.totalElements
+    }
+  })
 }
 
 

@@ -1,5 +1,7 @@
 import axios from 'axios'
 import Qs from 'qs'
+import {Notify} from 'quasar'
+import {notifyTopNegative, notifyTopWarning} from "@/utils/global-notify";
 
 const BASE_ADD = process.env.VUE_APP_BASE_ADD
 
@@ -22,9 +24,20 @@ const responseConfig = response => {
             if (600 === status) {
                 // webLogout()
             }
+            if (400 === status) {
+                notifyTopNegative("系统繁忙，请稍后再试", 3000, Notify.create)
+                return null
+            }
+            if (500 === status) {
+                notifyTopWarning(serverData.message, 5000, Notify.create)
+                return null
+            }
         }
+    } else {
+        notifyTopNegative("系统繁忙，请稍后再试", 3000, Notify.create)
+        return null
     }
-    return response;
+    return response.data;
 }
 
 

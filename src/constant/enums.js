@@ -5,29 +5,59 @@ export const ComplexTableColumnEnum = Object.freeze({
     OPERATIONS: 1,
 });
 
+export const ProjectProcessStatusEnum = {
+    WILL: {code: 0, desc: "待开始"},
+    ING: {code: 1, desc: "进行中"},
+    ED: {code: 2, desc: "已结束"},
+
+    getDesc: function (code) {
+        for (let key in this) {
+            if (this[key].code === code) {
+                return this[key].desc;
+            }
+        }
+        return null;
+    }
+}
+
+export const ProjectStatusEnum = {
+    DOWN: {code: 0, desc: "下架"},
+    UP: {code: 1, desc: "上架"},
+
+    getDesc: function (code) {
+        for (let key in this) {
+            if (this[key].code === code) {
+                return this[key].desc;
+            }
+        }
+        return null;
+    }
+}
 
 export const projectProcessStatusOpt = ref([
     {
-        label: '待开始',
-        value: 1,
+        label: ProjectProcessStatusEnum.WILL.desc,
+        value: ProjectProcessStatusEnum.WILL.code,
     },
     {
-        label: '进行中',
-        value: 2,
+        label: ProjectProcessStatusEnum.ING.desc,
+        value: ProjectProcessStatusEnum.ING.code,
     },
     {
-        label: '已结束',
-        value: 3,
+        label: ProjectProcessStatusEnum.ED.desc,
+        value: ProjectProcessStatusEnum.ED.code,
     },
 ])
+
+
 export const projectStatusOpt = ref([
     {
-        label: '上架',
-        value: 1,
+        label: ProjectStatusEnum.DOWN.desc,
+        value: ProjectStatusEnum.DOWN.code,
     },
     {
-        label: '下架',
-        value: 2,
+        label: ProjectStatusEnum.UP.desc,
+        value: ProjectStatusEnum.UP.code,
     },
 ])
 

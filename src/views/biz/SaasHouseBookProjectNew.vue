@@ -40,8 +40,8 @@
             组队截止时间
           </div>
           <div class="row items-center">
-            <DatetimeSelector :value="newProjectData.projectGroupDeadlineTime" placeholder="请输入组队截止时间"
-                              @time-change="(time)=>newProjectData.projectGroupDeadlineTime = time"/>
+            <DatetimeSelector :value="newProjectData.projectTeamDeadlineTime" placeholder="请输入组队截止时间"
+                              @time-change="(time)=>newProjectData.projectTeamDeadlineTime = time"/>
           </div>
         </div>
 
@@ -70,13 +70,13 @@
           组队选房周期
         </div>
         <div class="row items-center">
-          <DatetimeSelector :value="newProjectData.projectGroupStartTime" placeholder="请输入组队选房周期开始时间"
-                            @time-change="(time)=>newProjectData.projectGroupStartTime = time"/>
+          <DatetimeSelector :value="newProjectData.projectTeamStartTime" placeholder="请输入组队选房周期开始时间"
+                            @time-change="(time)=>newProjectData.projectTeamStartTime = time"/>
           <div class="text-center" style="width: 3rem">
             至
           </div>
-          <DatetimeSelector :value="newProjectData.projectGroupEndTime" placeholder="请输入组队选房周期截止时间"
-                            @time-change="(time)=>newProjectData.projectGroupEndTime = time"/>
+          <DatetimeSelector :value="newProjectData.projectTeamEndTime" placeholder="请输入组队选房周期截止时间"
+                            @time-change="(time)=>newProjectData.projectTeamEndTime = time"/>
         </div>
       </div>
 
@@ -85,13 +85,13 @@
           不可组队选房时段
         </div>
         <div class="row items-center">
-          <DatetimeSelector :value="newProjectData.projectNoGroupStartTime" placeholder="请输入不可组队选房时段开始时间"
-                            @time-change="(time)=>newProjectData.projectNoGroupStartTime = time"/>
+          <DatetimeSelector :value="newProjectData.projectNoTeamStartTime" placeholder="请输入不可组队选房时段开始时间"
+                            @time-change="(time)=>newProjectData.projectNoTeamStartTime = time"/>
           <div class="text-center" style="width: 3rem">
             至
           </div>
-          <DatetimeSelector :value="newProjectData.projectNoGroupEndTime" placeholder="请输入不可组队选房时段截至时间"
-                            @time-change="(time)=>newProjectData.projectNoGroupEndTime = time"/>
+          <DatetimeSelector :value="newProjectData.projectNoTeamEndTime" placeholder="请输入不可组队选房时段截至时间"
+                            @time-change="(time)=>newProjectData.projectNoTeamEndTime = time"/>
         </div>
       </div>
 
@@ -100,7 +100,7 @@
           组队选房间隔
         </div>
         <div class="row items-center">
-          <q-input v-model="newProjectData.projectGroupInterval" color="grey" hide-bottom-space borderless
+          <q-input v-model="newProjectData.projectTeamInterval" color="grey" hide-bottom-space borderless
                    placeholder="请输入组队选房间隔" mask="###"
                    input-class="astercasc-input-inner-base"
                    :input-style="{ width: '12rem'} "/>
@@ -263,14 +263,14 @@ let newProjectData = ref({
   projectName: "",
   projectStartTime: "",
   projectEndTime: "",
-  projectGroupDeadlineTime: "",
+  projectTeamDeadlineTime: "",
   projectSignDeadlineTime: "",
 
-  projectGroupStartTime: "",
-  projectGroupEndTime: "",
-  projectNoGroupStartTime: "",
-  projectNoGroupEndTime: "",
-  projectGroupInterval: null,
+  projectTeamStartTime: "",
+  projectTeamEndTime: "",
+  projectNoTeamStartTime: "",
+  projectNoTeamEndTime: "",
+  projectTeamInterval: null,
 
   projectPersonalStartTime: "",
   projectPersonalEndTime: "",
