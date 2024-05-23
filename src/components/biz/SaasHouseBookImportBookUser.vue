@@ -11,13 +11,12 @@
         <q-separator inset class="q-ma-sm half-opacity" :dark="getUserBehavior().styleModel === 'dark'"/>
 
         <div class="q-mx-lg q-mt-lg q-mb-xs">
-
-          <q-btn outline class="astercasc-outline-btn-margin-pri-mid" label="下载导入模板"/>
-
+          <q-btn type="a" outline class="astercasc-outline-btn-margin-pri-mid" label="下载导入模板"
+                 :href="downloadUrl"/>
           <div class="q-ma-md"/>
 
           <q-file class="q-ma-md astercasc-input-inner-file" v-model="importUserData" borderless
-                  accept=".xls,.xlsx" max-file-size="512000" label-slot clearable
+                  accept=".xls,.xlsx" max-file-size="5120000" label-slot clearable
                   @rejected="notifyTopWarning('文件不满足条件，请重新上传', 3000, notify)"
                   style=" width: 30rem; height: 18rem;">
             <template v-slot:label>
@@ -40,6 +39,12 @@
             </template>
           </q-file>
 
+          <div v-show="errorList.length > 0" class="q-my-md">
+            <div class="text-red-10" v-for="(item, index) in errorList" :key="index">
+              * {{ item }}
+            </div>
+          </div>
+
           <div class="row justify-evenly q-mt-md">
             <q-btn outline class="astercasc-outline-btn-margin-pri-mid" label="取消" @click="closeImportBookUser"/>
             <q-btn class="astercasc-simple-btn-margin-pri-mid" label="提交" @click="submitImportBookUser"/>
@@ -59,28 +64,63 @@ import emitter from "@/utils/bus";
 import {useQuasar} from "quasar";
 import {notifyTopPositive, notifyTopWarning} from "@/utils/global-notify";
 import {getUserBehavior} from "@/utils/store";
+import {bookProjectUserImport} from "@/api/book-project-user";
 
+const BASE_ADD = process.env.VUE_APP_BASE_ADD
 //notify
 const notify = useQuasar().notify
 //input
 let showImportBookUser = ref(false);
 let importUserData = ref(null)
+let thisProjectId = ref("")
+let errorList = ref([])
+let downloadUrl = ref("")
 
+
+// function downloadTemplate() {
+//   bookProjectUserTemplate(thisProjectId.value).then(data => {
+//
+//
+//   }).catch(() => {
+//     notifyTopWarning("获取模板失败，请重试", 2000, notify)
+//   });
+// }
 
 function submitImportBookUser() {
-  notifyTopPositive("导入成功", 2000, notify)
-  showImportBookUser.value = false
+  if (!importUserData.value) {
+    notifyTopWarning("导入文件不能为空", 2000, notify)
+    errorList.value = []
+    return
+  }
+  const formData = new FormData();
+  formData.append('file', importUserData.value);
+  bookProjectUserImport(thisProjectId.value, formData).then(data => {
+    if (data && 200 === data.status) {
+      notifyTopPositive("导入成功", 2000, notify)
+      showImportBookUser.value = false
+    } else if (data && 550 === data.status) {
+      errorList.value = JSON.parse(data.message)
+    } else {
+      notifyTopWarning("导入失败，请重试", 2000, notify)
+    }
+  }).catch(() => {
+    notifyTopWarning("导入失败，请重试", 2000, notify)
+  });
 }
 
 function closeImportBookUser() {
+  importUserData.value = null
+  errorList.value = []
   showImportBookUser.value = false
 }
 
-function showImportBookUserEvent() {
+function showImportBookUserEvent(projectId) {
+  thisProjectId.value = projectId
   showImportBookUser.value = true
 }
 
 onMounted(() => {
+  downloadUrl.value = BASE_ADD + "book/admin/project/user/import/download/auth"
   emitter.on('showImportBookUserEvent', showImportBookUserEvent)
 })
 

@@ -33,3 +33,10 @@ export function bookProjectUserSendMail(projectId, param) {
     })
 }
 
+export function bookProjectUserImport(projectId, data) {
+    return serviceShiro({
+        url: `/book/admin/project/${projectId}/user/import/auth`,
+        method: 'post',
+        data: data
+    })
+}

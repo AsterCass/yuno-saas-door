@@ -32,7 +32,7 @@
       </div>
       <div class="q-mx-md">
         <q-btn class="astercasc-simple-btn-margin-pri" label="+ 导入活动租客"
-               @click="emitter.emit('showImportBookUserEvent')"/>
+               @click="emitter.emit('showImportBookUserEvent', props.projectId)"/>
       </div>
       <div class="q-mx-md">
         <q-btn class="astercasc-simple-btn-margin-pri" label="批量发送短信" @click="sendMultiMsgToUser()"/>
