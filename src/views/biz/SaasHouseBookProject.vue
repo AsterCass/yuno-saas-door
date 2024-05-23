@@ -208,7 +208,9 @@ function saasHouseBookProjectRenewTableEvent(param) {
       tableData.value = content
       tableDataSum.value = thisData.totalElements
     }
-  })
+  }).catch(() => {
+    notifyTopWarning("更新失败，请重试", 2000, notify)
+  });
 }
 
 

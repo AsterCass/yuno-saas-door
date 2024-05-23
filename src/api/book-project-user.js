@@ -25,3 +25,11 @@ export function bookProjectUserDelete(projectId, projectUserId) {
     })
 }
 
+export function bookProjectUserSendMail(projectId, param) {
+    return serviceShiro({
+        url: `/book/admin/project/${projectId}/user/sendMail/auth`,
+        method: 'post',
+        params: param,
+    })
+}
+

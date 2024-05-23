@@ -79,7 +79,7 @@ import ComplexTable from "@/components/ComplexTable.vue";
 import {extend, useQuasar} from "quasar";
 import DialogJudgment from "@/components/DialogJudgment.vue";
 import {notifyTopPositive, notifyTopWarning} from "@/utils/global-notify";
-import {bookProjectUserDelete, bookProjectUserList} from "@/api/book-project-user";
+import {bookProjectUserDelete, bookProjectUserList, bookProjectUserSendMail} from "@/api/book-project-user";
 
 //notify
 const notify = useQuasar().notify
@@ -142,15 +142,18 @@ function sendMultiMsgToUser() {
   } else {
     if (multiSelect.value.length > 0) {
 
-      let multiSendUserId = ""
+      let multiSendUserNames = ""
+      let multiSendUserIds = ""
       for (let obj of multiSelect.value) {
-        multiSendUserId += (obj.bookUserName + " ")
+        multiSendUserNames += (obj.bookUserName + " ")
+        multiSendUserIds += (obj.projectUserId + ",")
       }
 
       dialogJudgmentMultiSendData.value.title = "发送选房短信"
-      dialogJudgmentMultiSendData.value.content = `确定要发送选房通知短信给用户 ${multiSendUserId}`
+      dialogJudgmentMultiSendData.value.content = `确定要发送选房通知短信给用户 ${multiSendUserNames}`
       dialogJudgmentMultiSendData.value.trueLabel = `确定`
       dialogJudgmentMultiSendData.value.falseLabel = `取消`
+      dialogJudgmentMultiSendData.value.projectUserIds = multiSendUserIds
 
       emitter.emit("showDialogJudgmentMultiResendEvent")
     }
@@ -162,16 +165,28 @@ function sendMultiMsgToUser() {
   }
 }
 
+
+function sendMailMethod(projectUserIds) {
+  bookProjectUserSendMail(props.projectId, {projectUserIds: projectUserIds}).then(data => {
+    if (data && data.status === 200) {
+      notifyTopPositive("发送成功", 2000, notify)
+      saasHouseBookProjectBookUserRenewTableEvent(pageParam.value)
+    }
+  }).catch(() => {
+    notifyTopWarning("短信发送失败，请重试", 2000, notify)
+  });
+}
+
 function sendMsgToMultiUser(isDo) {
   if (isDo) {
-    notifyTopPositive("发送成功", 2000, notify)
+    sendMailMethod(dialogJudgmentMultiSendData.value.projectUserIds)
   }
   emitter.emit("showDialogJudgmentMultiResendEvent", false)
 }
 
 function sendMsgToUser(isDo) {
   if (isDo) {
-    notifyTopPositive("发送成功", 2000, notify)
+    sendMailMethod(dialogJudgmentSendData.value.projectUserId)
   }
   emitter.emit("showDialogJudgmentResendEvent", false)
 }
@@ -217,7 +232,9 @@ function saasHouseBookProjectBookUserRenewTableEvent(param) {
       tableData.value = content
       tableDataSum.value = thisData.totalElements
     }
-  })
+  }).catch(() => {
+    notifyTopWarning("数据获取，请重试", 2000, notify)
+  });
 }
 
 function saasHouseBookProjectDeleteEvent(map) {
@@ -235,6 +252,7 @@ function saasHouseBookProjectBookUserResendEvent(map) {
   dialogJudgmentSendData.value.content = `确定要为用户“${map.bookUserName}”发送选房通知短信吗`
   dialogJudgmentSendData.value.trueLabel = `发送`
   dialogJudgmentSendData.value.falseLabel = `取消`
+  dialogJudgmentSendData.value.projectUserId = map.projectUserId
 
   emitter.emit("showDialogJudgmentResendEvent")
 }
