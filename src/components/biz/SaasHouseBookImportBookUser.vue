@@ -11,8 +11,10 @@
         <q-separator inset class="q-ma-sm half-opacity" :dark="getUserBehavior().styleModel === 'dark'"/>
 
         <div class="q-mx-lg q-mt-lg q-mb-xs">
-          <q-btn type="a" outline class="astercasc-outline-btn-margin-pri-mid" label="下载导入模板"
-                 :href="downloadUrl"/>
+
+          <q-btn outline class="astercasc-outline-btn-margin-pri-mid" label="下载导入模板"
+                 @click="downloadTemplate"/>
+
           <div class="q-ma-md"/>
 
           <q-file class="q-ma-md astercasc-input-inner-file" v-model="importUserData" borderless
@@ -64,7 +66,7 @@ import emitter from "@/utils/bus";
 import {useQuasar} from "quasar";
 import {notifyTopPositive, notifyTopWarning} from "@/utils/global-notify";
 import {getUserBehavior} from "@/utils/store";
-import {bookProjectUserImport} from "@/api/book-project-user";
+import {bookProjectUserImport, bookProjectUserImportDownload} from "@/api/book-project-user";
 
 const BASE_ADD = process.env.VUE_APP_BASE_ADD
 //notify
@@ -77,14 +79,20 @@ let errorList = ref([])
 let downloadUrl = ref("")
 
 
-// function downloadTemplate() {
-//   bookProjectUserTemplate(thisProjectId.value).then(data => {
-//
-//
-//   }).catch(() => {
-//     notifyTopWarning("获取模板失败，请重试", 2000, notify)
-//   });
-// }
+function downloadTemplate() {
+  bookProjectUserImportDownload().then(data => {
+    const blob = new Blob([data], {type: 'application/vnd.ms-excel'});
+    const downloadUrl = window.URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = downloadUrl;
+    link.setAttribute('download', 'template.xlsx');
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+  }).catch(() => {
+    notifyTopWarning("获取模板失败，请重试", 2000, notify)
+  });
+}
 
 function submitImportBookUser() {
   if (!importUserData.value) {
@@ -98,6 +106,7 @@ function submitImportBookUser() {
     if (data && 200 === data.status) {
       notifyTopPositive("导入成功", 2000, notify)
       showImportBookUser.value = false
+      emitter.emit("saasHouseBookProjectBookUserRenewTableEvent")
     } else if (data && 550 === data.status) {
       errorList.value = JSON.parse(data.message)
     } else {

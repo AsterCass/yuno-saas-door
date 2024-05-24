@@ -40,3 +40,12 @@ export function bookProjectUserImport(projectId, data) {
         data: data
     })
 }
+
+
+export function bookProjectUserImportDownload() {
+    return serviceShiro({
+        url: `/book/admin/project/user/import/download/auth`,
+        method: 'get',
+        responseType: 'blob'
+    })
+}

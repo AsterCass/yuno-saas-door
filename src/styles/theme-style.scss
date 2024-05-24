@@ -269,6 +269,11 @@
     border-left: 5px solid $yuno-theme-black;
   }
 
+  .astercasc-announcement-in-page {
+    background-color: $yuno_dark_text_color;
+    color: $yuno-theme-black;
+  }
+
 }
 
 
@@ -415,6 +420,13 @@
     border-left: 5px solid $yuno-theme-green;
   }
 
+  .astercasc-announcement-in-page {
+    background-color: $yuno_dark_text_color;
+    //background-color: $yuno-theme-green-mini;
+    color: $yuno-theme-green;
+  }
+
+
 }
 
   //============================== blue ==============================
@@ -559,6 +571,13 @@
     border-left: 5px solid $yuno-theme-blue;
   }
 
+  .astercasc-announcement-in-page {
+    background-color: $yuno_dark_text_color;
+    //background-color: $yuno-theme-blue-mini;
+    color: $yuno-theme-blue;
+  }
+
+
 }
 
   //============================== orange ==============================
@@ -702,6 +721,12 @@
     background-color: $yuno_dark_text_color;
     color: $yuno-theme-orange;
     border-left: 5px solid $yuno-theme-orange;
+  }
+
+  .astercasc-announcement-in-page {
+    background-color: $yuno_dark_text_color;
+    //background-color: $yuno-theme-orange-mini;
+    color: $yuno-theme-orange;
   }
 
 }
@@ -950,6 +975,11 @@
       }
 
     }
+  }
+
+  .astercasc-announcement-in-page {
+    background-color: $yuno-theme-black-focus;
+    color: $yuno_dark_text_color;
   }
 
 

@@ -30,7 +30,13 @@
     </div>
 
 
-    <div class="q-ma-lg">
+    <div class="q-mx-lg q-mt-md">
+      <AnnouncementInPage :text-list="['活动创建完成后，默认为下架状态，仅已上架且进行中的活动会展示给租客',
+       '活动开始前允许编辑和上下架；活动开始后不允许编辑，仅允许上下架']"/>
+    </div>
+
+
+    <div class="q-mx-lg q-mt-md">
       <ComplexTable v-if="mountTable" :custom-slot="customColumnBuilder"
                     :custom-table-operation="customTableOperation"
                     :table-base-info="tableBaseInfo"
@@ -64,6 +70,7 @@ import DialogJudgment from "@/components/DialogJudgment.vue";
 import {extend, useQuasar} from "quasar";
 import {notifyTopPositive, notifyTopWarning} from "@/utils/global-notify";
 import {bookProjectDelete, bookProjectDown, bookProjectList, bookProjectUp} from "@/api/book-project";
+import AnnouncementInPage from "@/components/AnnouncementInPage.vue";
 
 //notify
 const notify = useQuasar().notify

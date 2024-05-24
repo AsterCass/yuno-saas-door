@@ -142,3 +142,17 @@ $min-width:4rem, $color: $yuno_light_text-color) {
   padding: 1rem;
   border-radius: 1rem;
 }
+
+.astercasc-announcement-in-page {
+  width: 100%;
+  padding: .2rem .5rem;
+  border-radius: .8rem;
+}
+
+.astercasc-announcement-in-page-base-color {
+  width: 100%;
+  padding: .2rem .5rem;
+  border-radius: .8rem;
+  background-color: $yuno_dark_text_color;
+  color: $yuno-theme-black;
+}
