@@ -200,18 +200,18 @@ export const bookUserColumns = [
 
 export const bookHouseColumns = [
     {
-        name: 'houseNo',
+        name: 'projectHouseId',
         required: true,
         label: '房源编号',
         align: 'center',
-        field: 'houseNo',
+        field: 'projectHouseId',
     },
     {
-        name: 'houseProjectNo',
+        name: 'houseProjectId',
         required: true,
         label: '项目编号',
         align: 'center',
-        field: 'houseProjectNo',
+        field: 'houseProjectId',
     },
     {
         name: 'houseProjectName',
@@ -221,11 +221,11 @@ export const bookHouseColumns = [
         field: 'houseProjectName',
     },
     {
-        name: 'houseSite',
+        name: 'divisionName',
         required: false,
         label: '所在区域',
         align: 'center',
-        field: 'houseSite',
+        field: 'divisionName',
     },
     {
         name: 'houseAddress',
@@ -235,11 +235,11 @@ export const bookHouseColumns = [
         field: 'houseAddress',
     },
     {
-        name: 'rentalStyle',
+        name: 'rentStyle',
         required: false,
         label: '租赁方式',
         align: 'center',
-        field: 'rentalStyle',
+        field: 'rentStyle',
     },
     {
         name: 'houseModel',
@@ -249,18 +249,18 @@ export const bookHouseColumns = [
         field: 'houseModel',
     },
     {
-        name: 'houseOrient',
+        name: 'orientation',
         required: false,
         label: '朝向',
         align: 'center',
-        field: 'houseOrient',
+        field: 'orientation',
     },
     {
-        name: 'houseArea',
+        name: 'area',
         required: false,
         label: '面积',
         align: 'center',
-        field: 'houseArea',
+        field: 'area',
     },
     {
         name: 'houseFloor',

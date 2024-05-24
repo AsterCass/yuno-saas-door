@@ -55,19 +55,26 @@
 </template>
 
 <script setup>
-import {onMounted, onUnmounted, ref} from "vue";
-import {searchProjectHouseRet} from "@/mock/house-book-project";
+import {defineProps, onMounted, onUnmounted, ref} from "vue";
 import emitter from "@/utils/bus";
 import SaasHouseBookImportHouseProject from "@/components/biz/SaasHouseBookImportHouseProject.vue";
-import {houseModelOpt, rentalStyleOpt} from "@/constant/enums";
+import {houseModelOpt, OrientationEnum, rentalStyleOpt} from "@/constant/enums";
 import ComplexTable from "@/components/ComplexTable.vue";
 import {bookHouseColumns} from "@/constant/tables";
-import {useQuasar} from "quasar";
-import {notifyTopPositive} from "@/utils/global-notify";
+import {extend, useQuasar} from "quasar";
+import {notifyTopPositive, notifyTopWarning} from "@/utils/global-notify";
 import AddressCascadeSelector from "@/components/AddressCascadeSelector.vue";
+import {projectHouseList} from "@/api/book-project-house";
 
 //notify
 const notify = useQuasar().notify
+const props = defineProps({
+  projectId: {
+    type: String,
+    required: false,
+    default: ""
+  }
+})
 //table
 let tableBaseInfo = ref({
   tableColumns: bookHouseColumns,
@@ -93,10 +100,11 @@ let houseKey = ref("")
 let rentalStyle = ref(null)
 let houseAddressCode = ref("")
 let houseModel = ref(null)
+let pageParam = ref({})
 
 
 function searchOrder() {
-  console.log(houseKey.value, houseAddressCode.value, rentalStyle.value, houseModel.value)
+  saasHouseBookProjectBookHouseRenewTableEvent(pageParam.value)
 }
 
 function unlinkMultiHouse() {
@@ -120,14 +128,41 @@ function unlinkMultiHouse() {
 }
 
 function saasHouseBookProjectBookHouseRenewTableEvent(param) {
-  let pageNo = param.pageNo
-  let pageSize = param.pageSize
-
-  let offset = (pageNo - 1) * pageSize
-  let last = offset + pageSize > searchProjectHouseRet.length ? searchProjectHouseRet.length : offset + pageSize
-
-  tableData.value = searchProjectHouseRet.slice(offset, last)
-  tableDataSum.value = searchProjectHouseRet.length
+  if (param) {
+    pageParam.value = param
+  }
+  projectHouseList(extend(true, {
+    houseKeyword: houseKey.value,
+    rentType: null == rentalStyle.value ? null : rentalStyle.value.value,
+    divisionCode: null == houseAddressCode.value ? null : houseAddressCode.value,
+    bedroomSum: null == houseModel.value ? null : houseModel.value.value,
+    projectId: props.projectId
+  }, pageParam.value)).then(data => {
+    if (data && 200 === data.status) {
+      let thisData = data.data
+      let content = thisData.content
+      for (let inData of content) {
+        inData.houseModel = inData.bedroomSum + "室" + inData.livingRoomSum + "厅" + inData.washroomSum + "卫"
+        inData.orientation = OrientationEnum.getDesc(inData.orientation)
+        inData.houseFloor = inData.floorNo + "/" + inData.floorSum
+        inData.rentalCharge = inData.monthPay + "/月"
+        if (inData.rentStyle === 1) {
+          inData.rentStyle = '整租'
+          inData.houseAddress = inData.community + inData.buildNo + "幢" + inData.unitNo + "单元" + inData.houseNo
+          inData.area = inData.area + "㎡"
+        } else {
+          inData.rentStyle = '合租'
+          inData.houseAddress = inData.community + inData.buildNo + "幢"
+              + inData.unitNo + "单元" + inData.houseNo + '-' + inData.roomNo
+          inData.area = inData.roomArea + "㎡"
+        }
+      }
+      tableData.value = content
+      tableDataSum.value = thisData.totalElements
+    }
+  }).catch(() => {
+    notifyTopWarning("房源数据获取失败，请重试", 2000, notify)
+  });
 }
 
 function saasHouseBookProjectHouseUnlinkEvent(map) {

@@ -63,6 +63,27 @@ export const BookTeamStatusEnum = {
     }
 }
 
+export const OrientationEnum = {
+    S: {code: 1, desc: "朝南"},
+    N: {code: 2, desc: "朝北"},
+    W: {code: 3, desc: "朝西"},
+    E: {code: 4, desc: "朝东"},
+    SE: {code: 5, desc: "东南"},
+    NE: {code: 6, desc: "东北"},
+    SW: {code: 7, desc: "西南"},
+    NW: {code: 8, desc: "西北"},
+
+
+    getDesc: function (code) {
+        for (let key in this) {
+            if (this[key].code === code) {
+                return this[key].desc;
+            }
+        }
+        return null;
+    }
+}
+
 export const projectProcessStatusOpt = ref([
     {
         label: ProjectProcessStatusEnum.WILL.desc,
@@ -144,6 +165,7 @@ export const rentalStyleOpt = ref([
         value: 2,
     },
 ])
+
 export const houseModelOpt = ref([
     {
         label: '1室',
@@ -154,15 +176,7 @@ export const houseModelOpt = ref([
         value: 2,
     },
     {
-        label: '3室',
+        label: '3室及以上',
         value: 3,
-    },
-    {
-        label: '4室',
-        value: 4,
-    },
-    {
-        label: '5室即以上',
-        value: 5,
     },
 ])
