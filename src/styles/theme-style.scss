@@ -50,6 +50,12 @@
     padding: 0 1rem !important;
   }
 
+  .astercasc-input-wrap-for-clearable {
+    .q-field__append {
+      padding-left: 0 !important;
+    }
+  }
+
   .astercasc-simple-select-margin-pri {
     min-width: 10rem;
     background-color: $yuno_dark_text_color;
@@ -796,6 +802,12 @@
     background-color: $yuno_light_text-color !important;
     margin: .5rem !important;
     padding: 0 1rem !important;
+  }
+
+  .astercasc-input-wrap-for-clearable {
+    .q-field__append {
+      padding-left: 0 !important;
+    }
   }
 
   .astercasc-simple-select-margin-pri {
