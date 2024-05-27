@@ -88,6 +88,7 @@ const router = createRouter({
                             },
                             props: ($route) => ({
                                 projectId: $route.query.id,
+                                houseSum: $route.query.houseSum,
                             }),
                         },
                         {
@@ -285,6 +286,13 @@ export function toSpecifyPage(thisRouter, pageName) {
 export function toSpecifyPageWithQuery(thisRouter, pageName, queryMap) {
     thisRouter.push({
         name: pageName,
+        query: queryMap,
+    })
+}
+
+export function toReplacePage(thisRouter, queryMap) {
+    thisRouter.replace({
+        name: thisRouter.name,
         query: queryMap,
     })
 }

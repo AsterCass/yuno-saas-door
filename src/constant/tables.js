@@ -288,11 +288,11 @@ export const bookHouseColumns = [
 
 export const importHouseProjectColumns = [
     {
-        name: 'houseProjectNo',
+        name: 'houseProjectId',
         required: true,
-        label: '房源编号',
+        label: '项目编号',
         align: 'center',
-        field: 'houseProjectNo',
+        field: 'houseProjectId',
     },
     {
         name: 'houseProjectName',

@@ -50,7 +50,9 @@
 
   </div>
 
-  <SaasHouseBookImportHouseProject/>
+  <SaasHouseBookImportHouseProject :project-id="projectId"
+                                   :house-sum="Number(houseSum)"
+                                   :house-project-id="houseProjectId"/>
 
 </template>
 
@@ -64,16 +66,24 @@ import {bookHouseColumns} from "@/constant/tables";
 import {extend, useQuasar} from "quasar";
 import {notifyTopPositive, notifyTopWarning} from "@/utils/global-notify";
 import AddressCascadeSelector from "@/components/AddressCascadeSelector.vue";
-import {projectHouseList} from "@/api/book-project-house";
+import {projectHouseList, unImport} from "@/api/book-project-house";
+import {useRouter} from "vue-router";
+import {toReplacePage} from "@/router";
 
 //notify
 const notify = useQuasar().notify
+const thisRouter = useRouter()
 const props = defineProps({
   projectId: {
     type: String,
     required: false,
     default: ""
-  }
+  },
+  houseSum: {
+    type: String,
+    required: true,
+    default: 0,
+  },
 })
 //table
 let tableBaseInfo = ref({
@@ -101,6 +111,10 @@ let rentalStyle = ref(null)
 let houseAddressCode = ref("")
 let houseModel = ref(null)
 let pageParam = ref({})
+//data
+let houseProjectId = ref("")
+let updateForUrlParam = ref(false)
+
 
 
 function searchOrder() {
@@ -156,17 +170,40 @@ function saasHouseBookProjectBookHouseRenewTableEvent(param) {
               + inData.unitNo + "单元" + inData.houseNo + '-' + inData.roomNo
           inData.area = inData.roomArea + "㎡"
         }
+        //pass to child component
+        houseProjectId.value = inData.houseProjectId
       }
       tableData.value = content
       tableDataSum.value = thisData.totalElements
+      if (updateForUrlParam.value) {
+        toReplacePage(thisRouter, {id: props.projectId, houseSum: tableDataSum.value})
+        updateForUrlParam.value = false
+      }
     }
   }).catch(() => {
     notifyTopWarning("房源数据获取失败，请重试", 2000, notify)
   });
 }
 
+function initParam() {
+  houseKey.value = ''
+  rentalStyle.value = null
+  houseAddressCode.value = ""
+  houseModel.value = null
+}
+
 function saasHouseBookProjectHouseUnlinkEvent(map) {
-  notifyTopPositive(`解除“${map.houseNo}”关联成功`, 2000, notify)
+  unImport(props.projectId, map.projectHouseId).then(data => {
+    if (data && 200 === data.status) {
+      notifyTopPositive(`解除“${map.projectHouseId}”关联成功`, 2000, notify)
+      initParam()
+      saasHouseBookProjectBookHouseRenewTableEvent()
+      updateForUrlParam.value = true
+    }
+  }).catch(() => {
+    notifyTopWarning("取消关联失败，请重试", 2000, notify)
+  });
+
 }
 
 

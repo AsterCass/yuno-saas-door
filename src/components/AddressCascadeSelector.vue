@@ -153,7 +153,6 @@ function loadPrinceData() {
 }
 
 onMounted(() => {
-  console.log(addressCascadeMenu.value)
   loadPrinceData()
 })
 

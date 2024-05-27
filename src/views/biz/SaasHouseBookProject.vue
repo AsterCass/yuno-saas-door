@@ -149,7 +149,8 @@ function deleteProjectDialog(isDo) {
 }
 
 function saasHouseBookProjectToProjectHouseEvent(map) {
-  toSpecifyPageWithQuery(thisRouter, 'saasHouseBookProjectHouse', {id: map.projectId})
+  toSpecifyPageWithQuery(thisRouter, 'saasHouseBookProjectHouse',
+      {id: map.projectId, houseSum: map.houseSum})
 }
 
 function saasHouseBookProjectToProjectBookUserEvent(map) {
