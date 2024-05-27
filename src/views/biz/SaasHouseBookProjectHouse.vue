@@ -82,13 +82,13 @@ const props = defineProps({
   houseSum: {
     type: String,
     required: true,
-    default: 0,
+    default: '0',
   },
 })
 //table
 let tableBaseInfo = ref({
   tableColumns: bookHouseColumns,
-  tableKey: "houseNo",
+  tableKey: "projectHouseId",
   renewDataEmitStr: 'saasHouseBookProjectBookHouseRenewTableEvent',
   selectType: 'none',
 })
@@ -128,10 +128,21 @@ function unlinkMultiHouse() {
   } else {
     if (multiSelect.value.length > 0) {
       let unlinkMultiHouseId = ""
+      let unlinkMultiHouseIdParam = ""
       for (let obj of multiSelect.value) {
-        unlinkMultiHouseId += (obj.houseNo + " ")
+        unlinkMultiHouseId += (obj.projectHouseId + " ")
+        unlinkMultiHouseIdParam += (obj.projectHouseId + ",")
       }
-      notifyTopPositive(`解除房源编号 ${unlinkMultiHouseId}关联成功`, 2000, notify)
+      unImport(props.projectId, {projectHouseIds: unlinkMultiHouseIdParam}).then(data => {
+        if (data && 200 === data.status) {
+          notifyTopPositive(`解除房源编号 ${unlinkMultiHouseId}关联成功`, 2000, notify)
+          initParam()
+          saasHouseBookProjectBookHouseRenewTableEvent()
+          updateForUrlParam.value = true
+        }
+      }).catch(() => {
+        notifyTopWarning("取消关联失败，请重试", 2000, notify)
+      });
     }
     tableBaseInfo.value.selectType = 'none'
     showMultiSelect.value = false
@@ -193,7 +204,7 @@ function initParam() {
 }
 
 function saasHouseBookProjectHouseUnlinkEvent(map) {
-  unImport(props.projectId, map.projectHouseId).then(data => {
+  unImport(props.projectId, {projectHouseIds: map.projectHouseId}).then(data => {
     if (data && 200 === data.status) {
       notifyTopPositive(`解除“${map.projectHouseId}”关联成功`, 2000, notify)
       initParam()

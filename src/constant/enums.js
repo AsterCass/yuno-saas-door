@@ -72,8 +72,21 @@ export const OrientationEnum = {
     NE: {code: 6, desc: "东北"},
     SW: {code: 7, desc: "西南"},
     NW: {code: 8, desc: "西北"},
+    getDesc: function (code) {
+        for (let key in this) {
+            if (this[key].code === code) {
+                return this[key].desc;
+            }
+        }
+        return null;
+    }
+}
 
-
+export const HouseOrderStatusEnum = {
+    BOOK: {code: 1, desc: "待验房"},
+    CHECKED: {code: 2, desc: "待签约"},
+    FINISH: {code: 3, desc: "已完成"},
+    CANCEL: {code: 4, desc: "已取消"},
     getDesc: function (code) {
         for (let key in this) {
             if (this[key].code === code) {
@@ -138,20 +151,20 @@ export const bookTeamStatusOpt = ref([
 
 export const orderStatusOpt = ref([
     {
-        label: '待验房',
-        value: 1,
+        label: HouseOrderStatusEnum.BOOK.desc,
+        value: HouseOrderStatusEnum.BOOK.code,
     },
     {
-        label: '待签约',
-        value: 2,
+        label: HouseOrderStatusEnum.CHECKED.desc,
+        value: HouseOrderStatusEnum.CHECKED.code,
     },
     {
-        label: '已完成',
-        value: 3,
+        label: HouseOrderStatusEnum.FINISH.desc,
+        value: HouseOrderStatusEnum.FINISH.code,
     },
     {
-        label: '已取消',
-        value: 4,
+        label: HouseOrderStatusEnum.CANCEL.desc,
+        value: HouseOrderStatusEnum.CANCEL.code,
     },
 ])
 

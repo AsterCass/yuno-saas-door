@@ -67,18 +67,18 @@ export const bookHouseProjectColumns = [
 
 export const bookHouseOrderColumns = [
     {
-        name: 'orderNo',
+        name: 'projectHouseOrderId',
         required: true,
         label: '订单编号',
         align: 'center',
-        field: 'orderNo',
+        field: 'projectHouseOrderId',
     },
     {
-        name: 'projectNo',
+        name: 'projectId',
         required: true,
         label: '活动编号',
         align: 'center',
-        field: 'projectNo',
+        field: 'projectId',
     },
     {
         name: 'projectName',
@@ -88,18 +88,18 @@ export const bookHouseOrderColumns = [
         field: 'projectName',
     },
     {
-        name: 'houseNo',
+        name: 'projectHouseId',
         required: false,
         label: '房源编号',
         align: 'center',
-        field: 'houseNo',
+        field: 'projectHouseId',
     },
     {
-        name: 'houseProfile',
+        name: 'houseAddress',
         required: false,
         label: '房源信息',
         align: 'center',
-        field: 'houseProfile',
+        field: 'houseAddress',
     },
     {
         name: 'bookUserName',
@@ -116,17 +116,18 @@ export const bookHouseOrderColumns = [
         field: 'bookUserPhone',
     },
     {
+        name: 'bookUserIdCard',
         required: false,
         label: '身份证号',
         align: 'center',
         field: 'bookUserIdCard',
     },
     {
-        name: 'orderStatus',
+        name: 'orderStatusName',
         required: false,
         label: '订单状态',
         align: 'center',
-        field: 'orderStatus',
+        field: 'orderStatusName',
     },
     {
         name: 'createTime',

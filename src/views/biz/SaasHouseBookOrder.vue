@@ -35,12 +35,16 @@
 
 <script setup>
 import {onMounted, onUnmounted, ref} from "vue";
-import {orderStatusOpt} from "@/constant/enums";
+import {HouseOrderStatusEnum, orderStatusOpt} from "@/constant/enums";
 import ComplexTable from "@/components/ComplexTable.vue";
 import {bookHouseOrderColumns} from "@/constant/tables";
 import emitter from "@/utils/bus";
-import {searchOrderRet} from "@/mock/house-book-project";
+import {projectHouseOrderList} from "@/api/book-project-house";
+import {extend, useQuasar} from "quasar";
+import {notifyTopWarning} from "@/utils/global-notify";
 
+//notify
+const notify = useQuasar().notify
 const tableBaseInfo = ref({
   tableColumns: bookHouseOrderColumns,
   tableKey: "orderNo",
@@ -50,25 +54,38 @@ const tableBaseInfo = ref({
 let mountTable = ref(false)
 let tableData = ref([])
 let tableDataSum = ref(0)
-
+//search
 let orderSearchNo = ref("")
 let orderSearchKey = ref("")
 let orderStatus = ref(null)
+let pageParam = ref({})
 
 
 function searchOrder() {
-  console.log(orderSearchKey.value, orderStatus.value, orderSearchNo.value)
+  saasHouseBookOrderRenewTableEvent()
 }
 
 function saasHouseBookOrderRenewTableEvent(param) {
-  let pageNo = param.pageNo
-  let pageSize = param.pageSize
-
-  let offset = (pageNo - 1) * pageSize
-  let last = offset + pageSize > searchOrderRet.length ? searchOrderRet.length : offset + pageSize
-
-  tableData.value = searchOrderRet.slice(offset, last)
-  tableDataSum.value = searchOrderRet.length
+  if (param) {
+    pageParam.value = param
+  }
+  projectHouseOrderList(extend(true, {
+    houseOrderId: orderSearchNo.value,
+    houseOrderKeyword: orderSearchKey.value,
+    houseOrderStatus: null == orderStatus.value ? null : orderStatus.value.value,
+  }, pageParam.value)).then(data => {
+    if (data && 200 === data.status) {
+      let thisData = data.data
+      let content = thisData.content
+      for (let inData of content) {
+        inData.orderStatusName = HouseOrderStatusEnum.getDesc(inData.orderStatus)
+      }
+      tableData.value = content
+      tableDataSum.value = thisData.totalElements
+    }
+  }).catch(() => {
+    notifyTopWarning("订单数据获取失败，请重试", 2000, notify)
+  });
 }
 
 

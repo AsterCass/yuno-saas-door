@@ -25,10 +25,11 @@ export function unImportAll(projectId, houseProjectId) {
     })
 }
 
-export function unImport(projectId, projectHouseId) {
+export function unImport(projectId, param) {
     return serviceShiro({
-        url: `/book/admin/project/house/${projectId}/unImport/house/${projectHouseId}/auth`,
+        url: `/book/admin/project/house/${projectId}/unImport/house/auth`,
         method: 'delete',
+        params: param,
     })
 }
 
@@ -37,5 +38,13 @@ export function toImport(projectId, houseProjectId) {
     return serviceShiro({
         url: `/book/admin/project/house/${projectId}/import/${houseProjectId}/auth`,
         method: 'post',
+    })
+}
+
+export function projectHouseOrderList(param) {
+    return serviceShiro({
+        url: `/book/admin/project/house/order/list/auth`,
+        method: 'get',
+        params: param
     })
 }
