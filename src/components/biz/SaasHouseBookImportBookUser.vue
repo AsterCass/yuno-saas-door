@@ -66,7 +66,7 @@ import emitter from "@/utils/bus";
 import {useQuasar} from "quasar";
 import {notifyTopPositive, notifyTopWarning} from "@/utils/global-notify";
 import {getUserBehavior} from "@/utils/store";
-import {bookProjectUserImport, bookProjectUserImportDownload} from "@/api/book-project-user";
+import {bookProjectUserImport} from "@/api/book-project-user";
 
 const BASE_ADD = process.env.VUE_APP_BASE_ADD
 //notify
@@ -80,18 +80,26 @@ let downloadUrl = ref("")
 
 
 function downloadTemplate() {
-  bookProjectUserImportDownload().then(data => {
-    const blob = new Blob([data], {type: 'application/vnd.ms-excel'});
-    const downloadUrl = window.URL.createObjectURL(blob);
-    const link = document.createElement('a');
-    link.href = downloadUrl;
-    link.setAttribute('download', 'template.xlsx');
-    document.body.appendChild(link);
-    link.click();
-    link.remove();
-  }).catch(() => {
-    notifyTopWarning("获取模板失败，请重试", 2000, notify)
-  });
+  // bookProjectUserImportDownload().then(data => {
+  //   const blob = new Blob([data], {type: 'application/vnd.ms-excel'});
+  //   const downloadUrl = window.URL.createObjectURL(blob);
+  //   const link = document.createElement('a');
+  //   link.href = downloadUrl;
+  //   link.setAttribute('download', 'template.xlsx');
+  //   document.body.appendChild(link);
+  //   link.click();
+  //   link.remove();
+  // }).catch(() => {
+  //   notifyTopWarning("获取模板失败，请重试", 2000, notify)
+  // });
+
+  //todo this is template logic, use request for data need https
+  const link = document.createElement('a');
+  link.href = 'https://web-pulbic-read.obs.cn-southwest-2.myhuaweicloud.com/template/import-book-user.xlsx';
+  link.setAttribute('download', 'template.xlsx');
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
 }
 
 function submitImportBookUser() {

@@ -119,6 +119,8 @@ function linkHouseProjectDialog(isDo) {
     }).catch(() => {
       notifyTopWarning("关联失败，请重试", 2000, notify)
     });
+  } else {
+    emitter.emit("showDialogJudgmentEvent", false)
   }
 }
 
@@ -159,7 +161,7 @@ function saasHouseBookImportHouseRenewTableEvent(param) {
 }
 
 function saasHouseBookImportHouseLinkEvent(obj) {
-  dialogJudgmentData.value.title = "关联烦房源项目"
+  dialogJudgmentData.value.title = "关联房源项目"
   dialogJudgmentData.value.content = `确定要关联${obj.houseProjectName}吗？
   确认后项目中${obj.houseProjectNum}套房源将用于选房活动`
   dialogJudgmentData.value.trueLabel = `关联`
