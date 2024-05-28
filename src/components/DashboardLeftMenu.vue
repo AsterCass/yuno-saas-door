@@ -1,5 +1,5 @@
 <template>
-  <q-drawer class="row justify-center items-center" :mini-width="100"
+  <q-drawer class="row justify-center items-center" :mini-width="100" :breakpoint="1"
             v-model="showLeftMenu" :mini="leftMenuMini" side="left">
 
     <div class="left-switch-drawer" :class="`mix-bg-${sidebarBg} left-switch-drawer-bg-${sidebarBgImg}`">
