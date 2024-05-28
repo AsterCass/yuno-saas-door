@@ -150,7 +150,7 @@ let sidebarBg = ref('black')
 let sidebarBgImg = ref('img1')
 let leftFocusOne = ref(false)
 
-let currentPage = ref('saasDashboard')
+let currentPage = ref('')
 
 
 let loadUserPageRight = ref([])

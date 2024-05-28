@@ -60,7 +60,7 @@
 import {defineProps, onMounted, onUnmounted, ref} from "vue";
 import emitter from "@/utils/bus";
 import SaasHouseBookImportHouseProject from "@/components/biz/SaasHouseBookImportHouseProject.vue";
-import {houseModelOpt, OrientationEnum, rentalStyleOpt} from "@/constant/enums";
+import {HouseBookStatusEnum, houseModelOpt, OrientationEnum, rentalStyleOpt} from "@/constant/enums";
 import ComplexTable from "@/components/ComplexTable.vue";
 import {bookHouseColumns} from "@/constant/tables";
 import {extend, useQuasar} from "quasar";
@@ -169,6 +169,7 @@ function saasHouseBookProjectBookHouseRenewTableEvent(param) {
       for (let inData of content) {
         inData.houseModel = inData.bedroomSum + "室" + inData.livingRoomSum + "厅" + inData.washroomSum + "卫"
         inData.orientation = OrientationEnum.getDesc(inData.orientation)
+        inData.houseBookStatusName = HouseBookStatusEnum.getDesc(inData.houseBookStatus)
         inData.houseFloor = inData.floorNo + "/" + inData.floorSum
         inData.rentalCharge = inData.monthPay + "/月"
         if (inData.rentStyle === 1) {

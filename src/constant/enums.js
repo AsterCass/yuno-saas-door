@@ -97,6 +97,20 @@ export const HouseOrderStatusEnum = {
     }
 }
 
+export const HouseBookStatusEnum = {
+    WAIT: {code: 0, desc: "待选"},
+    SELECTED: {code: 1, desc: "已选"},
+    DROP: {code: 2, desc: "未选"},
+    getDesc: function (code) {
+        for (let key in this) {
+            if (this[key].code === code) {
+                return this[key].desc;
+            }
+        }
+        return null;
+    }
+}
+
 export const projectProcessStatusOpt = ref([
     {
         label: ProjectProcessStatusEnum.WILL.desc,

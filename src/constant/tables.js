@@ -278,6 +278,13 @@ export const bookHouseColumns = [
         field: 'rentalCharge',
     },
     {
+        name: 'houseBookStatusName',
+        required: false,
+        label: '房源选择状态',
+        align: 'center',
+        field: 'houseBookStatusName',
+    },
+    {
         name: 'operation',
         required: false,
         label: '操作',
