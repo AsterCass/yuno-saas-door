@@ -130,6 +130,29 @@ $min-width:4rem, $color: $yuno_light_text-color) {
   padding: 0 1rem;
 }
 
+
+.astercasc-list-mini-card-standard {
+  padding: 0;
+  margin: 1rem;
+
+  .astercasc-list-mini-card-standard-header {
+    height: 2.2rem;
+    width: 100%;
+    border-radius: 1rem 1rem 0 0 !important;
+  }
+
+  .astercasc-list-mini-card-standard-body {
+    padding: .5rem 1rem;
+  }
+
+  .astercasc-list-mini-card-standard-tail {
+    margin-top: .5rem;
+    height: 1rem;
+    width: 100%;
+    border-radius: 0 0 1rem 1rem !important;
+  }
+}
+
 .astercasc-dialog-frame-standard {
   min-height: 10rem;
   min-width: 20rem;

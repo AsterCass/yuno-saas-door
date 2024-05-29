@@ -46,6 +46,7 @@ export const bookHouseProjectColumns = [
         align: 'center',
         field: 'projectStatusName',
         miniCardHaveName: true,
+        miniCardSite: "subscript",
     },
     {
         name: 'createUserName',
@@ -54,6 +55,7 @@ export const bookHouseProjectColumns = [
         align: 'center',
         field: 'createUserName',
         miniCardHaveName: true,
+        miniCardSite: "footerLeft",
     },
     {
         name: 'createTime',
@@ -62,6 +64,7 @@ export const bookHouseProjectColumns = [
         align: 'center',
         field: 'createTime',
         miniCardHaveName: false,
+        miniCardSite: "footerRight",
     },
     {
         name: 'operation',

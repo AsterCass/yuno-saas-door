@@ -1,10 +1,33 @@
 <template>
 
   <div v-if="inject('globalData').isMiniScreen" class="row justify-evenly">
-    <q-card v-for="(data, index) in tableData" :key="index" class="q-ma-md q-pa-md">
-      <div v-for="(col, colIndex) in tableBaseInfo.tableColumns" :key="colIndex">
-        {{ col.label }} : {{ data[col.name] }}
+    <q-card v-for="(data, index) in tableData" :key="index" class="astercasc-list-mini-card-standard">
+      <div class="astercasc-list-mini-card-standard-header">
+
       </div>
+
+      <div class="astercasc-list-mini-card-standard-body">
+        <div v-for="(col, colIndex) in tableBaseInfo.tableColumns"
+             :key="colIndex">
+          {{ col.label }} : {{ data[col.name] }}
+        </div>
+      </div>
+
+      <q-separator inset class="q-ma-sm half-opacity" :dark="getUserBehavior().styleModel === 'dark'"/>
+
+      <div class="row q-px-sm justify-between">
+        <div class="q-px-md">
+          123
+        </div>
+        <div class="q-px-md">
+          123
+        </div>
+        <div class="q-px-md">
+          123
+        </div>
+      </div>
+
+      <div class="astercasc-list-mini-card-standard-tail"/>
     </q-card>
   </div>
 
@@ -100,6 +123,7 @@
 <script setup>
 import {defineEmits, defineExpose, defineProps, inject, onMounted, ref, watch} from "vue";
 import emitter from "@/utils/bus";
+import {getUserBehavior} from "@/utils/store";
 
 const props = defineProps({
   customSlot: {
@@ -134,18 +158,49 @@ let pageSize = ref(10)
 let pageNo = ref(1)
 let localMultiSelect = ref([])
 
+let miniData = ref({
+  titleData: null,
+  subscriptData: null,
+  stdData: [],
+  footerLeftData: null,
+  footerMiddleData: null,
+  footerRightData: null,
+})
+
 const emit = defineEmits(['multiSelectChange'])
 watch(localMultiSelect, () => {
   emit('multiSelectChange', localMultiSelect.value);
 })
 
 function clearSelected() {
-  localMultiSelect.value = []
+  localMultiSelect.value = props.tableData
 }
 
 function toNewPage() {
   emitter.emit(props.tableBaseInfo.renewDataEmitStr,
       {pageNo: pageNo.value, pageSize: pageSize.value})
+}
+
+function buildMiniData() {
+  let miniCardTitle = props.tableBaseInfo.miniCardTitle
+  for (let key of props.tableBaseInfo.tableColumns) {
+    if (key.name === miniCardTitle) {
+      miniData.value.titleData = key
+    } else if (key.miniCardSite === 'subscript') {
+      miniData.value.subscriptData = key
+    } else if (key.miniCardSite === 'footerRight') {
+      miniData.value.footerRightData = key
+    } else if (key.miniCardSite === 'footerLeft') {
+      miniData.value.footerLeftData = key
+    } else if (key.miniCardSite === 'footerMiddle') {
+      miniData.value.footerMiddleData = key
+    } else {
+      miniData.value.stdData.push(key)
+    }
+  }
+
+  console.log(miniData.value)
+  // miniData.value.titleData =
 }
 
 function updatePageSize(size) {
@@ -155,6 +210,7 @@ function updatePageSize(size) {
 }
 
 onMounted(() => {
+  buildMiniData()
   toNewPage()
 })
 

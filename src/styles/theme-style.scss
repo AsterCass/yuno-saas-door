@@ -89,6 +89,18 @@
     }
   }
 
+  .astercasc-simple-card-deep {
+    border-radius: 1rem !important;
+    color: $yuno-theme-black-focus !important;
+    background-color: $yuno_dark_text_color !important;
+    box-shadow: inset 0 0 1px 1px rgba(254, 254, 254, 0.9), 0 20px 27px 0 rgba(180, 180, 180, 0.05) !important;
+    backdrop-filter: saturate(200%) blur(30px) !important;
+
+    .q-item--active {
+      color: inherit !important;
+    }
+  }
+
   .astercasc-simple-card-outline {
     border-radius: 1rem !important;
     color: $yuno_light_text-color !important;
@@ -99,6 +111,10 @@
     .q-item--active {
       color: inherit !important;
     }
+  }
+
+  .astercasc-list-mini-card-standard {
+    @extend .astercasc-simple-card-deep;
   }
 
   .astercasc-dialog-frame-standard {
@@ -198,6 +214,21 @@
   .astercasc-theme-toggle {
     .q-toggle__inner--truthy {
       color: $yuno-theme-black;
+    }
+  }
+
+  .astercasc-list-mini-card-standard {
+    background-color: $yuno_dark_text_color;
+    color: $yuno_dark_bg;
+
+    .astercasc-list-mini-card-standard-header {
+      background-image: $yuno-theme-black-gra;
+      color: $yuno_light_bg;
+    }
+
+    .astercasc-list-mini-card-standard-tail {
+      background-image: $yuno-theme-black-gra;
+      color: $yuno_light_bg;
     }
   }
 
@@ -352,6 +383,21 @@
     }
   }
 
+  .astercasc-list-mini-card-standard {
+    background-color: $yuno_dark_text_color;
+    color: $yuno_dark_bg;
+
+    .astercasc-list-mini-card-standard-header {
+      background-image: $yuno-theme-green-gra;
+      color: $yuno_light_bg;
+    }
+
+    .astercasc-list-mini-card-standard-tail {
+      background-image: $yuno-theme-green-gra;
+      color: $yuno_light_bg;
+    }
+  }
+
   .astercasc-simple-btn-margin-pri {
     @include astercasc-simple-btn(0rem, 2.5rem, 6rem, $yuno-theme-green-gra)
   }
@@ -503,6 +549,21 @@
     }
   }
 
+  .astercasc-list-mini-card-standard {
+    background-color: $yuno_dark_text_color;
+    color: $yuno_dark_bg;
+
+    .astercasc-list-mini-card-standard-header {
+      background-image: $yuno-theme-blue-gra;
+      color: $yuno_light_bg;
+    }
+
+    .astercasc-list-mini-card-standard-tail {
+      background-image: $yuno-theme-blue-gra;
+      color: $yuno_light_bg;
+    }
+  }
+
   .astercasc-simple-btn-margin-pri {
     @include astercasc-simple-btn(0rem, 2.5rem, 6rem, $yuno-theme-blue-gra)
   }
@@ -651,6 +712,21 @@
   .astercasc-theme-toggle {
     .q-toggle__inner--truthy {
       color: $yuno-theme-orange;
+    }
+  }
+
+  .astercasc-list-mini-card-standard {
+    background-color: $yuno_dark_text_color;
+    color: $yuno_dark_bg;
+
+    .astercasc-list-mini-card-standard-header {
+      background-image: $yuno-theme-orange-gra;
+      color: $yuno_light_bg;
+    }
+
+    .astercasc-list-mini-card-standard-tail {
+      background-image: $yuno-theme-orange-gra;
+      color: $yuno_light_bg;
     }
   }
 
@@ -857,6 +933,18 @@
     }
   }
 
+  .astercasc-simple-card-deep {
+    border-radius: 1rem !important;
+    background-color: $yuno_dark_bg;
+    color: $yuno_dark_text_color;
+    box-shadow: inset 0 0 1px 1px rgba(1, 1, 1, 0.9), 0 20px 27px 0 rgba(255, 255, 255, 0.05);
+    backdrop-filter: saturate(200%) blur(30px) !important;
+
+    .q-item--active {
+      color: inherit !important;
+    }
+  }
+
   .astercasc-simple-card-outline {
     border-radius: 1rem !important;
     color: $yuno_dark_text_color !important;
@@ -866,6 +954,20 @@
 
     .q-item--active {
       color: inherit !important;
+    }
+  }
+
+  .astercasc-list-mini-card-standard {
+    @extend .astercasc-simple-card-deep;
+
+    .astercasc-list-mini-card-standard-header {
+      background-image: $yuno-theme-dark-focus-gra;
+      color: $yuno_dark_text_color;
+    }
+
+    .astercasc-list-mini-card-standard-tail {
+      background-image: $yuno-theme-dark-focus-gra;
+      color: $yuno_dark_text_color;
     }
   }
 
