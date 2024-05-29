@@ -6,7 +6,7 @@
       <q-input v-model="bookUserSearchKey" color="grey q-ma-sm" hide-bottom-space borderless
                placeholder="请输入选房顺序号、姓名、手机号、身份证查询"
                input-class="astercasc-input-inner-base"
-               :input-style="{ width: '25rem'} "/>
+               :input-style="inject('globalData').isMiniScreen ? {} : {width: '25rem'} "/>
 
       <q-select standout dense label="短信发送状态" class="q-ma-md astercasc-simple-select-margin-pri"
                 v-model="bookMailStatus" :options="bookMailStatusOpt" clearable
@@ -69,7 +69,7 @@
 </template>
 
 <script setup>
-import {defineProps, onMounted, onUnmounted, ref} from "vue";
+import {defineProps, inject, onMounted, onUnmounted, ref} from "vue";
 import SaasHouseBookNewBookUser from "@/components/biz/SaasHouseBookNewBookUser.vue";
 import emitter from "@/utils/bus";
 import SaasHouseBookImportBookUser from "@/components/biz/SaasHouseBookImportBookUser.vue";

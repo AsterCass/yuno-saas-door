@@ -5,11 +5,11 @@
       <q-input v-model="orderSearchNo" color="grey q-ma-sm" hide-bottom-space borderless
                placeholder="请输入订单编号"
                input-class="astercasc-input-inner-base"
-               :input-style="{ width: '20rem'} "/>
+               :input-style="inject('globalData').isMiniScreen ? {} : {width: '20rem'} "/>
       <q-input v-model="orderSearchKey" color="grey q-ma-sm" hide-bottom-space borderless
                placeholder="请输入关键信息查询（活动、房源、选房人等）"
                input-class="astercasc-input-inner-base"
-               :input-style="{ width: '25rem'} "/>
+               :input-style="inject('globalData').isMiniScreen ? {} : {width: '25rem'} "/>
 
       <q-select standout dense label="订单状态" class="q-ma-md astercasc-simple-select-margin-pri"
                 v-model="orderStatus" :options="orderStatusOpt" clearable
@@ -34,7 +34,7 @@
 </template>
 
 <script setup>
-import {onMounted, onUnmounted, ref} from "vue";
+import {inject, onMounted, onUnmounted, ref} from "vue";
 import {HouseOrderStatusEnum, orderStatusOpt} from "@/constant/enums";
 import ComplexTable from "@/components/ComplexTable.vue";
 import {bookHouseOrderColumns} from "@/constant/tables";
@@ -47,7 +47,7 @@ import {notifyTopWarning} from "@/utils/global-notify";
 const notify = useQuasar().notify
 const tableBaseInfo = ref({
   tableColumns: bookHouseOrderColumns,
-  tableKey: "orderNo",
+  tableKey: "projectHouseOrderId",
   renewDataEmitStr: 'saasHouseBookOrderRenewTableEvent',
   selectType: 'none',
 })

@@ -2,7 +2,7 @@
   <q-input v-model="dateConvertShow" color="grey" hide-bottom-space borderless
            :placeholder="placeholder"
            input-class="astercasc-input-inner-base"
-           :input-style="{width: componentWidth} ">
+           :input-style="inject('globalData').isMiniScreen ? {} : {width: componentWidth} ">
     <q-popup-proxy cover transition-show="scale" transition-hide="scale"
                    style="background-color:transparent; border:0; padding:1rem;
                              box-shadow: 0 0 0; backdrop-filter:blur(0);"
@@ -32,7 +32,7 @@
 </template>
 
 <script setup>
-import {defineEmits, defineProps, onMounted, onUnmounted, ref, watch} from "vue";
+import {defineEmits, defineProps, inject, onMounted, onUnmounted, ref, watch} from "vue";
 import {date} from "quasar";
 import {emitter} from "@/utils/bus";
 import {getUserBehavior} from "@/utils/store";

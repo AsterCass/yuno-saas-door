@@ -1,5 +1,14 @@
 <template>
-  <q-table
+
+  <div v-if="inject('globalData').isMiniScreen" class="row justify-evenly">
+    <q-card v-for="(data, index) in tableData" :key="index" class="q-ma-md q-pa-md">
+      <div v-for="(col, colIndex) in tableBaseInfo.tableColumns" :key="colIndex">
+        {{ col.label }} : {{ data[col.name] }}
+      </div>
+    </q-card>
+  </div>
+
+  <q-table v-else
       card-class="astercasc-simple-table-pri"
       table-header-class="astercasc-simple-table-header-pri"
       :rows="tableData"
@@ -78,13 +87,10 @@
                @click="emitter.emit(operation.emitStr, props.row)">
             {{ operation.label }}
           </div>
-
         </div>
-
 
       </q-td>
     </template>
-
 
   </q-table>
 
@@ -92,7 +98,7 @@
 </template>
 
 <script setup>
-import {defineEmits, defineExpose, defineProps, onMounted, ref, watch} from "vue";
+import {defineEmits, defineExpose, defineProps, inject, onMounted, ref, watch} from "vue";
 import emitter from "@/utils/bus";
 
 const props = defineProps({

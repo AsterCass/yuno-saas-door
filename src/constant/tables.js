@@ -5,6 +5,7 @@ export const bookHouseProjectColumns = [
         label: '活动编号',
         align: 'center',
         field: 'projectId',
+        miniCardHaveName: false,
     },
     {
         name: 'projectName',
@@ -12,6 +13,7 @@ export const bookHouseProjectColumns = [
         label: '活动名称',
         align: 'center',
         field: 'projectName',
+        miniCardHaveName: true,
     },
     {
         name: 'houseSum',
@@ -19,6 +21,7 @@ export const bookHouseProjectColumns = [
         label: '活动房源',
         align: 'center',
         field: 'houseSum',
+        miniCardHaveName: true,
     },
     {
         name: 'personSum',
@@ -26,6 +29,7 @@ export const bookHouseProjectColumns = [
         label: '活动租客',
         align: 'center',
         field: 'personSum',
+        miniCardHaveName: true,
     },
     {
         name: 'projectProcessStatusName',
@@ -33,6 +37,7 @@ export const bookHouseProjectColumns = [
         label: '进行状态',
         align: 'center',
         field: 'projectProcessStatusName',
+        miniCardHaveName: true,
     },
     {
         name: 'projectStatusName',
@@ -40,6 +45,7 @@ export const bookHouseProjectColumns = [
         label: '上架状态',
         align: 'center',
         field: 'projectStatusName',
+        miniCardHaveName: true,
     },
     {
         name: 'createUserName',
@@ -47,6 +53,7 @@ export const bookHouseProjectColumns = [
         label: '创建人',
         align: 'center',
         field: 'createUserName',
+        miniCardHaveName: true,
     },
     {
         name: 'createTime',
@@ -54,6 +61,7 @@ export const bookHouseProjectColumns = [
         label: '创建时间',
         align: 'center',
         field: 'createTime',
+        miniCardHaveName: false,
     },
     {
         name: 'operation',
@@ -61,6 +69,7 @@ export const bookHouseProjectColumns = [
         label: '操作',
         align: 'center',
         field: 'operation',
+        miniCardHaveName: false,
     },
 ]
 

@@ -1,4 +1,4 @@
-import {createApp} from 'vue'
+import {createApp, reactive} from 'vue'
 import App from './App.vue'
 import router from "./router";
 import {Quasar} from 'quasar'
@@ -10,5 +10,11 @@ const app = createApp(App)
 
 app.use(Quasar, quasarUserOptions);
 app.use(router)
+
+const globalData = reactive({
+    isMiniScreen: false,
+});
+app.provide('globalData', globalData);
+
 
 app.mount("#app");

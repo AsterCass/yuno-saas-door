@@ -14,7 +14,7 @@
           <q-input v-model="houseProjectSearchKey" color="grey q-ma-md" hide-bottom-space borderless
                    placeholder="请输入项目编号、项目名称查询"
                    input-class="astercasc-input-inner-base"
-                   :input-style="{ width: '20rem'} "/>
+                   :input-style="inject('globalData').isMiniScreen ? {} : {width: '20rem'} "/>
           <div class="q-ma-md">
             <q-btn class=" astercasc-simple-btn-margin-pri-mid" label="查询" @click="searchHouseProject()"/>
           </div>
@@ -41,7 +41,7 @@
 </template>
 
 <script setup>
-import {defineProps, onMounted, onUnmounted, ref} from "vue";
+import {defineProps, inject, onMounted, onUnmounted, ref} from "vue";
 import emitter from "@/utils/bus";
 import {getUserBehavior} from "@/utils/store";
 import ComplexTable from "@/components/ComplexTable.vue";

@@ -13,7 +13,7 @@
         <q-input v-model="newProjectData.projectName" color="grey" hide-bottom-space borderless
                  placeholder="请输入活动名称"
                  input-class="astercasc-input-inner-base"
-                 :input-style="{width: '20rem'} "/>
+                 :input-style="inject('globalData').isMiniScreen ? {} : {width: '20rem'} "/>
       </div>
 
       <div class="q-my-md">
@@ -108,7 +108,7 @@
           <q-input v-model="newProjectData.projectTeamInterval" color="grey" hide-bottom-space borderless
                    placeholder="请输入组队选房间隔" mask="###"
                    input-class="astercasc-input-inner-base"
-                   :input-style="{ width: '12rem'} "/>
+                   :input-style="inject('globalData').isMiniScreen ? {} : {width: '12rem'} "/>
           <div style="font-size: 1rem">
             分钟
           </div>
@@ -162,7 +162,7 @@
           <q-input v-model="newProjectData.projectPersonalInterval" color="grey" hide-bottom-space borderless
                    placeholder="请输入个人选房间隔" mask="###"
                    input-class="astercasc-input-inner-base"
-                   :input-style="{ width: '12rem'} "/>
+                   :input-style="inject('globalData').isMiniScreen ? {} : {width: '12rem'} "/>
           <div style="font-size: 1rem">
             分钟
           </div>
@@ -212,7 +212,7 @@
                    borderless
                    placeholder="可验房人数" mask="###"
                    input-class="astercasc-input-inner-base"
-                   :input-style="{width: '8rem'} "/>
+                   :input-style="inject('globalData').isMiniScreen ? {} : {width: '8rem'} "/>
           <div style="font-size: 1rem">
             人
           </div>
@@ -235,7 +235,7 @@
                    borderless
                    placeholder="可验房人数" mask="###"
                    input-class="astercasc-input-inner-base"
-                   :input-style="{ width: '8rem'} "/>
+                   :input-style="inject('globalData').isMiniScreen ? {} : {width: '8rem'} "/>
           <div style="font-size: 1rem">
             人
           </div>
@@ -257,7 +257,7 @@
 <script setup>
 
 import DatetimeSelector from "@/components/DatetimeSelector.vue";
-import {defineProps, onMounted, ref} from "vue";
+import {defineProps, inject, onMounted, ref} from "vue";
 import {useRouter} from "vue-router";
 import {toBack, toSpecifyPage} from "@/router";
 import {notifyTopPositive, notifyTopWarning} from "@/utils/global-notify";

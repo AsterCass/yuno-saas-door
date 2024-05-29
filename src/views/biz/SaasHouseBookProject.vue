@@ -5,7 +5,7 @@
       <q-input v-model="projectSearchKey" color="grey q-ma-md" hide-bottom-space borderless
                placeholder="请输入活动编号、活动名称查询"
                input-class="astercasc-input-inner-base"
-               :input-style="{ width: '20rem'} "/>
+               :input-style="inject('globalData').isMiniScreen ? {} : {width: '20rem'} "/>
 
       <q-select standout dense label="进行状态" class="q-ma-md astercasc-simple-select-margin-pri"
                 v-model="projectProcessStatus" :options="projectProcessStatusOpt" clearable
@@ -55,7 +55,7 @@
 </template>
 
 <script setup>
-import {onMounted, onUnmounted, ref} from "vue";
+import {inject, onMounted, onUnmounted, ref} from "vue";
 import {useRouter} from "vue-router";
 import {toSpecifyPage, toSpecifyPageWithQuery} from "@/router";
 import ComplexTable from "@/components/ComplexTable.vue";
@@ -83,6 +83,7 @@ const tableBaseInfo = ref({
   tableKey: "projectId",
   renewDataEmitStr: 'saasHouseBookProjectRenewTableEvent',
   selectType: 'none',
+  miniCardTitle: 'projectId',
 })
 const customColumnBuilder = [
   {

@@ -6,7 +6,7 @@
       <q-input v-model="houseKey" color="grey q-ma-sm" hide-bottom-space borderless
                placeholder="请输入房源编号、房源信息查询"
                input-class="astercasc-input-inner-base"
-               :input-style="{ width: '25rem'} "/>
+               :input-style="inject('globalData').isMiniScreen ? {} : {width: '25rem'} "/>
 
       <AddressCascadeSelector @update-address="(code)=>{houseAddressCode = code} "/>
 
@@ -57,7 +57,7 @@
 </template>
 
 <script setup>
-import {defineProps, onMounted, onUnmounted, ref} from "vue";
+import {defineProps, inject, onMounted, onUnmounted, ref} from "vue";
 import emitter from "@/utils/bus";
 import SaasHouseBookImportHouseProject from "@/components/biz/SaasHouseBookImportHouseProject.vue";
 import {HouseBookStatusEnum, houseModelOpt, OrientationEnum, rentalStyleOpt} from "@/constant/enums";

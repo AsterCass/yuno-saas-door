@@ -19,7 +19,7 @@
             <q-input v-model="newBookUserData.bookOrder" color="grey" hide-bottom-space borderless
                      placeholder="请输入选房顺序" mask="#####" dense class="q-my-xs"
                      input-class="astercasc-input-inner-dense"
-                     :input-style="{ width: '12rem'} "/>
+                     :input-style="inject('globalData').isMiniScreen ? {} : {width: '12rem'} "/>
           </div>
           <div class="row items-center">
             <div class="astercasc-litter-asterisk q-mr-md">
@@ -28,7 +28,7 @@
             <q-input v-model="newBookUserData.bookUserName" color="grey" hide-bottom-space borderless
                      placeholder="请输入姓名" dense class="q-my-xs"
                      input-class="astercasc-input-inner-dense"
-                     :input-style="{ width: '12rem'} "/>
+                     :input-style="inject('globalData').isMiniScreen ? {} : {width: '12rem'} "/>
           </div>
           <div class="row items-center">
             <div class="astercasc-litter-asterisk q-mr-md">
@@ -37,7 +37,7 @@
             <q-input v-model="newBookUserData.bookUserPhone" color="grey" hide-bottom-space borderless
                      placeholder="请输入手机号" mask="###########" dense class="q-my-xs"
                      input-class="astercasc-input-inner-dense"
-                     :input-style="{ width: '12rem'} "/>
+                     :input-style="inject('globalData').isMiniScreen ? {} : {width: '12rem'} "/>
           </div>
           <div class="row items-center">
             <div class="astercasc-litter-asterisk q-mr-md">
@@ -46,7 +46,7 @@
             <q-input v-model="newBookUserData.bookUserIdCard" color="grey" hide-bottom-space borderless
                      placeholder="请输入身份证" mask="#################X" dense class="q-my-xs"
                      input-class="astercasc-input-inner-dense"
-                     :input-style="{ width: '12rem'} "/>
+                     :input-style="inject('globalData').isMiniScreen ? {} : {width: '12rem'} "/>
           </div>
 
 
@@ -64,7 +64,7 @@
 </template>
 
 <script setup>
-import {onMounted, onUnmounted, ref} from "vue";
+import {inject, onMounted, onUnmounted, ref} from "vue";
 import emitter from "@/utils/bus";
 import {getUserBehavior} from "@/utils/store";
 import {notifyTopPositive, notifyTopWarning} from "@/utils/global-notify";
