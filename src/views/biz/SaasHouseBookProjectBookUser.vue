@@ -96,6 +96,7 @@ let tableBaseInfo = ref({
   tableKey: "bookOrder",
   renewDataEmitStr: 'saasHouseBookProjectBookUserRenewTableEvent',
   selectType: 'none',
+  miniCardTitle: 'bookUserName',
 })
 const customTableOperation = [
   {

@@ -1,34 +1,95 @@
 <template>
 
   <div v-if="inject('globalData').isMiniScreen" class="row justify-evenly">
-    <q-card v-for="(data, index) in tableData" :key="index" class="astercasc-list-mini-card-standard">
-      <div class="astercasc-list-mini-card-standard-header">
+    <div v-for="(data, index) in tableData" :key="index">
+      <q-card class="astercasc-list-mini-card-standard">
 
-      </div>
-
-      <div class="astercasc-list-mini-card-standard-body">
-        <div v-for="(col, colIndex) in tableBaseInfo.tableColumns"
-             :key="colIndex">
-          {{ col.label }} : {{ data[col.name] }}
+        <div class="row items-center justify-between astercasc-list-mini-card-standard-header">
+          <div v-if="miniData.titleData" class="row justify-start q-px-md">
+            <div v-if="miniData.titleData.miniCardHaveLabel">
+              {{ miniData.titleData.label }} ：
+            </div>
+            <div>
+              {{ data[miniData.titleData.name] }}
+            </div>
+          </div>
+          <div v-if="miniData.subscriptData" class="row justify-end q-px-md">
+            <div v-if="miniData.subscriptData.miniCardHaveLabel">
+              {{ miniData.subscriptData.label }} ：
+            </div>
+            <div>
+              {{ data[miniData.subscriptData.name] }}
+            </div>
+          </div>
         </div>
-      </div>
 
-      <q-separator inset class="q-ma-sm half-opacity" :dark="getUserBehavior().styleModel === 'dark'"/>
+        <div class="astercasc-list-mini-card-standard-body">
+          <div v-for="(col, colIndex) in miniData.stdData"
+               :key="colIndex" class="row justify-start">
+            <div v-if="col.miniCardHaveLabel">
+              {{ col.label }} ：
+            </div>
+            <div v-if="customSlot && customSlot.some(obj=>obj['name'] === col.name)">
+              <div style="color: #1976D2; cursor: pointer"
+                   @click="emitter.emit(props.customSlot.find(obj=>obj['name'] === col.name).emitStr, data)">
+                {{ data[col.name] }}
+              </div>
+            </div>
+            <div v-else>
+              {{ data[col.name] }}
+            </div>
+          </div>
+        </div>
 
-      <div class="row q-px-sm justify-between">
-        <div class="q-px-md">
-          123
+        <div class="row justify-end q-mr-md">
+          <div v-show="!operation.showCondition ||  data[operation.showCondition]"
+               v-for="(operation, index) in customTableOperation" :key="index"
+               style="color: #1976D2; cursor: pointer; margin: 0 .2rem"
+               @click="emitter.emit(operation.emitStr, data)">
+            {{ operation.label }}
+          </div>
         </div>
-        <div class="q-px-md">
-          123
-        </div>
-        <div class="q-px-md">
-          123
-        </div>
-      </div>
 
-      <div class="astercasc-list-mini-card-standard-tail"/>
-    </q-card>
+        <q-separator inset class="q-ma-sm half-opacity" :dark="getUserBehavior().styleModel === 'dark'"/>
+
+        <div class="row q-px-sm justify-between">
+          <div class="q-pr-md q-pl-xs">
+            <div v-if="miniData.footerLeftData" class="row justify-start">
+              <div v-if="miniData.footerLeftData.miniCardHaveLabel">
+                {{ miniData.footerLeftData.label }} ：
+              </div>
+              <div>
+                {{ data[miniData.footerLeftData.name] }}
+              </div>
+            </div>
+          </div>
+          <div class="q-px-md">
+            <div v-if="miniData.footerMiddleData" class="row justify-center">
+              <div v-if="miniData.footerMiddleData.miniCardHaveLabel">
+                {{ miniData.footerMiddleData.label }} ：
+              </div>
+              <div>
+                {{ data[miniData.footerMiddleData.name] }}
+              </div>
+            </div>
+          </div>
+          <div class="q-pl-md q-pr-xs">
+            <div v-if="miniData.footerRightData" class="row justify-end">
+              <div v-if="miniData.footerRightData.miniCardHaveLabel">
+                {{ miniData.footerRightData.label }} ：
+              </div>
+              <div>
+                {{ data[miniData.footerRightData.name] }}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="astercasc-list-mini-card-standard-tail"/>
+
+      </q-card>
+    </div>
+
   </div>
 
   <q-table v-else
@@ -198,9 +259,6 @@ function buildMiniData() {
       miniData.value.stdData.push(key)
     }
   }
-
-  console.log(miniData.value)
-  // miniData.value.titleData =
 }
 
 function updatePageSize(size) {

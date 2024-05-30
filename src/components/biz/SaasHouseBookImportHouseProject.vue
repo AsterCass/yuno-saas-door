@@ -80,6 +80,7 @@ let tableBaseInfo = ref({
   tableKey: "houseProjectId",
   renewDataEmitStr: 'saasHouseBookImportHouseRenewTableEvent',
   selectType: 'none',
+  miniCardTitle: 'houseProjectName',
 })
 const customTableOperation = [
   {

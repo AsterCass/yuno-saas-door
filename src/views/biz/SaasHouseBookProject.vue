@@ -83,7 +83,7 @@ const tableBaseInfo = ref({
   tableKey: "projectId",
   renewDataEmitStr: 'saasHouseBookProjectRenewTableEvent',
   selectType: 'none',
-  miniCardTitle: 'projectId',
+  miniCardTitle: 'projectName',
 })
 const customColumnBuilder = [
   {

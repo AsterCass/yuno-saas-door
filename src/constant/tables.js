@@ -5,7 +5,7 @@ export const bookHouseProjectColumns = [
         label: '活动编号',
         align: 'center',
         field: 'projectId',
-        miniCardHaveName: false,
+        miniCardHaveLabel: true,
     },
     {
         name: 'projectName',
@@ -13,7 +13,7 @@ export const bookHouseProjectColumns = [
         label: '活动名称',
         align: 'center',
         field: 'projectName',
-        miniCardHaveName: true,
+        miniCardHaveLabel: false,
     },
     {
         name: 'houseSum',
@@ -21,7 +21,7 @@ export const bookHouseProjectColumns = [
         label: '活动房源',
         align: 'center',
         field: 'houseSum',
-        miniCardHaveName: true,
+        miniCardHaveLabel: true,
     },
     {
         name: 'personSum',
@@ -29,7 +29,7 @@ export const bookHouseProjectColumns = [
         label: '活动租客',
         align: 'center',
         field: 'personSum',
-        miniCardHaveName: true,
+        miniCardHaveLabel: true,
     },
     {
         name: 'projectProcessStatusName',
@@ -37,7 +37,8 @@ export const bookHouseProjectColumns = [
         label: '进行状态',
         align: 'center',
         field: 'projectProcessStatusName',
-        miniCardHaveName: true,
+        miniCardHaveLabel: false,
+        miniCardSite: "subscript",
     },
     {
         name: 'projectStatusName',
@@ -45,8 +46,7 @@ export const bookHouseProjectColumns = [
         label: '上架状态',
         align: 'center',
         field: 'projectStatusName',
-        miniCardHaveName: true,
-        miniCardSite: "subscript",
+        miniCardHaveLabel: true,
     },
     {
         name: 'createUserName',
@@ -54,7 +54,7 @@ export const bookHouseProjectColumns = [
         label: '创建人',
         align: 'center',
         field: 'createUserName',
-        miniCardHaveName: true,
+        miniCardHaveLabel: false,
         miniCardSite: "footerLeft",
     },
     {
@@ -63,7 +63,7 @@ export const bookHouseProjectColumns = [
         label: '创建时间',
         align: 'center',
         field: 'createTime',
-        miniCardHaveName: false,
+        miniCardHaveLabel: false,
         miniCardSite: "footerRight",
     },
     {
@@ -72,7 +72,7 @@ export const bookHouseProjectColumns = [
         label: '操作',
         align: 'center',
         field: 'operation',
-        miniCardHaveName: false,
+        miniCardHaveLabel: false,
     },
 ]
 
@@ -84,6 +84,7 @@ export const bookHouseOrderColumns = [
         label: '订单编号',
         align: 'center',
         field: 'projectHouseOrderId',
+        miniCardHaveLabel: true,
     },
     {
         name: 'projectId',
@@ -91,6 +92,7 @@ export const bookHouseOrderColumns = [
         label: '活动编号',
         align: 'center',
         field: 'projectId',
+        miniCardHaveLabel: true,
     },
     {
         name: 'projectName',
@@ -98,6 +100,7 @@ export const bookHouseOrderColumns = [
         label: '活动名称',
         align: 'center',
         field: 'projectName',
+        miniCardHaveLabel: true,
     },
     {
         name: 'projectHouseId',
@@ -105,6 +108,7 @@ export const bookHouseOrderColumns = [
         label: '房源编号',
         align: 'center',
         field: 'projectHouseId',
+        miniCardHaveLabel: true,
     },
     {
         name: 'houseAddress',
@@ -112,6 +116,7 @@ export const bookHouseOrderColumns = [
         label: '房源信息',
         align: 'center',
         field: 'houseAddress',
+        miniCardHaveLabel: false,
     },
     {
         name: 'bookUserName',
@@ -119,6 +124,7 @@ export const bookHouseOrderColumns = [
         label: '姓名',
         align: 'center',
         field: 'bookUserName',
+        miniCardHaveLabel: true,
     },
     {
         name: 'bookUserPhone',
@@ -126,6 +132,7 @@ export const bookHouseOrderColumns = [
         label: '手机号',
         align: 'center',
         field: 'bookUserPhone',
+        miniCardHaveLabel: true,
     },
     {
         name: 'bookUserIdCard',
@@ -133,6 +140,7 @@ export const bookHouseOrderColumns = [
         label: '身份证号',
         align: 'center',
         field: 'bookUserIdCard',
+        miniCardHaveLabel: true,
     },
     {
         name: 'orderStatusName',
@@ -140,6 +148,8 @@ export const bookHouseOrderColumns = [
         label: '订单状态',
         align: 'center',
         field: 'orderStatusName',
+        miniCardHaveLabel: false,
+        miniCardSite: "subscript",
     },
     {
         name: 'createTime',
@@ -147,6 +157,8 @@ export const bookHouseOrderColumns = [
         label: '创建时间',
         align: 'center',
         field: 'createTime',
+        miniCardHaveLabel: false,
+        miniCardSite: "footerRight",
     },
 ]
 
@@ -158,6 +170,7 @@ export const bookUserColumns = [
         label: '选房顺序',
         align: 'center',
         field: 'bookOrder',
+        miniCardHaveLabel: true,
     },
     {
         name: 'bookUserName',
@@ -165,6 +178,7 @@ export const bookUserColumns = [
         label: '姓名',
         align: 'center',
         field: 'bookUserName',
+        miniCardHaveLabel: false,
     },
     {
         name: 'bookUserPhone',
@@ -172,6 +186,7 @@ export const bookUserColumns = [
         label: '手机号',
         align: 'center',
         field: 'bookUserPhone',
+        miniCardHaveLabel: true,
     },
     {
         name: 'bookUserIdCard',
@@ -179,6 +194,7 @@ export const bookUserColumns = [
         label: '身份证号',
         align: 'center',
         field: 'bookUserIdCard',
+        miniCardHaveLabel: true,
     },
     {
         name: 'bookMailStatusName',
@@ -186,6 +202,7 @@ export const bookUserColumns = [
         label: '短信发送状态',
         align: 'center',
         field: 'bookMailStatusName',
+        miniCardHaveLabel: true,
     },
     {
         name: 'bookTeamStatusName',
@@ -193,6 +210,8 @@ export const bookUserColumns = [
         label: '组队状态',
         align: 'center',
         field: 'bookTeamStatusName',
+        miniCardHaveLabel: false,
+        miniCardSite: "subscript",
     },
     {
         name: 'bookUserRealStartTime',
@@ -200,6 +219,7 @@ export const bookUserColumns = [
         label: '选房起始时间',
         align: 'center',
         field: 'bookUserRealStartTime',
+        miniCardHaveLabel: true,
     },
     {
         name: 'operation',
@@ -218,6 +238,7 @@ export const bookHouseColumns = [
         label: '房源编号',
         align: 'center',
         field: 'projectHouseId',
+        miniCardHaveLabel: true,
     },
     {
         name: 'houseProjectId',
@@ -225,6 +246,7 @@ export const bookHouseColumns = [
         label: '项目编号',
         align: 'center',
         field: 'houseProjectId',
+        miniCardHaveLabel: true,
     },
     {
         name: 'houseProjectName',
@@ -232,6 +254,7 @@ export const bookHouseColumns = [
         label: '项目名称',
         align: 'center',
         field: 'houseProjectName',
+        miniCardHaveLabel: true,
     },
     {
         name: 'divisionName',
@@ -239,6 +262,7 @@ export const bookHouseColumns = [
         label: '所在区域',
         align: 'center',
         field: 'divisionName',
+        miniCardHaveLabel: true,
     },
     {
         name: 'houseAddress',
@@ -246,6 +270,7 @@ export const bookHouseColumns = [
         label: '房源信息',
         align: 'center',
         field: 'houseAddress',
+        miniCardHaveLabel: false,
     },
     {
         name: 'rentStyle',
@@ -253,6 +278,7 @@ export const bookHouseColumns = [
         label: '租赁方式',
         align: 'center',
         field: 'rentStyle',
+        miniCardHaveLabel: true,
     },
     {
         name: 'houseModel',
@@ -260,6 +286,7 @@ export const bookHouseColumns = [
         label: '房型',
         align: 'center',
         field: 'houseModel',
+        miniCardHaveLabel: true,
     },
     {
         name: 'orientation',
@@ -267,6 +294,7 @@ export const bookHouseColumns = [
         label: '朝向',
         align: 'center',
         field: 'orientation',
+        miniCardHaveLabel: true,
     },
     {
         name: 'area',
@@ -274,6 +302,7 @@ export const bookHouseColumns = [
         label: '面积',
         align: 'center',
         field: 'area',
+        miniCardHaveLabel: true,
     },
     {
         name: 'houseFloor',
@@ -281,6 +310,7 @@ export const bookHouseColumns = [
         label: '楼层',
         align: 'center',
         field: 'houseFloor',
+        miniCardHaveLabel: true,
     },
     {
         name: 'rentalCharge',
@@ -288,6 +318,7 @@ export const bookHouseColumns = [
         label: '租金',
         align: 'center',
         field: 'rentalCharge',
+        miniCardHaveLabel: true,
     },
     {
         name: 'houseBookStatusName',
@@ -295,6 +326,8 @@ export const bookHouseColumns = [
         label: '房源选择状态',
         align: 'center',
         field: 'houseBookStatusName',
+        miniCardHaveLabel: false,
+        miniCardSite: "subscript",
     },
     {
         name: 'operation',
@@ -313,6 +346,7 @@ export const importHouseProjectColumns = [
         label: '项目编号',
         align: 'center',
         field: 'houseProjectId',
+        miniCardHaveLabel: true,
     },
     {
         name: 'houseProjectName',
@@ -320,6 +354,7 @@ export const importHouseProjectColumns = [
         label: '项目名称',
         align: 'center',
         field: 'houseProjectName',
+        miniCardHaveLabel: false,
     },
     {
         name: 'houseProjectNum',
@@ -327,6 +362,7 @@ export const importHouseProjectColumns = [
         label: '可关联房源',
         align: 'center',
         field: 'houseProjectNum',
+        miniCardHaveLabel: true,
     },
     {
         name: 'operation',

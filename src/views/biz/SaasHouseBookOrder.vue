@@ -50,6 +50,7 @@ const tableBaseInfo = ref({
   tableKey: "projectHouseOrderId",
   renewDataEmitStr: 'saasHouseBookOrderRenewTableEvent',
   selectType: 'none',
+  miniCardTitle: 'houseAddress',
 })
 let mountTable = ref(false)
 let tableData = ref([])
