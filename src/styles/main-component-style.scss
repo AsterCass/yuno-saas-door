@@ -86,16 +86,16 @@ $min-width:4rem, $color: $yuno_light_text-color) {
     color: transparent;
   }
 
-  .astercasc-header-checkbox {
-    .q-checkbox__inner {
-      color: $yuno_light_bg !important;
-    }
+}
 
-    .q-checkbox__inner--truthy .q-checkbox__bg {
-      color: $yuno_light_bg;
-    }
+.astercasc-header-checkbox {
+  .q-checkbox__inner {
+    color: $yuno_light_bg !important;
   }
 
+  .q-checkbox__inner--truthy .q-checkbox__bg {
+    color: $yuno_light_bg;
+  }
 }
 
 .astercasc-litter-title-asterisk {
@@ -136,7 +136,7 @@ $min-width:4rem, $color: $yuno_light_text-color) {
   margin: 1rem;
 
   .astercasc-list-mini-card-standard-header {
-    height: 2.2rem;
+    min-height: 2.2rem;
     width: 100%;
     border-radius: 1rem 1rem 0 0 !important;
   }

@@ -27,18 +27,18 @@
 
     </div>
 
-    <div class="row q-mt-sm q-mb-md">
-      <div class="q-ml-lg q-mr-md">
+    <div class="row q-mt-sm">
+      <div class="q-ml-lg q-mr-md q-mb-md">
         <q-btn class="astercasc-simple-btn-margin-pri" label="+ 关联项目房源"
                @click="emitter.emit('showImportHouseProjectEvent')"/>
       </div>
-      <div class="q-mx-md">
+      <div class="q-mx-md q-mb-md">
         <q-btn class="astercasc-simple-btn-margin-pri" label="批量解除关联" @click="unlinkMultiHouse()"/>
       </div>
     </div>
 
 
-    <div class="q-ma-lg">
+    <div class="q-mx-lg q-mb-lg q-mt-sm">
       <ComplexTable v-if="mountTable" ref="bookProjectBookHouseTable"
                     :custom-table-operation="customTableOperation"
                     :table-base-info="tableBaseInfo"

@@ -13,6 +13,10 @@
               {{ data[miniData.titleData.name] }}
             </div>
           </div>
+          <div v-if="'multiple' === tableBaseInfo.selectType" class="row justify-center q-mx-md">
+            <q-checkbox dense class="astercasc-header-checkbox" keep-color v-model="data.webChecked"
+                        @click="localMultiSelect = tableData.filter(obj => obj['webChecked'])"/>
+          </div>
           <div v-if="miniData.subscriptData" class="row justify-end q-px-md">
             <div v-if="miniData.subscriptData.miniCardHaveLabel">
               {{ miniData.subscriptData.label }} ：
@@ -230,11 +234,20 @@ let miniData = ref({
 
 const emit = defineEmits(['multiSelectChange'])
 watch(localMultiSelect, () => {
+  for (let data of props.tableData) {
+    for (let changeData of localMultiSelect.value) {
+      data.webChecked =
+          data[props.tableBaseInfo.tableKey] === changeData[props.tableBaseInfo.tableKey]
+      if (data.webChecked) {
+        break
+      }
+    }
+  }
   emit('multiSelectChange', localMultiSelect.value);
 })
 
 function clearSelected() {
-  localMultiSelect.value = props.tableData
+  localMultiSelect.value = []
 }
 
 function toNewPage() {
