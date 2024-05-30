@@ -1,98 +1,143 @@
 <template>
 
-  <div v-if="inject('globalData').isMiniScreen" class="row justify-evenly">
-    <div v-for="(data, index) in tableData" :key="index">
-      <q-card class="astercasc-list-mini-card-standard">
+  <div v-if="inject('globalData').isMiniScreen">
 
-        <div class="row items-center justify-between astercasc-list-mini-card-standard-header">
-          <div v-if="miniData.titleData" class="row justify-start q-px-md">
-            <div v-if="miniData.titleData.miniCardHaveLabel">
-              {{ miniData.titleData.label }} ：
+    <div v-if="tableData && tableData.length > 0">
+      <div class="row justify-evenly">
+        <div v-for="(data, index) in tableData" :key="index">
+          <q-card class="astercasc-list-mini-card-standard">
+
+            <div class="row items-center justify-between astercasc-list-mini-card-standard-header">
+              <div v-if="miniData.titleData" class="row justify-start q-px-md">
+                <div v-if="miniData.titleData.miniCardHaveLabel">
+                  {{ miniData.titleData.label }} ：
+                </div>
+                <div>
+                  {{ data[miniData.titleData.name] }}
+                </div>
+              </div>
+              <div v-if="'multiple' === tableBaseInfo.selectType" class="row justify-center q-mx-md">
+                <q-checkbox dense class="astercasc-header-checkbox" keep-color v-model="data.webChecked"
+                            @click="localMultiSelect = tableData.filter(obj => obj['webChecked'])"/>
+              </div>
+              <div v-if="miniData.subscriptData" class="row justify-end q-px-md">
+                <div v-if="miniData.subscriptData.miniCardHaveLabel">
+                  {{ miniData.subscriptData.label }} ：
+                </div>
+                <div>
+                  {{ data[miniData.subscriptData.name] }}
+                </div>
+              </div>
+            </div>
+
+            <div class="astercasc-list-mini-card-standard-body">
+              <div v-for="(col, colIndex) in miniData.stdData"
+                   :key="colIndex" class="row justify-start">
+                <div v-if="col.miniCardHaveLabel">
+                  {{ col.label }} ：
+                </div>
+                <div v-if="customSlot && customSlot.some(obj=>obj['name'] === col.name)">
+                  <div style="color: #1976D2; cursor: pointer"
+                       @click="emitter.emit(props.customSlot.find(obj=>obj['name'] === col.name).emitStr, data)">
+                    {{ data[col.name] }}
+                  </div>
+                </div>
+                <div v-else>
+                  {{ data[col.name] }}
+                </div>
+              </div>
+            </div>
+
+            <div class="row justify-end q-mr-md">
+              <div v-show="!operation.showCondition ||  data[operation.showCondition]"
+                   v-for="(operation, index) in customTableOperation" :key="index"
+                   style="color: #1976D2; cursor: pointer; margin: 0 .2rem"
+                   @click="emitter.emit(operation.emitStr, data)">
+                {{ operation.label }}
+              </div>
+            </div>
+
+            <q-separator inset class="q-ma-sm half-opacity" :dark="getUserBehavior().styleModel === 'dark'"/>
+
+            <div class="row q-px-sm justify-between">
+              <div class="q-pr-md q-pl-xs">
+                <div v-if="miniData.footerLeftData" class="row justify-start">
+                  <div v-if="miniData.footerLeftData.miniCardHaveLabel">
+                    {{ miniData.footerLeftData.label }} ：
+                  </div>
+                  <div>
+                    {{ data[miniData.footerLeftData.name] }}
+                  </div>
+                </div>
+              </div>
+              <div class="q-px-md">
+                <div v-if="miniData.footerMiddleData" class="row justify-center">
+                  <div v-if="miniData.footerMiddleData.miniCardHaveLabel">
+                    {{ miniData.footerMiddleData.label }} ：
+                  </div>
+                  <div>
+                    {{ data[miniData.footerMiddleData.name] }}
+                  </div>
+                </div>
+              </div>
+              <div class="q-pl-md q-pr-xs">
+                <div v-if="miniData.footerRightData" class="row justify-end">
+                  <div v-if="miniData.footerRightData.miniCardHaveLabel">
+                    {{ miniData.footerRightData.label }} ：
+                  </div>
+                  <div>
+                    {{ data[miniData.footerRightData.name] }}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="astercasc-list-mini-card-standard-tail"/>
+
+          </q-card>
+        </div>
+      </div>
+      <div class="astercasc-simple-table-bottom-pri">
+        <div class="row justify-between items-center q-mx-lg">
+          <div class="row justify-start items-center q-my-sm">
+            <div>
+              单页容量：
+            </div>
+            <q-btn :class="pageSize === 5 ? 'astercasc-simple-table-bottom-selected-contain' : ''"
+                   flat round dense class="q-mx-sm" label="5" @click="updatePageSize(5)"/>
+            <q-btn :class="pageSize === 10 ? 'astercasc-simple-table-bottom-selected-contain' : ''"
+                   flat round dense class="q-mx-sm" label="10" @click="updatePageSize(10)"/>
+            <q-btn :class="pageSize === 20 ? 'astercasc-simple-table-bottom-selected-contain' : ''"
+                   flat round dense class="q-mx-sm" label="20" @click="updatePageSize(20)"/>
+            <q-btn :class="pageSize === 30 ? 'astercasc-simple-table-bottom-selected-contain' : ''"
+                   flat round dense class="q-mx-sm" label="30" @click="updatePageSize(30)"/>
+            <q-btn :class="pageSize === 50 ? 'astercasc-simple-table-bottom-selected-contain' : ''"
+                   flat round dense class="q-mx-sm" label="50" @click="updatePageSize(50)"/>
+          </div>
+          <div class="row justify-end items-center q-my-sm">
+            <div class="q-mr-md">
+              数据总条数：{{ tableDataSum }}
             </div>
             <div>
-              {{ data[miniData.titleData.name] }}
-            </div>
-          </div>
-          <div v-if="'multiple' === tableBaseInfo.selectType" class="row justify-center q-mx-md">
-            <q-checkbox dense class="astercasc-header-checkbox" keep-color v-model="data.webChecked"
-                        @click="localMultiSelect = tableData.filter(obj => obj['webChecked'])"/>
-          </div>
-          <div v-if="miniData.subscriptData" class="row justify-end q-px-md">
-            <div v-if="miniData.subscriptData.miniCardHaveLabel">
-              {{ miniData.subscriptData.label }} ：
-            </div>
-            <div>
-              {{ data[miniData.subscriptData.name] }}
+              <q-pagination
+                  v-model="pageNo" :max="Math.ceil(tableDataSum / pageSize)" :max-pages="8"
+                  boundary-numbers directionLinks size=".85rem"
+                  @update:modelValue="toNewPage()"
+              />
             </div>
           </div>
         </div>
-
-        <div class="astercasc-list-mini-card-standard-body">
-          <div v-for="(col, colIndex) in miniData.stdData"
-               :key="colIndex" class="row justify-start">
-            <div v-if="col.miniCardHaveLabel">
-              {{ col.label }} ：
-            </div>
-            <div v-if="customSlot && customSlot.some(obj=>obj['name'] === col.name)">
-              <div style="color: #1976D2; cursor: pointer"
-                   @click="emitter.emit(props.customSlot.find(obj=>obj['name'] === col.name).emitStr, data)">
-                {{ data[col.name] }}
-              </div>
-            </div>
-            <div v-else>
-              {{ data[col.name] }}
-            </div>
-          </div>
-        </div>
-
-        <div class="row justify-end q-mr-md">
-          <div v-show="!operation.showCondition ||  data[operation.showCondition]"
-               v-for="(operation, index) in customTableOperation" :key="index"
-               style="color: #1976D2; cursor: pointer; margin: 0 .2rem"
-               @click="emitter.emit(operation.emitStr, data)">
-            {{ operation.label }}
-          </div>
-        </div>
-
-        <q-separator inset class="q-ma-sm half-opacity" :dark="getUserBehavior().styleModel === 'dark'"/>
-
-        <div class="row q-px-sm justify-between">
-          <div class="q-pr-md q-pl-xs">
-            <div v-if="miniData.footerLeftData" class="row justify-start">
-              <div v-if="miniData.footerLeftData.miniCardHaveLabel">
-                {{ miniData.footerLeftData.label }} ：
-              </div>
-              <div>
-                {{ data[miniData.footerLeftData.name] }}
-              </div>
-            </div>
-          </div>
-          <div class="q-px-md">
-            <div v-if="miniData.footerMiddleData" class="row justify-center">
-              <div v-if="miniData.footerMiddleData.miniCardHaveLabel">
-                {{ miniData.footerMiddleData.label }} ：
-              </div>
-              <div>
-                {{ data[miniData.footerMiddleData.name] }}
-              </div>
-            </div>
-          </div>
-          <div class="q-pl-md q-pr-xs">
-            <div v-if="miniData.footerRightData" class="row justify-end">
-              <div v-if="miniData.footerRightData.miniCardHaveLabel">
-                {{ miniData.footerRightData.label }} ：
-              </div>
-              <div>
-                {{ data[miniData.footerRightData.name] }}
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="astercasc-list-mini-card-standard-tail"/>
-
-      </q-card>
+      </div>
     </div>
+    <div v-else>
+      <div class="full-width row flex-center q-mt-md q-mb-lg items-center">
+        <q-icon size="2.5rem" class="q-mr-md" name="fa-solid fa-triangle-exclamation"/>
+        <div style="font-size: 2rem">
+          无可获得数据
+        </div>
+      </div>
+    </div>
+
 
   </div>
 

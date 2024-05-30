@@ -260,29 +260,6 @@
     .q-table__bottom {
       background-color: $yuno_dark_text_color;
       color: $yuno_light_text-color;
-
-      .astercasc-simple-table-bottom-pri {
-        color: $yuno-theme-black;
-
-        .astercasc-simple-table-bottom-selected-contain {
-          color: white;
-          background-color: $yuno-theme-black;
-        }
-
-        .astercasc-simple-table-bottom-line {
-          background-image: $yuno-theme-black-gra;
-        }
-
-        .q-pagination {
-          .bg-primary {
-            background-color: $yuno-theme-black !important;
-          }
-
-          .text-primary {
-            color: $yuno-theme-black !important;
-          }
-        }
-      }
     }
 
     .q-checkbox__inner {
@@ -291,6 +268,29 @@
 
     .q-checkbox__svg {
       color: $yuno-theme-black;
+    }
+  }
+
+  .astercasc-simple-table-bottom-pri {
+    color: $yuno-theme-black;
+
+    .astercasc-simple-table-bottom-selected-contain {
+      color: white;
+      background-color: $yuno-theme-black;
+    }
+
+    .astercasc-simple-table-bottom-line {
+      background-image: $yuno-theme-black-gra;
+    }
+
+    .q-pagination {
+      .bg-primary {
+        background-color: $yuno-theme-black !important;
+      }
+
+      .text-primary {
+        color: $yuno-theme-black !important;
+      }
     }
   }
 
@@ -426,29 +426,6 @@
     .q-table__bottom {
       background-color: $yuno_dark_text_color;
       color: $yuno_light_text-color;
-
-      .astercasc-simple-table-bottom-pri {
-        color: $yuno-theme-green;
-
-        .astercasc-simple-table-bottom-selected-contain {
-          color: white;
-          background-color: $yuno-theme-green;
-        }
-
-        .astercasc-simple-table-bottom-line {
-          background-image: $yuno-theme-green-gra;
-        }
-
-        .q-pagination {
-          .bg-primary {
-            background-color: $yuno-theme-green !important;
-          }
-
-          .text-primary {
-            color: $yuno-theme-green !important;
-          }
-        }
-      }
     }
 
     .q-checkbox__inner {
@@ -459,6 +436,29 @@
       color: $yuno-theme-green;
     }
 
+  }
+
+  .astercasc-simple-table-bottom-pri {
+    color: $yuno-theme-green;
+
+    .astercasc-simple-table-bottom-selected-contain {
+      color: white;
+      background-color: $yuno-theme-green;
+    }
+
+    .astercasc-simple-table-bottom-line {
+      background-image: $yuno-theme-green-gra;
+    }
+
+    .q-pagination {
+      .bg-primary {
+        background-color: $yuno-theme-green !important;
+      }
+
+      .text-primary {
+        color: $yuno-theme-green !important;
+      }
+    }
   }
 
   .astercasc-header-checkbox {
@@ -593,29 +593,6 @@
     .q-table__bottom {
       background-color: $yuno_dark_text_color;
       color: $yuno_light_text-color;
-
-      .astercasc-simple-table-bottom-pri {
-        color: $yuno-theme-blue;
-
-        .astercasc-simple-table-bottom-selected-contain {
-          color: white;
-          background-color: $yuno-theme-blue;
-        }
-
-        .astercasc-simple-table-bottom-line {
-          background-image: $yuno-theme-blue-gra;
-        }
-
-        .q-pagination {
-          .bg-primary {
-            background-color: $yuno-theme-blue !important;
-          }
-
-          .text-primary {
-            color: $yuno-theme-blue !important;
-          }
-        }
-      }
     }
 
     .q-checkbox__inner {
@@ -626,6 +603,29 @@
       color: $yuno-theme-blue;
     }
 
+  }
+
+  .astercasc-simple-table-bottom-pri {
+    color: $yuno-theme-blue;
+
+    .astercasc-simple-table-bottom-selected-contain {
+      color: white;
+      background-color: $yuno-theme-blue;
+    }
+
+    .astercasc-simple-table-bottom-line {
+      background-image: $yuno-theme-blue-gra;
+    }
+
+    .q-pagination {
+      .bg-primary {
+        background-color: $yuno-theme-blue !important;
+      }
+
+      .text-primary {
+        color: $yuno-theme-blue !important;
+      }
+    }
   }
 
   .astercasc-header-checkbox {
@@ -760,30 +760,6 @@
     .q-table__bottom {
       background-color: $yuno_dark_text_color;
       color: $yuno_light_text-color;
-
-      .astercasc-simple-table-bottom-pri {
-
-        color: $yuno-theme-orange;
-
-        .astercasc-simple-table-bottom-selected-contain {
-          color: white;
-          background-color: $yuno-theme-orange;
-        }
-
-        .astercasc-simple-table-bottom-line {
-          background-image: $yuno-theme-orange-gra;
-        }
-
-        .q-pagination {
-          .bg-primary {
-            background-color: $yuno-theme-orange !important;
-          }
-
-          .text-primary {
-            color: $yuno-theme-orange !important;
-          }
-        }
-      }
     }
 
     .q-checkbox__inner {
@@ -794,6 +770,30 @@
       color: $yuno-theme-orange;
     }
 
+  }
+
+  .astercasc-simple-table-bottom-pri {
+
+    color: $yuno-theme-orange;
+
+    .astercasc-simple-table-bottom-selected-contain {
+      color: white;
+      background-color: $yuno-theme-orange;
+    }
+
+    .astercasc-simple-table-bottom-line {
+      background-image: $yuno-theme-orange-gra;
+    }
+
+    .q-pagination {
+      .bg-primary {
+        background-color: $yuno-theme-orange !important;
+      }
+
+      .text-primary {
+        color: $yuno-theme-orange !important;
+      }
+    }
   }
 
   .astercasc-header-checkbox {
@@ -1040,30 +1040,6 @@
     .q-table__bottom {
       background-color: $yuno_dark_bg;
       color: $yuno_dark_text_color;
-
-      .astercasc-simple-table-bottom-pri {
-        color: $yuno_dark_text_color;
-
-        .astercasc-simple-table-bottom-selected-contain {
-          color: $yuno_dark_bg;
-          background-color: $yuno_dark_text_color;
-        }
-
-        .astercasc-simple-table-bottom-line {
-          background-image: $yuno-theme-dark-focus-gra;
-        }
-
-        .q-pagination {
-          .bg-primary {
-            color: $yuno_dark_bg !important;
-            background-color: $yuno_dark_text_color !important;
-          }
-
-          .text-primary {
-            color: $yuno_dark_text_color !important;
-          }
-        }
-      }
     }
 
     .q-checkbox__inner {
@@ -1074,7 +1050,30 @@
       color: $yuno_dark_text_color;
     }
 
+  }
 
+  .astercasc-simple-table-bottom-pri {
+    color: $yuno_dark_text_color;
+
+    .astercasc-simple-table-bottom-selected-contain {
+      color: $yuno_dark_bg;
+      background-color: $yuno_dark_text_color;
+    }
+
+    .astercasc-simple-table-bottom-line {
+      background-image: $yuno-theme-dark-focus-gra;
+    }
+
+    .q-pagination {
+      .bg-primary {
+        color: $yuno_dark_bg !important;
+        background-color: $yuno_dark_text_color !important;
+      }
+
+      .text-primary {
+        color: $yuno_dark_text_color !important;
+      }
+    }
   }
 
   .astercasc-header-checkbox {

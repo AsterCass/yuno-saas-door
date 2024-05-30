@@ -63,18 +63,6 @@ $min-width:4rem, $color: $yuno_light_text-color) {
     font-size: .9rem;
     padding: 0.7rem 0 0 0;
 
-    .astercasc-simple-table-bottom-pri {
-      width: 100%;
-
-      .q-pagination {
-
-        .q-btn {
-          padding: 0.1rem !important;
-          min-height: .8rem !important;
-        }
-      }
-    }
-
     .astercasc-simple-table-bottom-line {
       min-height: 1rem;
       margin-top: .5rem;
@@ -86,6 +74,18 @@ $min-width:4rem, $color: $yuno_light_text-color) {
     color: transparent;
   }
 
+}
+
+.astercasc-simple-table-bottom-pri {
+  width: 100%;
+
+  .q-pagination {
+
+    .q-btn {
+      padding: 0.1rem !important;
+      min-height: .8rem !important;
+    }
+  }
 }
 
 .astercasc-header-checkbox {
