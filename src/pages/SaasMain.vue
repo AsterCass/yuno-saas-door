@@ -6,9 +6,20 @@
     <DashboardRightMenu/>
 
     <q-page-container>
+
       <div class="q-my-xl q-mr-md">
-        <router-view/>
+
+        <router-view v-slot="{ Component, route }">
+          <transition enter-active-class="animate__animated animate__slideInRight delay-half-sec during-half-sec"
+                      leave-active-class="animate__animated animate__slideOutLeft during-half-sec">
+            <div :key="route.name">
+              <component :is="Component"></component>
+            </div>
+          </transition>
+        </router-view>
+
       </div>
+
     </q-page-container>
 
     <!--    <q-footer/>-->
@@ -27,6 +38,8 @@ import {inject, onMounted, onUnmounted, ref} from "vue";
 import {isMiniScreenMethod} from "@/utils/display";
 
 let globalData = ref(null)
+
+// let test = ref(true)
 
 function screenEventHandler() {
   let isThisMiniScreen = isMiniScreenMethod()
@@ -49,6 +62,23 @@ onUnmounted(() => {
 })
 </script>
 
+
+<style lang="scss">
+@import "@/styles/theme-style";
+
+
+</style>
+
 <style scoped lang="scss">
+@import "@/styles/theme-style";
+
+.delay-half-sec {
+  animation-delay: 600ms;
+}
+
+.during-half-sec {
+  animation-duration: 500ms;
+}
+
 
 </style>

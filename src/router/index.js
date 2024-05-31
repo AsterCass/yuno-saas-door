@@ -260,6 +260,7 @@ const router = createRouter({
 
 
 router.beforeEach((to, from, next) => {
+    document.documentElement.style.overflow = 'hidden'
     if (to.meta.title) {
         document.title = to.meta.title
     }
@@ -268,6 +269,9 @@ router.beforeEach((to, from, next) => {
 
 router.afterEach(() => {
     window.scrollTo(0, 0)
+    setTimeout(function () {
+        document.documentElement.style.overflowY = "auto";
+    }, 1000);
 })
 
 

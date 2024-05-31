@@ -5,6 +5,7 @@ import '@quasar/extras/eva-icons/eva-icons.css'
 import '@quasar/extras/fontawesome-v6/fontawesome-v6.css'
 import '@quasar/extras/mdi-v7/mdi-v7.css'
 import "@/styles/base-style.scss"
+import 'animate.css';
 import langCn from 'quasar/lang/zh-CN'
 
 import {Loading, Notify} from 'quasar'
@@ -13,4 +14,5 @@ export default {
     plugins: {Loading, Notify},
     config: {loading: {}, notify: {}},
     lang: langCn,
+
 }
