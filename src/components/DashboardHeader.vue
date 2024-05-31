@@ -1,5 +1,6 @@
 <template>
-  <q-header class="top-semi-trans-header">
+  <q-header id="web-header" class="top-semi-trans-header"
+            :style="isAtTop ? 'background-color: #EFF2F5!important;box-shadow: none;' : ''">
     <q-toolbar class="row justify-between">
       <div class="col-9 row justify-start items-center">
         <q-btn class="header-btn" @click="changeLeftMini(!leftMenuMini)"
@@ -40,15 +41,20 @@
 
 <script setup>
 
-import {onMounted, ref} from "vue";
+import {onMounted, onUnmounted, ref} from "vue";
 import {getUserBehavior, saveUserBehavior} from "@/utils/store";
 import {emitter} from "@/utils/bus";
 
 //router
 // const thisRouter = useRouter()
 
-let leftMenuMini = ref(false);
+let leftMenuMini = ref(false)
 let rightMenuShow = ref(false)
+const isAtTop = ref(true);
+
+const onScroll = () => {
+  isAtTop.value = window.scrollY === 0;
+};
 
 function menuInit() {
   const userBehavior = getUserBehavior()
@@ -73,6 +79,11 @@ function changeRightMenu(toStatus) {
 
 onMounted(() => {
   menuInit();
+  window.addEventListener('scroll', onScroll);
+})
+
+onUnmounted(() => {
+  window.removeEventListener('scroll', onScroll);
 })
 
 </script>

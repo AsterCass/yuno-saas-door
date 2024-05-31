@@ -204,6 +204,7 @@
   text-align: center;
   backdrop-filter: saturate(200%) blur(30px);
   border-radius: 15px;
+  transition: background-color 1s ease, box-shadow 1s ease;
 
   .header-btn {
     padding: .5rem;
