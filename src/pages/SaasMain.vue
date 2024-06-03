@@ -36,15 +36,23 @@ import DashboardLeftMenu from "@/components/DashboardLeftMenu.vue";
 import DashboardRightMenu from "@/components/DashboardRightMenu.vue";
 import {inject, onMounted, onUnmounted, ref} from "vue";
 import {isMiniScreenMethod} from "@/utils/display";
+import emitter from "@/utils/bus";
+import {useRouter} from "vue-router";
+import {toSpecifyPage} from "@/router";
 
 let globalData = ref(null)
-
-// let test = ref(true)
+const thisRouter = useRouter()
 
 function screenEventHandler() {
   let isThisMiniScreen = isMiniScreenMethod()
   if (isThisMiniScreen !== globalData.value.isMiniScreen) {
     globalData.value.isMiniScreen = isThisMiniScreen
+  }
+}
+
+function yunoWebLoginEvent(isLogin) {
+  if (!isLogin) {
+    toSpecifyPage(thisRouter, "notLogin")
   }
 }
 
@@ -54,11 +62,15 @@ onMounted(() => {
   globalData.value = inject('globalData');
   screenEventHandler()
   window.addEventListener("resize", screenEventHandler);
+  //其他事件
+  emitter.on('yunoWebLoginEvent', yunoWebLoginEvent)
 })
 
 onUnmounted(() => {
   //删除屏幕改变事件
   window.removeEventListener("resize", screenEventHandler);
+//其他事件
+  emitter.off('yunoWebLoginEvent', yunoWebLoginEvent)
 })
 </script>
 

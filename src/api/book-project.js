@@ -1,5 +1,12 @@
 import {serviceShiro} from '@/utils/request'
 
+export function preLoginTmp(param) {
+    return serviceShiro({
+        url: `/book/admin/project/preLoginTmp`,
+        method: 'post',
+        params: param
+    })
+}
 
 export function bookProjectList(param) {
     return serviceShiro({

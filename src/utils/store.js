@@ -2,6 +2,8 @@ import {extend, LocalStorage} from 'quasar'
 
 const YUNO_USER_BEHAVIOR = "yuno-user-behavior"
 
+const YUNO_USER_TOKEN = "user-token"
+
 //============================== user behavior ==============================
 
 export function saveUserBehavior(data) {
@@ -21,6 +23,22 @@ export function getUserBehavior() {
             themeColor: 'black',
             leftFocusOne: false,
         }
+    }
+    return data;
+}
+
+
+//============================== user token ==============================
+
+
+export function saveUserToken(data = "") {
+    LocalStorage.set(YUNO_USER_TOKEN, data)
+}
+
+export function getUserToken() {
+    let data = LocalStorage.getItem(YUNO_USER_TOKEN)
+    if (!data) {
+        data = ""
     }
     return data;
 }

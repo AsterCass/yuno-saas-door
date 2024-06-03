@@ -12,7 +12,7 @@
 
         <div class="row items-center">
           <q-input v-model="houseProjectSearchKey" color="grey q-ma-md" hide-bottom-space borderless
-                   placeholder="请输入项目编号、项目名称查询"
+                   placeholder="请输入项目名称查询"
                    input-class="astercasc-input-inner-base"
                    :input-style="inject('globalData').isMiniScreen ? {} : {width: '20rem'} "/>
           <div class="q-ma-md">

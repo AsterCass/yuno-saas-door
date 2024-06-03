@@ -2,17 +2,19 @@ import axios from 'axios'
 import Qs from 'qs'
 import {Notify} from 'quasar'
 import {notifyTopNegative, notifyTopWarning} from "@/utils/global-notify";
+import {getUserToken, saveUserToken} from "@/utils/store";
+import emitter from "@/utils/bus";
 
 const BASE_ADD = process.env.VUE_APP_BASE_ADD
 
 
 const requestConfig = config => {
-    // const userToken = getWebLoginToken()
-    // if (userToken) {
-    //     config.headers.set('User-Token', userToken)
-    // } else {
-    //     config.headers.set('User-Token', "")
-    // }
+    const userToken = getUserToken()
+    if (userToken) {
+        config.headers.set('User-Token', userToken)
+    } else {
+        config.headers.set('User-Token', "")
+    }
     return config
 }
 
@@ -22,7 +24,8 @@ const responseConfig = response => {
         if (serverData instanceof Object) {
             const status = serverData.status
             if (600 === status) {
-                // webLogout()
+                saveUserToken()
+                emitter.emit("yunoWebLoginEvent", false)
             }
             if (400 === status) {
                 notifyTopNegative("系统繁忙，请稍后再试", 3000, Notify.create)

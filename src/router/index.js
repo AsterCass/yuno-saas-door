@@ -20,6 +20,7 @@ import SaasHouseBookProjectNew from "@/views/biz/SaasHouseBookProjectNew.vue";
 import SaasHouseBookProjectHouse from "@/views/biz/SaasHouseBookProjectHouse.vue";
 import SaasHouseBookProjectBookUser from "@/views/biz/SaasHouseBookProjectBookUser.vue";
 import SaasSystemMenu from "@/views/SaasSystemMenu.vue";
+import SaasAuthPreLogin from "@/views/biz/SaasAuthPreLogin.vue";
 
 const router = createRouter({
     // history: createWebHashHistory(process.env.BASE_URL),
@@ -246,6 +247,17 @@ const router = createRouter({
             meta: {
                 title: 'UserNotPermission'
             },
+        },
+        {
+            path: "/preLogin",
+            name: 'preLogin',
+            component: SaasAuthPreLogin,
+            meta: {
+                title: '预登录'
+            },
+            props: ($route) => ({
+                token: $route.query.token,
+            }),
         },
         {
             path: "/:catchAll(.*)",

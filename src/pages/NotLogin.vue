@@ -13,7 +13,7 @@
           <p>
             您还有没有登录喔，请登录
           </p>
-          <q-btn class="q-mt-lg error-page-btn"
+          <q-btn v-if="false" class="q-mt-lg error-page-btn"
                  outline push label="Go to Homepage" @click="backToHome(thisRouter)"/>
         </div>
       </div>
