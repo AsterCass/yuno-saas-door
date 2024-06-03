@@ -168,19 +168,18 @@ function saasHouseBookProjectBookHouseRenewTableEvent(param) {
       let thisData = data.data
       let content = thisData.content
       for (let inData of content) {
-        inData.houseModel = inData.bedroomSum + "室" + inData.livingRoomSum + "厅" + inData.washroomSum + "卫"
+        inData.houseModel = inData.roomSumName
         inData.orientation = OrientationEnum.getDesc(inData.orientation)
         inData.houseBookStatusName = HouseBookStatusEnum.getDesc(inData.houseBookStatus)
         inData.houseFloor = inData.floorNo + "/" + inData.floorSum
         inData.rentalCharge = inData.monthPay + "/月"
         if (inData.rentStyle === 1) {
           inData.rentStyle = '整租'
-          inData.houseAddress = inData.community + inData.buildNo + "幢" + inData.unitNo + "单元" + inData.houseNo
+          inData.houseAddress = inData.community + inData.buildUnitName + inData.houseNo
           inData.area = inData.area + "㎡"
         } else {
           inData.rentStyle = '合租'
-          inData.houseAddress = inData.community + inData.buildNo + "幢"
-              + inData.unitNo + "单元" + inData.houseNo + '-' + inData.roomNo
+          inData.houseAddress = inData.community + inData.buildUnitName + inData.houseNo + inData.roomNo
           inData.area = inData.roomArea + "㎡"
         }
         //pass to child component

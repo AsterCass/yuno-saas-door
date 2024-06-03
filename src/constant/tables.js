@@ -241,14 +241,6 @@ export const bookHouseColumns = [
         miniCardHaveLabel: true,
     },
     {
-        name: 'houseProjectId',
-        required: true,
-        label: '项目编号',
-        align: 'center',
-        field: 'houseProjectId',
-        miniCardHaveLabel: true,
-    },
-    {
         name: 'houseProjectName',
         required: true,
         label: '项目名称',
