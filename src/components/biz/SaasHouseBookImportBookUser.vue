@@ -117,8 +117,6 @@ function submitImportBookUser() {
       emitter.emit("saasHouseBookProjectBookUserRenewTableEvent")
     } else if (data && 550 === data.status) {
       errorList.value = JSON.parse(data.message)
-    } else {
-      notifyTopWarning("导入失败，请重试", 2000, notify)
     }
   }).catch(() => {
     notifyTopWarning("导入失败，请重试", 2000, notify)

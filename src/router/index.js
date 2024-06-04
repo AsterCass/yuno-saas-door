@@ -21,6 +21,7 @@ import SaasHouseBookProjectHouse from "@/views/biz/SaasHouseBookProjectHouse.vue
 import SaasHouseBookProjectBookUser from "@/views/biz/SaasHouseBookProjectBookUser.vue";
 import SaasSystemMenu from "@/views/SaasSystemMenu.vue";
 import SaasAuthPreLogin from "@/views/biz/SaasAuthPreLogin.vue";
+import SaasHouseBookProjectDetail from "@/views/biz/SaasHouseBookProjectDetail.vue";
 
 const router = createRouter({
     // history: createWebHashHistory(process.env.BASE_URL),
@@ -75,6 +76,17 @@ const router = createRouter({
                             component: SaasHouseBookProjectNew,
                             meta: {
                                 title: '新建&编辑活动'
+                            },
+                            props: ($route) => ({
+                                projectId: $route.query.id,
+                            }),
+                        },
+                        {
+                            path: 'project/detail',
+                            name: 'saasHouseBookProjectDetail',
+                            component: SaasHouseBookProjectDetail,
+                            meta: {
+                                title: '活动详情'
                             },
                             props: ($route) => ({
                                 projectId: $route.query.id,

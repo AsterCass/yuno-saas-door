@@ -32,7 +32,7 @@
 
     <div class="q-mx-lg q-mt-md">
       <AnnouncementInPage :text-list="['活动创建完成后，默认为下架状态，仅已上架且进行中的活动会展示给租客',
-       '活动开始前允许编辑和上下架；活动开始后不允许编辑，仅允许上下架']"/>
+       '进行中的活动不允许编辑/删除，仅允许上下架']"/>
     </div>
 
 
@@ -111,12 +111,19 @@ const customTableOperation = [
     showCondition: 'inUpStyle'
   },
   {
+    label: '详情',
+    emitStr: 'saasHouseBookProjectDetailEvent',
+    showCondition: 'allowDetail'
+  },
+  {
     label: '编辑',
     emitStr: 'saasHouseBookProjectEditEvent',
+    showCondition: 'allowDeleteEdit'
   },
   {
     label: '删除',
     emitStr: 'saasHouseBookProjectDeleteEvent',
+    showCondition: 'allowDeleteEdit'
   }
 ]
 let mountTable = ref(false)
@@ -185,6 +192,10 @@ function saasHouseBookProjectEditEvent(map) {
   toSpecifyPageWithQuery(thisRouter, 'saasHouseBookProjectNew', {id: map.projectId})
 }
 
+function saasHouseBookProjectDetailEvent(map) {
+  toSpecifyPageWithQuery(thisRouter, 'saasHouseBookProjectDetail', {id: map.projectId})
+}
+
 function saasHouseBookProjectDeleteEvent(map) {
   dialogJudgmentData.value.title = "删除活动"
   dialogJudgmentData.value.content = `确认是否删除活动“${map.projectName}”`
@@ -215,6 +226,11 @@ function saasHouseBookProjectRenewTableEvent(param) {
         } else {
           inData.inUpStyle = true
         }
+        if (inData.projectProcessStatus === ProjectProcessStatusEnum.WILL.code) {
+          inData.allowDeleteEdit = true
+        } else {
+          inData.allowDetail = true
+        }
       }
       tableData.value = content
       tableDataSum.value = thisData.totalElements
@@ -231,6 +247,7 @@ onMounted(() => {
   emitter.on('saasHouseBookProjectUpEvent', saasHouseBookProjectUpEvent)
   emitter.on('saasHouseBookProjectDownEvent', saasHouseBookProjectDownEvent)
   emitter.on('saasHouseBookProjectEditEvent', saasHouseBookProjectEditEvent)
+  emitter.on('saasHouseBookProjectDetailEvent', saasHouseBookProjectDetailEvent)
   emitter.on('saasHouseBookProjectDeleteEvent', saasHouseBookProjectDeleteEvent)
   emitter.on('saasHouseBookProjectRenewTableEvent', saasHouseBookProjectRenewTableEvent)
 
@@ -243,6 +260,7 @@ onUnmounted(() => {
   emitter.off('saasHouseBookProjectUpEvent', saasHouseBookProjectUpEvent)
   emitter.off('saasHouseBookProjectDownEvent', saasHouseBookProjectDownEvent)
   emitter.off('saasHouseBookProjectEditEvent', saasHouseBookProjectEditEvent)
+  emitter.off('saasHouseBookProjectDetailEvent', saasHouseBookProjectDetailEvent)
   emitter.off('saasHouseBookProjectDeleteEvent', saasHouseBookProjectDeleteEvent)
   emitter.off('saasHouseBookProjectRenewTableEvent', saasHouseBookProjectRenewTableEvent)
 })

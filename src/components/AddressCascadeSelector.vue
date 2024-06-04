@@ -115,8 +115,6 @@ function loadDistrictData(cityCode) {
       } else {
         districtData.value = []
       }
-    } else {
-      notifyTopWarning("获取地址数据失败，请重试", 2000, notify)
     }
   }).catch(() => {
     notifyTopWarning("获取地址数据失败，请重试", 2000, notify)
@@ -132,8 +130,6 @@ function loadCityData(provinceCode) {
       } else {
         cityData.value = [{divisionCode: provinceCode, divisionName: "市辖区"}]
       }
-    } else {
-      notifyTopWarning("获取地址数据失败，请重试", 2000, notify)
     }
   }).catch(() => {
     notifyTopWarning("获取地址数据失败，请重试", 2000, notify)
@@ -144,8 +140,6 @@ function loadPrinceData() {
   divisionAddress({}).then(data => {
     if (data && 200 === data.status) {
       provinceData.value = data.data
-    } else {
-      notifyTopWarning("获取地址数据失败，请重试", 2000, notify)
     }
   }).catch(() => {
     notifyTopWarning("获取地址数据失败，请重试", 2000, notify)
