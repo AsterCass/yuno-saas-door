@@ -233,11 +233,11 @@ export const bookUserColumns = [
 
 export const bookHouseColumns = [
     {
-        name: 'projectHouseId',
+        name: 'projectRoomId',
         required: true,
-        label: '房源编号',
+        label: '房间编号',
         align: 'center',
-        field: 'projectHouseId',
+        field: 'projectRoomId',
         miniCardHaveLabel: true,
     },
     {

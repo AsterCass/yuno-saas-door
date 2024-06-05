@@ -88,7 +88,7 @@ const props = defineProps({
 //table
 let tableBaseInfo = ref({
   tableColumns: bookHouseColumns,
-  tableKey: "projectHouseId",
+  tableKey: "projectRoomId",
   renewDataEmitStr: 'saasHouseBookProjectBookHouseRenewTableEvent',
   selectType: 'none',
   miniCardTitle: 'houseAddress'
@@ -131,10 +131,10 @@ function unlinkMultiHouse() {
       let unlinkMultiHouseId = ""
       let unlinkMultiHouseIdParam = ""
       for (let obj of multiSelect.value) {
-        unlinkMultiHouseId += (obj.projectHouseId + " ")
-        unlinkMultiHouseIdParam += (obj.projectHouseId + ",")
+        unlinkMultiHouseId += (obj.projectRoomId + " ")
+        unlinkMultiHouseIdParam += (obj.projectRoomId + ",")
       }
-      unImport(props.projectId, {projectHouseIds: unlinkMultiHouseIdParam}).then(data => {
+      unImport(props.projectId, {projectRoomIds: unlinkMultiHouseIdParam}).then(data => {
         if (data && 200 === data.status) {
           notifyTopPositive(`解除房源编号 ${unlinkMultiHouseId}关联成功`, 2000, notify)
           initParam()
@@ -205,9 +205,9 @@ function initParam() {
 }
 
 function saasHouseBookProjectHouseUnlinkEvent(map) {
-  unImport(props.projectId, {projectHouseIds: map.projectHouseId}).then(data => {
+  unImport(props.projectId, {projectRoomIds: map.projectRoomId}).then(data => {
     if (data && 200 === data.status) {
-      notifyTopPositive(`解除“${map.projectHouseId}”关联成功`, 2000, notify)
+      notifyTopPositive(`解除“${map.projectRoomId}”关联成功`, 2000, notify)
       initParam()
       saasHouseBookProjectBookHouseRenewTableEvent()
       updateForUrlParam.value = true
