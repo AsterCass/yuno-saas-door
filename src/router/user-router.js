@@ -133,6 +133,14 @@ export const leftBarRouter = [
                 child: []
             },
             {
+                pageCode: "saasSystemApi",
+                pageTitle: "接口管理",
+                pageIcon: "api",
+                haveChild: false,
+                webIsOpenChild: false,
+                child: []
+            },
+            {
                 pageCode: "saasSystemDictionary",
                 pageTitle: "字典管理",
                 pageIcon: "fa-regular fa-address-book",

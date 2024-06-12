@@ -22,6 +22,7 @@ import SaasHouseBookProjectBookUser from "@/views/biz/SaasHouseBookProjectBookUs
 import SaasSystemMenu from "@/views/SaasSystemMenu.vue";
 import SaasAuthPreLogin from "@/views/biz/SaasAuthPreLogin.vue";
 import SaasHouseBookProjectDetail from "@/views/biz/SaasHouseBookProjectDetail.vue";
+import SaasSystemApi from "@/views/SaasSystemApi.vue";
 
 const router = createRouter({
     // history: createWebHashHistory(process.env.BASE_URL),
@@ -222,6 +223,14 @@ const router = createRouter({
                             component: SaasSystemMenu,
                             meta: {
                                 title: 'YunoSaas菜单管理'
+                            },
+                        },
+                        {
+                            path: 'api',
+                            name: 'saasSystemApi',
+                            component: SaasSystemApi,
+                            meta: {
+                                title: 'YunoSaas接口管理'
                             },
                         },
                     ]
