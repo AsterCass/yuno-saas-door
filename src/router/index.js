@@ -304,7 +304,7 @@ router.afterEach(() => {
     window.scrollTo(0, 0)
     setTimeout(function () {
         document.documentElement.style.overflowY = "auto";
-    }, 1000);
+    }, 1500);
 })
 
 

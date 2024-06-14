@@ -10,8 +10,7 @@
       <div class="q-my-xl q-mr-md">
 
         <router-view v-slot="{ Component, route }">
-          <transition enter-active-class="animate__animated animate__slideInRight delay-half-sec during-half-sec"
-                      leave-active-class="animate__animated animate__slideOutLeft during-half-sec">
+          <transition name="fade" mode="out-in">
             <div :key="route.name">
               <component :is="Component"></component>
             </div>
@@ -84,12 +83,22 @@ onUnmounted(() => {
 <style scoped lang="scss">
 @import "@/styles/theme-style";
 
-.delay-half-sec {
-  animation-delay: 600ms;
+.fade-enter-from {
+  opacity: 0;
+  transform: scale(.95);
 }
 
-.during-half-sec {
-  animation-duration: 500ms;
+.fade-enter-active {
+  transition: all .5s ease;
+}
+
+.fade-leave-active {
+  transition: all .5s ease;
+}
+
+.fade-leave-to {
+  opacity: 0;
+  transform: scale(.95);
 }
 
 
