@@ -16,6 +16,7 @@
 
     <div class="q-ma-lg">
       <ComplexTable v-if="mountTable"
+                    :table-watch-data="tableWatchData"
                     :custom-slot="customColumnBuilder"
                     :table-base-info="userApiInfo"
                     :table-data="tableData"
@@ -63,6 +64,7 @@ let mountTable = ref(false)
 let tableData = ref([])
 let tableDataSum = ref(0)
 let pageParam = ref({})
+let tableWatchData = ref({inLoading: true})
 //search
 let keyword = ref("")
 
@@ -72,6 +74,7 @@ function search() {
 
 
 function userApiRenewTableEvent(param) {
+  tableWatchData.value.inLoading = true
   if (param) {
     pageParam.value = param
   }
@@ -87,6 +90,7 @@ function userApiRenewTableEvent(param) {
       tableData.value = content
       tableDataSum.value = thisData.totalElements
     }
+    tableWatchData.value.inLoading = false
   }).catch(() => {
     notifyTopWarning("接口数据获取失败，请重试", 2000)
   });

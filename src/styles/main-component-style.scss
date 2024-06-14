@@ -74,6 +74,18 @@ $min-width:4rem, $color: $yuno_light_text-color) {
     color: transparent;
   }
 
+  .q-table__linear-progress {
+    height: 7px;
+    color: $yuno-theme-black-light-light !important;
+  }
+
+  .q-linear-progress__model--indeterminate::after {
+    border-radius: 1rem !important;
+  }
+
+  .q-linear-progress__model--indeterminate::before {
+    border-radius: 1rem !important;
+  }
 }
 
 .astercasc-simple-table-bottom-pri {

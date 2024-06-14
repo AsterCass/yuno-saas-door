@@ -142,14 +142,15 @@
   </div>
 
   <q-table v-else
-      card-class="astercasc-simple-table-pri"
-      table-header-class="astercasc-simple-table-header-pri"
-      :rows="tableData"
-      :columns="tableBaseInfo.tableColumns"
-      :row-key="tableBaseInfo.tableKey"
-      :pagination="{rowsPerPage: 0}"
-      :selection="tableBaseInfo.selectType"
-      v-model:selected="localMultiSelect"
+           card-class="astercasc-simple-table-pri"
+           table-header-class="astercasc-simple-table-header-pri"
+           :loading="tableWatchData.inLoading"
+           :rows="tableData"
+           :columns="tableBaseInfo.tableColumns"
+           :row-key="tableBaseInfo.tableKey"
+           :pagination="{rowsPerPage: 0}"
+           :selection="tableBaseInfo.selectType"
+           v-model:selected="localMultiSelect"
   >
     <template v-slot:bottom>
       <div class="astercasc-simple-table-bottom-pri">
@@ -268,6 +269,13 @@ const props = defineProps({
     type: Object,
     required: true,
     default: () => {
+    },
+  },
+  tableWatchData: {
+    type: Object,
+    required: false,
+    default: () => {
+      return {inLoading: false}
     },
   },
   tableData: {
