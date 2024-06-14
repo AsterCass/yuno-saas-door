@@ -41,11 +41,11 @@ export const UserApiColumns = [
         miniCardHaveLabel: true,
     },
     {
-        name: 'status',
+        name: 'statusName',
         required: false,
         label: '接口状态',
         align: 'center',
-        field: 'status',
+        field: 'statusName',
         miniCardHaveLabel: true,
     },
     {

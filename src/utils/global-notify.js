@@ -1,9 +1,8 @@
 import {Notify} from "quasar";
 
-const notify = Notify.create
 
 function notifyTopRightWarning(msg, time) {
-    notify({
+    Notify.create({
         message: msg,
         position: 'top-right',
         type: 'warning',
@@ -12,7 +11,7 @@ function notifyTopRightWarning(msg, time) {
 }
 
 function notifyTopWarning(msg, time) {
-    notify({
+    Notify.create({
         message: msg,
         position: 'top',
         type: 'warning',
@@ -21,7 +20,7 @@ function notifyTopWarning(msg, time) {
 }
 
 function notifyTopNegative(msg, time) {
-    notify({
+    Notify.create({
         message: msg,
         position: 'top',
         type: 'negative',
@@ -30,7 +29,7 @@ function notifyTopNegative(msg, time) {
 }
 
 function notifyTopPositive(msg, time) {
-    notify({
+    Notify.create({
         message: msg,
         position: 'top',
         type: 'positive',

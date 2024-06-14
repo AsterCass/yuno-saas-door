@@ -2,13 +2,28 @@ import {ref} from "vue";
 
 export const ComplexTableColumnEnum = Object.freeze({
     POINTED: 0,
-    OPERATIONS: 1,
+    STYLE: 1,
 });
 
 export const ProjectProcessStatusEnum = {
     WILL: {code: 0, desc: "待开始"},
     ING: {code: 1, desc: "进行中"},
     ED: {code: 2, desc: "已结束"},
+
+    getDesc: function (code) {
+        for (let key in this) {
+            if (this[key].code === code) {
+                return this[key].desc;
+            }
+        }
+        return null;
+    }
+}
+
+export const DataBaseStatusEnum = {
+    DELETED: {code: -1, desc: "已删除"},
+    NORMAL: {code: 0, desc: "正常"},
+    DISABLE: {code: 1, desc: "停用"},
 
     getDesc: function (code) {
         for (let key in this) {
@@ -110,6 +125,21 @@ export const HouseBookStatusEnum = {
         return null;
     }
 }
+
+export const DataBaseStatusOpt = ref([
+    {
+        label: DataBaseStatusEnum.DELETED.desc,
+        value: DataBaseStatusEnum.DELETED.code,
+    },
+    {
+        label: DataBaseStatusEnum.NORMAL.desc,
+        value: DataBaseStatusEnum.NORMAL.code,
+    },
+    {
+        label: DataBaseStatusEnum.DISABLE.desc,
+        value: DataBaseStatusEnum.DISABLE.code,
+    },
+])
 
 export const projectProcessStatusOpt = ref([
     {

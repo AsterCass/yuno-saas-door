@@ -204,8 +204,15 @@
 
     <template v-for="(thisSlot, index) in customSlot" :key="index" v-slot:[thisSlot.slotName]="props">
       <q-td :props="props">
-        <div style="color: #1976D2; cursor: pointer"
+        <div v-if="thisSlot.type === ComplexTableColumnEnum.POINTED" style="color: #1976D2; cursor: pointer"
              @click="emitter.emit(thisSlot.emitStr, props.row)">
+          {{ props.row[thisSlot.name] }}
+        </div>
+        <div v-else-if="thisSlot.type === ComplexTableColumnEnum.STYLE"
+             :style="thisSlot.style[props.row[thisSlot.name]].style">
+          {{ thisSlot.style[props.row[thisSlot.name]].content }}
+        </div>
+        <div v-else>
           {{ props.row[thisSlot.name] }}
         </div>
       </q-td>
@@ -234,6 +241,7 @@
 import {defineEmits, defineExpose, defineProps, inject, onMounted, ref, watch} from "vue";
 import emitter from "@/utils/bus";
 import {getUserBehavior} from "@/utils/store";
+import {ComplexTableColumnEnum} from "@/constant/enums";
 
 const props = defineProps({
   customSlot: {
