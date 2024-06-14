@@ -212,6 +212,16 @@
              :style="thisSlot.style[props.row[thisSlot.name]].style">
           {{ thisSlot.style[props.row[thisSlot.name]].content }}
         </div>
+        <div v-else-if="thisSlot.type === ComplexTableColumnEnum.EDIT_ICON">
+          <div class="row justify-center items-center">
+            <div>
+              {{ props.row[thisSlot.name] }}
+            </div>
+            <q-btn class="q-mx-xs" round size=".5rem" dense flat icon="fa-solid fa-pen-to-square"
+                   style="color: #1976D2"
+                   @click="emitter.emit(thisSlot.emitStr, props.row)"/>
+          </div>
+        </div>
         <div v-else>
           {{ props.row[thisSlot.name] }}
         </div>

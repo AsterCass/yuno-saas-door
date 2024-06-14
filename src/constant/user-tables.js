@@ -66,3 +66,65 @@ export const UserApiColumns = [
         miniCardHaveLabel: false,
     },
 ]
+
+
+export const UserDictColumns = [
+    {
+        name: 'dictId',
+        required: true,
+        label: '字典编号',
+        align: 'center',
+        field: 'dictId',
+        miniCardHaveLabel: true,
+    },
+    {
+        name: 'dictCode',
+        required: false,
+        label: '字典编码',
+        align: 'center',
+        field: 'dictCode',
+        miniCardHaveLabel: false,
+        miniCardSite: "subscript",
+    },
+    {
+        name: 'dictName',
+        required: false,
+        label: '字典名称',
+        align: 'center',
+        field: 'dictName',
+        miniCardHaveLabel: false,
+    },
+    {
+        name: 'dictValueList',
+        required: false,
+        label: '字典值',
+        align: 'center',
+        field: 'dictValueList',
+        miniCardHaveLabel: true,
+    },
+    {
+        name: 'dictMark',
+        required: false,
+        label: '字典备注',
+        align: 'center',
+        field: 'dictMark',
+        miniCardHaveLabel: true,
+    },
+    {
+        name: 'createTime',
+        required: false,
+        label: '创建时间',
+        align: 'center',
+        field: 'createTime',
+        miniCardHaveLabel: false,
+        miniCardSite: "footerRight",
+    },
+    {
+        name: 'operation',
+        required: false,
+        label: '操作',
+        align: 'center',
+        field: 'operation',
+        miniCardHaveLabel: false,
+    },
+]

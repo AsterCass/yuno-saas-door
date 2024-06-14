@@ -3,6 +3,7 @@ import {ref} from "vue";
 export const ComplexTableColumnEnum = Object.freeze({
     POINTED: 0,
     STYLE: 1,
+    EDIT_ICON: 2,
 });
 
 export const ProjectProcessStatusEnum = {
