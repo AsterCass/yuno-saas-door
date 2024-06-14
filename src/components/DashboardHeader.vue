@@ -1,6 +1,5 @@
 <template>
-  <q-header id="web-header" class="top-semi-trans-header"
-            :style="isAtTop ? 'background-color: #EFF2F5!important;box-shadow: none;' : ''">
+  <q-header id="web-header" :class="isAtTop ? 'top-semi-trans-header-top' : 'top-semi-trans-header'">
     <q-toolbar class="row justify-between">
       <div class="col-9 row justify-start items-center">
         <q-btn class="header-btn" @click="changeLeftMini(!leftMenuMini)"
