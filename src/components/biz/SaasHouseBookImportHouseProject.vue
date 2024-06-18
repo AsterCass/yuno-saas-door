@@ -65,10 +65,10 @@ const props = defineProps({
     required: true,
     default: 0,
   },
-  houseProjectId: {
-    type: String,
+  houseProjectIdList: {
+    type: Array,
     required: false,
-    default: ""
+    default: () => [],
   }
 })
 //notify
@@ -147,8 +147,14 @@ function saasHouseBookImportHouseRenewTableEvent(param) {
       let thisData = data.data
       let content = thisData.content
       for (let inData of content) {
-        if (props.houseSum > 0) {
-          inData.isLink = inData.houseProjectId === props.houseProjectId
+        // if (props.houseSum > 0) {
+        //   inData.isLink = inData.houseProjectId === props.houseProjectId
+        // } else {
+        //   inData.isUnlink = true
+        // }
+        //当前支持关联多个项目
+        if (props.houseProjectIdList.includes(inData.houseProjectId)) {
+          inData.isLink = true
         } else {
           inData.isUnlink = true
         }

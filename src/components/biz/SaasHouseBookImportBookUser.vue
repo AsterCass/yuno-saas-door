@@ -95,7 +95,7 @@ function downloadTemplate() {
 
   //todo this is template logic, use request for data need https
   const link = document.createElement('a');
-  link.href = 'https://web-pulbic-read.obs.cn-southwest-2.myhuaweicloud.com/template/import-book-user.xlsx';
+  link.href = 'https://web-pulbic-read.obs.cn-southwest-2.myhuaweicloud.com/template/%E5%AF%BC%E5%85%A5%E6%B4%BB%E5%8A%A8%E7%A7%9F%E5%AE%A2%E6%A8%A1%E6%9D%BF.xlsx';
   link.setAttribute('download', 'template.xlsx');
   document.body.appendChild(link);
   link.click();

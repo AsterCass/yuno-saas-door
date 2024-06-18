@@ -4,7 +4,7 @@
 
     <div class="row items-center q-ml-sm">
       <q-input v-model="houseKey" color="grey q-ma-sm" hide-bottom-space borderless
-               placeholder="请输入房源编号、房源信息查询"
+               placeholder="请输入房间编号、小区名称查询"
                input-class="astercasc-input-inner-base"
                :input-style="inject('globalData').isMiniScreen ? {} : {width: '25rem'} "/>
 
@@ -51,8 +51,7 @@
   </div>
 
   <SaasHouseBookImportHouseProject :project-id="projectId"
-                                   :house-sum="Number(houseSum)"
-                                   :house-project-id="houseProjectId"/>
+                                   :house-sum="Number(houseSum)"/>
 
 </template>
 
@@ -113,7 +112,6 @@ let houseAddressCode = ref("")
 let houseModel = ref(null)
 let pageParam = ref({})
 //data
-let houseProjectId = ref("")
 let updateForUrlParam = ref(false)
 
 
@@ -172,7 +170,7 @@ function saasHouseBookProjectBookHouseRenewTableEvent(param) {
         inData.orientation = OrientationEnum.getDesc(inData.orientation)
         inData.houseBookStatusName = HouseBookStatusEnum.getDesc(inData.houseBookStatus)
         inData.houseFloor = inData.floorNo + "/" + inData.floorSum
-        inData.rentalCharge = inData.monthPay + "/月"
+        inData.rentalCharge = inData.monthPay + "元/月"
         if (inData.rentStyle === 1) {
           inData.rentStyle = '整租'
           inData.houseAddress = inData.community + inData.buildUnitName + inData.houseNo
@@ -182,8 +180,6 @@ function saasHouseBookProjectBookHouseRenewTableEvent(param) {
           inData.houseAddress = inData.community + inData.buildUnitName + inData.houseNo + inData.roomNo
           inData.area = inData.roomArea + "㎡"
         }
-        //pass to child component
-        houseProjectId.value = inData.houseProjectId
       }
       tableData.value = content
       tableDataSum.value = thisData.totalElements
