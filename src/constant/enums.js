@@ -99,7 +99,8 @@ export const OrientationEnum = {
 }
 
 export const HouseOrderStatusEnum = {
-    BOOK: {code: 1, desc: "待验房"},
+    //目前逻辑：将原有待验房页显示为待签约
+    BOOK: {code: 1, desc: "待签约"},
     CHECKED: {code: 2, desc: "待签约"},
     FINISH: {code: 3, desc: "已完成"},
     CANCEL: {code: 4, desc: "已取消"},
@@ -195,10 +196,10 @@ export const bookTeamStatusOpt = ref([
 ])
 
 export const orderStatusOpt = ref([
-    {
-        label: HouseOrderStatusEnum.BOOK.desc,
-        value: HouseOrderStatusEnum.BOOK.code,
-    },
+    // {
+    //     label: HouseOrderStatusEnum.BOOK.desc,
+    //     value: HouseOrderStatusEnum.BOOK.code,
+    // },
     {
         label: HouseOrderStatusEnum.CHECKED.desc,
         value: HouseOrderStatusEnum.CHECKED.code,
