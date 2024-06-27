@@ -23,6 +23,7 @@ import SaasSystemMenu from "@/views/SaasSystemMenu.vue";
 import SaasAuthPreLogin from "@/views/biz/SaasAuthPreLogin.vue";
 import SaasHouseBookProjectDetail from "@/views/biz/SaasHouseBookProjectDetail.vue";
 import SaasSystemApi from "@/views/SaasSystemApi.vue";
+import UserLogin from "@/pages/UserLogin.vue";
 
 const router = createRouter({
     // history: createWebHashHistory(process.env.BASE_URL),
@@ -244,6 +245,14 @@ const router = createRouter({
                     },
                 },
             ],
+        },
+        {
+            path: "/login",
+            name: 'login',
+            component: UserLogin,
+            meta: {
+                title: 'YunoSaas登录'
+            },
         },
         {
             path: "/404",

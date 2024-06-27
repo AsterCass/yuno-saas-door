@@ -22,6 +22,10 @@ export function getUserBehavior() {
             sidebarImg: 'img1',
             themeColor: 'black',
             leftFocusOne: false,
+            tenantId: '',
+            userPhone: '',
+            userPasswd: '',
+            rememberLogin: false,
         }
     }
     return data;

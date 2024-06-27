@@ -1,6 +1,6 @@
 <template>
   <div id="margin-collapsing">
-    <div id="web-footer" class="footer">
+    <div id="web-footer" class="footer" :class="halfTspBg ? 'footer-half-tsp-bg' : ''">
       <ul class="copyright">
         <li>&copy; 2020-2024 astercasc.com 版权所有 互联网ICP备案：
           <a target="_blank" href="https://beian.miit.gov.cn/">浙ICP备2022023127号</a>
@@ -20,7 +20,15 @@
 </template>
 
 <script setup>
-import {onMounted, onUnmounted} from "vue";
+import {defineProps, onMounted, onUnmounted} from "vue";
+
+defineProps({
+  halfTspBg: {
+    type: Boolean,
+    required: false,
+    default: false,
+  },
+})
 
 function screenEventHandler() {
   let marginColHelper = document.getElementById('margin-collapsing')
@@ -53,6 +61,10 @@ onUnmounted(() => {
 
 <style lang="scss" scoped>
 @import "@/styles/base-style";
+
+.footer-half-tsp-bg {
+  background-color: rgba(255, 255, 255, 0.6);
+}
 
 .footer {
   bottom: 0;

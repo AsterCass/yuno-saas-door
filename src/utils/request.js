@@ -36,6 +36,9 @@ const responseConfig = response => {
                 return null
             }
         }
+        if (serverData.status === 200 && response.headers.get("User-Token")) {
+            saveUserToken(response.headers.get("User-Token"))
+        }
     } else {
         notifyTopNegative("系统繁忙，请稍后再试", 3000, Notify.create)
         return null

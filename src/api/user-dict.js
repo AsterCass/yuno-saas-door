@@ -3,7 +3,7 @@ import {serviceShiro} from '@/utils/request'
 
 export function userDictList(param) {
     return serviceShiro({
-        url: `/user/dictionaries/auth`,
+        url: `/user/admin/dictionaries/adminAuth`,
         method: 'get',
         params: param
     })
@@ -12,7 +12,7 @@ export function userDictList(param) {
 
 export function userDictNew(body) {
     return serviceShiro({
-        url: `/user/dictionaries/new/auth`,
+        url: `/user/admin/dictionaries/new/adminAuth`,
         method: 'post',
         data: body
     })
@@ -21,7 +21,7 @@ export function userDictNew(body) {
 
 export function userDictPair(dictId, body) {
     return serviceShiro({
-        url: `/user/dictionaries/${dictId}/pairs/auth`,
+        url: `/user/admin/dictionaries/${dictId}/pairs/adminAuth`,
         method: 'patch',
         data: body
     })
